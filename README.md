@@ -11,11 +11,14 @@ MAN6930 Foundations of Consulting — Charter Communications (NASDAQ: CHTR) team
 
 | Need | File | Use it for |
 |---|---|---|
-| Fast orientation (AI or human) | [`CHTR-Case-Background.md`](CHTR-Case-Background.md) | Mandate, numbers, competition, deals, Q1 2026, **and class notes** (CEO framing, method, trust). Start here. |
-| Assignment, role, grading, timeline | [`FoC-Team Case Brief (1).docx`](FoC-Team%20Case%20Brief%20(1).docx) | Official client brief: CEO charge, deliverables, check-ins, 40-point rubric, ground rules. |
-| Full company / financial background | [`FoC-CHTR Background.docx`](FoC-CHTR%20Background.docx) | Source narrative compiled from FY2025 10-K, FY2024 10-K, and Q1 2026 10-Q, plus tables. |
+| Fast orientation (case work) | [`CHTR-Case-Background.md`](CHTR-Case-Background.md) | Mandate, numbers, competition, deals, Q1 2026, and class notes. |
+| Facts only (no analysis) | [`PrimarySources/CORE-INFORMATION.md`](PrimarySources/CORE-INFORMATION.md) | Disclosed figures and quoted statements. |
+| Critical tables (Excel) | [`PrimarySources/readable/CHTR-Critical-Tables.xlsx`](PrimarySources/readable/CHTR-Critical-Tables.xlsx) | Customers, P&L, FCF, capex, Q1 2026, Q2 2026, deals — disclosed figures only. |
+| AI reading map | [`PrimarySources/AI-INDEX.md`](PrimarySources/AI-INDEX.md) | What to open, in what order, originals vs readable copies. |
+| Human-readable filings | [`PrimarySources/readable/`](PrimarySources/readable/) · start at [`readable/README.md`](PrimarySources/readable/README.md) | Cleaned markdown of 10-Ks, 10-Qs, 8-Ks, earnings, Cox, course Word files. |
+| Authoritative originals | [`PrimarySources/`](PrimarySources/) | `.htm` / `.pdf` / `.docx` if a converted number looks wrong. |
 
-If a number in the markdown disagrees with a filing or the Word background, **trust the original document** (and the 10-K / 10-Q cited there).
+If a number in any markdown disagrees with a filing, **trust the 10-K / 10-Q HTML in `PrimarySources/`**. Books and HBR are excluded from that folder.
 
 ---
 

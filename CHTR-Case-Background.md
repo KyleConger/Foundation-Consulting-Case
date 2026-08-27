@@ -295,11 +295,20 @@ Of 11 core consulting skills, six are the AI-era differentiators (HBR / McKinsey
 
 ## 12. Primary sources (for verification)
 
-- Charter Form **10-K FY2025** (business, customers, IS, revenue mix, EBITDA/FCF, capex, BS, debt, human capital, competition, network, Cox/Liberty)
-- Charter Form **10-K FY2024** (FY2023 revenue; old-basis customer figures)
-- Charter Form **10-Q Q1 2026** (customers, revenue, EBITDA/FCF, capex, leverage, buybacks, updated Cox terms, 2026 capex guide)
-- Supplemental “CHTR 2025 Numbers” and “CHTR 2026-1Q Numbers” exhibits
-- Team Case Brief: *“Changing the Trajectory”: A Strategy Engagement for the Office of the CEO*
-- Class sessions 18, 20, 25, 27 Aug 2026 (O’Donnell): framing, method, client-relationship rules; longer case brief / week-7 files still to be reviewed
-- Sternfels, Bob. *We Want to Make Ourselves Better* (McKinsey / HBR) — market-cap mandate; org change vs. tech
-- Maister, Green & Galford. *The Trusted Advisor* — trust equation for the CEO engagement
+All local copies live in [`PrimarySources/`](PrimarySources/). **AI map:** [`PrimarySources/AI-INDEX.md`](PrimarySources/AI-INDEX.md). **Facts only:** [`PrimarySources/CORE-INFORMATION.md`](PrimarySources/CORE-INFORMATION.md). **Readable conversions:** [`PrimarySources/readable/`](PrimarySources/readable/). Prefer the SEC HTML originals when a number is in dispute. Books and HBR are not stored here.
+
+| File | What it is |
+|---|---|
+| [`FoC-Team Case Brief (1).docx`](PrimarySources/FoC-Team%20Case%20Brief%20(1).docx) | Assignment / CEO charge / rubric |
+| [`FoC-CHTR Background.docx`](PrimarySources/FoC-CHTR%20Background.docx) | Course narrative from the filings |
+| [`CHTR-10-K-FY2025.htm`](PrimarySources/CHTR-10-K-FY2025.htm) | Form 10-K, year ended 31 Dec 2025 (filed 30 Jan 2026, acc. 0001091667-26-000017) |
+| [`CHTR-10-K-FY2024.htm`](PrimarySources/CHTR-10-K-FY2024.htm) | Form 10-K, year ended 31 Dec 2024 (acc. 0001091667-25-000034) — FY2023 revenue, old customer basis |
+| [`CHTR-10-Q-Q1-2026.htm`](PrimarySources/CHTR-10-Q-Q1-2026.htm) | Form 10-Q, quarter ended 31 Mar 2026 (filed 24 Apr 2026, acc. 0001091667-26-000028) |
+| [`CHTR-8-K-2026-01-30.htm`](PrimarySources/CHTR-8-K-2026-01-30.htm) + [`…Ex99.1.htm`](PrimarySources/CHTR-FY2025-Earnings-Release-Ex99.1.htm) / [`.pdf`](PrimarySources/CHTR-FY2025-Earnings-Release.pdf) | FY2025 earnings 8-K and press release |
+| [`CHTR-8-K-2026-04-24.htm`](PrimarySources/CHTR-8-K-2026-04-24.htm) + [`…Ex99.1.htm`](PrimarySources/CHTR-Q1-2026-Earnings-Release-Ex99.1.htm) / [`.pdf`](PrimarySources/CHTR-Q1-2026-Earnings-Release.pdf) | Q1 2026 earnings 8-K and press release |
+| [`CHTR-FY2025-Results-Presentation.pdf`](PrimarySources/CHTR-FY2025-Results-Presentation.pdf) | IR slide deck, 30 Jan 2026 |
+| [`CHTR-FY2025-Trending-Schedule.md`](PrimarySources/CHTR-FY2025-Trending-Schedule.md) | “CHTR 2025 Numbers” stand-in (IR PDF 404; MarketScreener extract) |
+| [`CHTR-Q1-2026-Trending-Schedule.md`](PrimarySources/CHTR-Q1-2026-Trending-Schedule.md) | “CHTR 2026-1Q Numbers” stand-in (IR PDF 404; MarketScreener extract) |
+| [`CHTR-Cox-Announcement-Press-Release.pdf`](PrimarySources/CHTR-Cox-Announcement-Press-Release.pdf) + [`CHTR-Cox-Presentation.pdf`](PrimarySources/CHTR-Cox-Presentation.pdf) | Cox combination announcement (16 May 2025) |
+
+Class notes (18–27 Aug 2026) are in §11 of this file, not in `PrimarySources/`. Longer course brief / week-7 files are still outstanding.
