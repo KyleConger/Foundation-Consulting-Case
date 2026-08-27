@@ -1,20 +1,24 @@
 # Charter Communications (CHTR) — Critical Case Background
 
-Quick-reference brief for MAN6930 Foundations of Consulting. Facts as of **end of Q1 2026 (March 31, 2026)** unless noted. Sources: Team Case Brief; CHTR Background compiled July 2026 from FY2025 10-K, FY2024 10-K, Q1 2026 10-Q.
+Quick-reference brief for MAN6930 Foundations of Consulting (Sean O’Donnell). Facts as of **end of Q1 2026 (March 31, 2026)** unless noted. Sources: Team Case Brief; CHTR Background compiled July 2026 from FY2025 10-K, FY2024 10-K, Q1 2026 10-Q; class notes 18 / 20 / 25 / 27 Aug 2026.
 
 **Do not mix customer-count bases.** Q4 2025 restated stats to include all mobile (including mobile-only). Use restated FY2025 10-K figures for 2024–2025. FY2023 customer counts are pre-restatement.
+
+**Do not mix class framing with filings.** Instructor commentary (CEO view, “undervalued,” buyback-not-working, Starlink/Kuiper) is in §11. Treat it as a hypothesis to test, not a fact.
 
 ---
 
 ## 1. Engagement (what the team must do)
 
-**Role.** Newly retained strategy team, engaged by the **Office of the CEO**, Charter Communications (Spectrum brand). Real public company; recommendations must be grounded in Q1 2026 reality.
+**Role.** Newly retained strategy team, engaged by the **Office of the CEO** (Chris Winfrey), Charter Communications (Spectrum brand). Real public company; recommendations must be grounded in Q1 2026 reality. The team is a **competing firm** against other class teams (first job: agree on a team name). Team: Josh, Kishore, Justin, Kyle.
 
-**CEO charge.** Bring out-of-the-box strategies that could **genuinely change the share-price trajectory**. Say what to do, convince it can actually be done: what it would take, cost, and time to matter. “Keep doing what we’re doing, but better” is unlikely to satisfy. No predetermined right answer.
+**CEO charge.** Bring out-of-the-box strategies that could **genuinely change the share-price trajectory**. Say what to do, convince it can actually be done: what it would take, cost, and time to matter. “Keep doing what we’re doing, but better” is unlikely to satisfy. You may recommend **literally anything**, but it must be a hypothesis with a course of action and proof (key steps and milestones). Audience is Charter’s **executive team**; expect questions throughout.
 
-**Deliver.** Frame the problem (symptom vs. underlying issue) → analyze with evidence (Week 5 data pack) → recommend a specific, defensible, actionable course → show feasibility (resources, time, cost, risk) → client-style PowerPoint to the CEO.
+**Deliver.** Frame the problem (symptom vs. underlying issue) → analyze with evidence (Week 5 data pack) → recommend a specific, defensible, actionable course → show feasibility (resources, time, cost, risk) → client-style PowerPoint to the CEO. Instructor emphasis: **why is Wall Street looking at it this way?** Separate the falling share price from **underlying business fundamentals**.
 
-**Ground rules.** Be specific (“Do X, targeting Y, funded by Z, over N months”). Own trade-offs. Anchor to end of Q1 2026; later public facts only if documented from reputable sources. AI is permitted but must be verified.
+**Ground rules.** Be specific (“Do X, targeting Y, funded by Z, over N months”). Own trade-offs. Anchor to end of Q1 2026; later public facts only if documented from reputable sources. AI is permitted, encouraged, and must be verified — be prepared to defend how it was used.
+
+**Cadence.** Week 2 is the most important week: **learn the industry and do the research** (a longer ~20-page case brief / week-7 files exist; review them). Last 30 minutes of every Thursday is working time with O’Donnell on this case. Check-ins are working sessions, not just grades.
 
 | When | Milestone | Output |
 |---|---|---|
@@ -30,7 +34,7 @@ Quick-reference brief for MAN6930 Foundations of Consulting. Facts as of **end o
 
 ## 2. Core tension (the story in one paragraph)
 
-Charter is large, cash-generative, and operationally strong — **not in financial distress**. Owners have still lost a great deal of money: stock down **~80% over five years**, then **~25% in one day** after Q1 2026 earnings (one of the worst single-day drops in company history). Trigger: **Internet lost 120k customers in Q1 2026**, roughly double the ~60k lost in Q1 2025. Internet is the profit engine, so those losses scare investors more than losses anywhere else. Mobile is growing fast but is lower-margin (resold capacity); the market will not credit it against broadband decline. The problem is **direction and belief**: the market does not believe the current strategy returns connectivity relationships to growth.
+Charter is large, cash-generative, and operationally strong — **not in financial distress**. Owners have still lost a great deal of money: stock down **~80% over five years**, then **~25% in one day** after Q1 2026 earnings (one of the worst single-day drops in company history). Trigger: **Internet lost 120k customers in Q1 2026**, roughly double the ~60k lost in Q1 2025. Internet is the profit engine, so those losses scare investors more than losses anywhere else. Mobile is growing fast but is lower-margin (resold capacity); the market will not credit it against broadband decline. The problem is **direction and belief**: the market does not believe the current strategy returns connectivity relationships to growth. Buybacks have not produced the usual price support. Instructor working hypothesis: Winfrey is right that the stock is **undervalued** — still requires a **strategic** answer, not a PR answer.
 
 ---
 
@@ -39,10 +43,12 @@ Charter is large, cash-generative, and operationally strong — **not in financi
 | Item | Fact |
 |---|---|
 | Legal / ticker | Charter Communications, Inc. (NASDAQ: **CHTR**); Delaware corp; HQ 400 Washington Blvd., Stamford, CT |
+| CEO | **Chris Winfrey** (Office of the CEO is the client) |
 | Founded | 1993; evolved from cable TV into “leading broadband connectivity company” |
-| Brand | Spectrum (Spectrum Business, Spectrum Reach, Spectrum Community Solutions) |
+| Brand | **Spectrum** (Spectrum Business, Spectrum Reach, Spectrum Community Solutions). Class note: Charter and Comcast both go to market under secondary brands (Spectrum / Xfinity) because the corporate names had poor market reputation. |
 | Footprint | **58 million** homes/businesses passed, **41 states**; ~**91,900** U.S. FTEs |
-| Rank | **#2 U.S. cable operator** (behind Comcast); **#1 if Cox deal closes** |
+| Rank | **#2 U.S. cable operator** (behind Comcast / Xfinity); **#1 if Cox deal closes** |
+| Customer mix (size) | **Residential largest → small business next → commercial third.** Commercial is more complicated: all four products, but **fiber-optic based**. |
 | Strategy | Fiber-powered network + high-quality, competitively priced products → (1) more customers on the network, (2) more products per customer → fewer service transactions → higher satisfaction, lower churn, lower cost to serve |
 | Consumer pillars | “Life Unlimited” brand; simplified/lower bundled pricing (Internet + Advanced WiFi + Unlimited Mobile) |
 | Structure | Public parent → Charter Holdings LLC → CCO Holdings LLC / Charter Communications Operating LLC (primary debt issuers) |
@@ -55,7 +61,7 @@ Charter is large, cash-generative, and operationally strong — **not in financi
 Subscription Internet, mobile, video, and voice — residential and commercial — sold standalone or bundled (bundles available to substantially all passings).
 
 - **Spectrum Internet.** Up to 1 Gbps footprint-wide; multi-gig in a portion; upgrading to symmetrical multi-gig. Advanced WiFi (WiFi 7, Security Shield, parental controls). Early 2026: planned **Invincible WiFi** (tri-band WiFi 7 + 5G + battery backup).
-- **Spectrum Mobile.** Available to Spectrum Internet customers. No-contract 5G; taxes/fees in price. Runs on (a) in-home WiFi, (b) ~49M out-of-home WiFi APs + partner WiFi, (c) **Verizon MVNO**. July 2025: multi-year **T-Mobile** deal for Spectrum Business mobile, launching 2026. Integrations like Speed Boost tie mobile to fixed Internet.
+- **Spectrum Mobile.** Available to Spectrum Internet customers. No-contract 5G; taxes/fees in price. Runs on (a) in-home WiFi, (b) ~49M out-of-home WiFi APs + partner WiFi, (c) **Verizon MVNO** (class analog: Cricket is an MVNO on T-Mobile). July 2025: multi-year **T-Mobile** deal for Spectrum Business mobile, launching 2026. Integrations like Speed Boost tie mobile to fixed Internet.
 - **Spectrum Voice.** VoIP; unlimited US + Canada/Mexico/PR; Call Guard.
 - **Spectrum TV.** ~375 channels + VOD/streaming. Programmer deals bundle ad-supported streaming apps into packages; Spectrum App Store (Oct 2025). New video customers get **Xumo** boxes (Charter/Comcast JV).
 - **Spectrum Business (SMB).** Internet/mobile/video/voice up to 1 Gbps + business features.
@@ -184,9 +190,11 @@ Connectivity (Internet + mobile) is now **>$27.5B, more than half of revenue** �
 **Two structural Internet threats**
 
 1. **FTTH overbuilders** (mainly AT&T, Verizon): 1 Gbps+ overlapping Charter. FY2025 10-K: terrestrial 100 Mbps+ competition from **AT&T in ~27%** of footprint, **Verizon in ~16%**.
-2. **Fixed wireless access (FWA)** (T-Mobile, Verizon): 5G home Internet from towers, winning price-sensitive customers.
+2. **Fixed wireless access (FWA)** (T-Mobile, Verizon): 5G home Internet from a box in the house that uses the cellular network, winning price-sensitive customers.
 
-Also DSL, satellite, municipal WiFi, open-access. Plus a **slow housing market** (fewer movers).
+Also DSL, **satellite** (class: **Starlink**; Amazon **Project Kuiper** as the follow-on), municipal WiFi, open-access. Plus a **slow housing market** — the industry **counts on people moving** to add subscribers, and they are not moving the way they used to.
+
+**Why fiber got large (class).** COVID exposed broadband inadequacy; government spent **hundreds of billions** to build more/better networks; fiber overbuilders scaled from small to large competition. Filings quantify overlap (AT&T ~27%, Verizon ~16% at 100 Mbps+); class adds the **policy/capital wave** that produced that overlap.
 
 **Other products.** Mobile vs. AT&T/Verizon/T-Mobile and other MVNOs — the same carriers attacking broadband, now pushing their own converged bundles. Video vs. vMVPDs (YouTube TV, Hulu + Live TV, Sling, Philo, DirecTV Stream), SVOD, FAST, DBS, piracy/password sharing. Voice vs. wireless/OTT. Ads vs. digital/CTV. Commercial vs. fiber/cloud/telcos.
 
@@ -208,7 +216,7 @@ Also DSL, satellite, municipal WiFi, open-access. Plus a **slow housing market**
 - **Insourced ops.** 100% U.S. workforce; in-house field handled **>80%** of premise service txns in 2025; growing in-house construction. Differentiator (quality/churn) and a **large fixed labor base (~91.9k FTEs)**. Min wage ≥$20/hr; ~80% variable-comp eligible; 401(k) 6% match; tuition-free degree; DOL Broadband Technician Apprenticeship.
 - **Programming.** Per-sub fees to consolidating programmers with growing leverage. App-bundling is an attempt to **manage video decline, not reverse it**.
 - **Seasonality.** College/vacation areas; ads stronger Q2/Q4 and **even-numbered (political) years**. Capex/WC seasonal with construction and sub timing.
-- **Capital allocation.** Aggressive buybacks: Sep 2016–Mar 31, 2026, **~184M shares/units for ~$79.7B** (incl. Liberty/A/N). Mechanism that converts **flat NI into rising EPS**. During Liberty deal, monthly formula purchases from Liberty Broadband.
+- **Capital allocation.** Aggressive buybacks: Sep 2016–Mar 31, 2026, **~184M shares/units for ~$79.7B** (incl. Liberty/A/N). Mechanism that converts **flat NI into rising EPS**. During Liberty deal, monthly formula purchases from Liberty Broadband. **Live puzzle (class):** the buybacks are not producing the typical stock-price boost. Instructor framed recent scale as on the order of **~$10B / a large fraction of the company** — verify against filings; do not substitute that figure for the $79.7B program total. The question to answer is **why the market is not rewarding the repurchase**.
 
 ---
 
@@ -231,14 +239,67 @@ These deals **increase scale and footprint, consolidate ownership, and add debt*
 3. Mobile growth is real but **lower-margin**, dependent on **MVNO economics** (Verizon today; T-Mobile for business from 2026) and CBRS/5G offload.
 4. Video is **structurally declining but still large**; programmer-app bundling manages the decline.
 5. Capital allocation has leaned on **buybacks** to convert flat earnings into EPS growth; Cox + Liberty **reset scale, ownership, and leverage**.
-6. Share-price collapse is a **symptom**. Underlying question: can Charter **credibly return connectivity relationships to growth**, over what horizon, at what cost?
+6. Share-price collapse is a **symptom** (loss of market confidence). Underlying question: can Charter **credibly return connectivity relationships to growth**, over what horizon, at what cost?
+7. **Why isn’t Wall Street paying up?** Instructor view: Winfrey is right that the stock is **undervalued**; buybacks are not delivering the usual price support. The work is to explain the market’s lens vs. the fundamentals, then recommend a **strategic** fix — not a communications patch.
+8. Opening diagnostic for any case: **what business is this company in?** For Charter: broadband connectivity (HFC last-mile, MVNO mobile, declining video), not “a cable-TV company that also has internet.”
 
 ---
 
-## 11. Primary sources (for verification)
+## 11. Class notes that change how to work the case
+
+Instructor: Sean O’Donnell. These are working rules and hypotheses from 18–27 Aug 2026, not filing facts.
+
+### How O’Donnell is framing Charter
+
+- Company is **not in financial distress**. Symptom = **falling share price** / the market no longer believes the shares are worth more than the quote.
+- CEO **Chris Winfrey** has a clear view of why the price is where it is. O’Donnell thinks **Winfrey is right that the stock is undervalued**. The ask is still: **what do we do strategically to fix this?**
+- Recommendation space is wide open. Incremental “run the network upgrade harder” is the move most likely to fail the “out of the box” test unless it is tied to a trajectory the market will believe.
+- McKinsey (Bob Sternfels, *We Want to Make Ourselves Better*): clients pay consultants to **find ways to double market cap**. Until CEOs stop wanting that, the work is the complicated questions underneath. Half or more of tech/AI value is **organizational change** (how work is redesigned, flatter/faster org), not the technology itself. Maps directly to a CEO charge about share-price trajectory: a network or product move that ignores how Charter would actually operate after it is weaker.
+
+### How to gather and test evidence (cable-relevant)
+
+Mental question #1 on any case: **what business is this company in?** Then the big buckets (for Charter: where is the last mile, who supplies mobile, who overbuilds).
+
+Sharpen questions:
+
+- One question at a time (two in one sentence usually get one answer, and you won’t know which).
+- Force specificity: **numbers, dates, instances.** “What % effect did X have on cost?”
+- Separate **observation from interpretation.** Ask “what did you actually see or measure?” before “what do you think is happening?”
+- Strip leading / double-barreled questions.
+- **Ask how they know** — surfaces direct knowledge vs. secondhand vs. inference.
+
+**Charter-flavored example (O’Donnell, cable ops):** call-center triage codes look like data. Asked “how do you know this is right?” — agents have favorite codes. Sampling actual calls against coded reasons showed a lot of inaccuracy. Apply the same skepticism to CHTR customer stats, churn reasons, “competitive losses,” and any data pack field that is coded, not measured.
+
+### How to show up to this client
+
+This engagement is scored as a **trusted advisor** to the CEO, not a hired-gun expert dump. Trust sits on competence; it does not replace it.
+
+- **Trust = (Credibility + Reliability + Intimacy) / Self-orientation** (Maister, Green & Galford, *The Trusted Advisor*).
+  - Credibility = can I believe what you say? (Know the numbers; say “I don’t know” with a range when you don’t.)
+  - Reliability = can I depend on you? (Set dates you can beat; Type-A hero timelines destroy this.)
+  - Intimacy = is it safe to tell you what’s actually going on? (Problems at this altitude are often embarrassing.)
+  - Self-orientation = are you here for you or for me? High self-orientation kills trust.
+- Sequence from “I” to “We”: Engage → Listen → Frame → Envision → Commit.
+- Three stances: **expert** (domain the client lacks), **pair of hands** (extra capacity, client stays in control), **collaborative** (jointly diagnose, decide, divide work). Expertise only gets used when the client co-owns it, which requires trust.
+- **Contracting** (before the work, not a legal SOW): candid conversation that surfaces wants, offers, scope, roles, deliverables, and success measures. Use this at check-ins with O’Donnell and, in the pitch, with the fictional CEO.
+
+### Aspiration vs. incremental AI output
+
+Ambition = a known payoff (“I want X”). Aspiration = a bold next step under uncertainty (“landline is dying; we should go into cell phones”). O’Donnell: **AI models miss the visionary element.** For this case, a recommendation that is only a polished version of current strategy is the failure mode. Use aspiration-setting tools in week 3 (issue trees, framestorming, backward design, big goals / small wins).
+
+### Skills the pitch will be judged against (do not write these as slides; use them)
+
+Of 11 core consulting skills, six are the AI-era differentiators (HBR / McKinsey CEO): **learning agility, novel thinking, judgement, aspiration setting, collaboration, resilience.** Baseline for this course: client engagement, problem framing, AI fluency, data/viz, decision making. Week 2 = industry. Invite dissent on the team; if everyone agrees, that is a team problem.
+
+---
+
+## 12. Primary sources (for verification)
 
 - Charter Form **10-K FY2025** (business, customers, IS, revenue mix, EBITDA/FCF, capex, BS, debt, human capital, competition, network, Cox/Liberty)
 - Charter Form **10-K FY2024** (FY2023 revenue; old-basis customer figures)
 - Charter Form **10-Q Q1 2026** (customers, revenue, EBITDA/FCF, capex, leverage, buybacks, updated Cox terms, 2026 capex guide)
 - Supplemental “CHTR 2025 Numbers” and “CHTR 2026-1Q Numbers” exhibits
 - Team Case Brief: *“Changing the Trajectory”: A Strategy Engagement for the Office of the CEO*
+- Class sessions 18, 20, 25, 27 Aug 2026 (O’Donnell): framing, method, client-relationship rules; longer case brief / week-7 files still to be reviewed
+- Sternfels, Bob. *We Want to Make Ourselves Better* (McKinsey / HBR) — market-cap mandate; org change vs. tech
+- Maister, Green & Galford. *The Trusted Advisor* — trust equation for the CEO engagement
