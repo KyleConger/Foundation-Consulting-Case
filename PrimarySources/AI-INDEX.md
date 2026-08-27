@@ -107,4 +107,4 @@ Charter IR “static-files” links for the Q2 2026 press release and results pr
 
 ## Outside this folder
 
-Repo root [`../CHTR-Case-Background.md`](../CHTR-Case-Background.md) mixes filings with **class notes and framing**. Do not use it as a source of facts without checking this folder. Repo root [`../README.md`](../README.md) is the human entry map.
+Repo root [`../CHTR-Case-Background.md`](../CHTR-Case-Background.md) mixes filings with **class notes and framing**. Do not use it as a source of facts without checking this folder. Repo root [`../README.md`](../README.md) is the human entry map. Analysis (not filings): [`../Analysis/chtr-diagnostic-graphs.canvas.tsx`](../Analysis/chtr-diagnostic-graphs.canvas.tsx).
