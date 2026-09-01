@@ -18,6 +18,7 @@ MAN6930 Foundations of Consulting — Charter Communications (NASDAQ: CHTR) team
 | Human-readable filings | [`PrimarySources/readable/`](PrimarySources/readable/) · start at [`readable/README.md`](PrimarySources/readable/README.md) | Cleaned markdown of 10-Ks, 10-Qs, 8-Ks, earnings, Cox, course Word files. |
 | Authoritative originals | [`PrimarySources/`](PrimarySources/) | `.htm` / `.pdf` / `.docx` if a converted number looks wrong. |
 | Diagnostic graphs (analysis) | [`Analysis/chtr-diagnostic-graphs.canvas.tsx`](Analysis/chtr-diagnostic-graphs.canvas.tsx) | Which charts/formulas to use; Pearson r on Quarterly_Trend. Not a filing. |
+| Issue-tree charts (analysis) | [`Analysis/chtr-issue-tree-charts.canvas.tsx`](Analysis/chtr-issue-tree-charts.canvas.tsx) | Six pass/fail charts mapped to the issue tree. Not a filing. |
 
 If a number in any markdown disagrees with a filing, **trust the 10-K / 10-Q HTML in `PrimarySources/`**. Books and HBR are excluded from that folder.
 
