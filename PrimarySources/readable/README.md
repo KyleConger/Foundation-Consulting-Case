@@ -15,7 +15,8 @@ Plain-language copies of files in `PrimarySources/`. Use these to read; **verify
 | [`FoC-CHTR-Background.md`](FoC-CHTR-Background.md) | Course compilation (secondary to the filings) |
 
 Facts-only digest (parent folder): [`../CORE-INFORMATION.md`](../CORE-INFORMATION.md)  
-Catalog of originals: [`../AI-INDEX.md`](../AI-INDEX.md)
+Catalog of originals: [`../AI-INDEX.md`](../AI-INDEX.md)  
+Course working guidance on AI (not a source conversion): [`../../SEAN-AI-WORKFLOW.md`](../../SEAN-AI-WORKFLOW.md)
 
 **Do not mix customer-count bases.** Q4 2025 restated customers to include all mobile (including mobile-only) and added total connectivity customers. Use the FY2025 10-K for 2024–2025. FY2023 counts in the FY2024 10-K use the prior methodology.
 

@@ -256,6 +256,29 @@ Instructor: Sean O’Donnell. These are working rules and hypotheses from 18–2
 - Recommendation space is wide open. Incremental “run the network upgrade harder” is the move most likely to fail the “out of the box” test unless it is tied to a trajectory the market will believe.
 - McKinsey (Bob Sternfels, *We Want to Make Ourselves Better*): clients pay consultants to **find ways to double market cap**. Until CEOs stop wanting that, the work is the complicated questions underneath. Half or more of tech/AI value is **organizational change** (how work is redesigned, flatter/faster org), not the technology itself. Maps directly to a CEO charge about share-price trajectory: a network or product move that ignores how Charter would actually operate after it is weaker.
 
+### How O’Donnell assigns AI across the consulting process
+
+**AI is weakest where consulting adds the most value.** Use AI as capacity and challenge, not as the owner of judgment.
+
+1. **Define — thought partner.** Challenge the problem statement and expose alternative framings.
+2. **Disaggregate — thought partner.** Propose issue-tree branches, hypotheses, and falsification tests.
+3. **Prioritize — you.** Decide what matters and what the team will not pursue.
+4. **Work-plan — virtual expert.** Translate priorities into analyses, data needs, sequencing, owners, and checks.
+5. **Analyze — virtual expert.** Execute research, modeling, benchmarking, calculations, and quality review with explicit sources and assumptions.
+6. **Synthesize — you.** Integrate evidence, exercise judgment, own the trade-offs, and choose the recommendation.
+7. **Communicate — virtual expert.** Convert the team’s synthesis into client-ready exhibits, language, and Q&A.
+
+Control AI work with six prompt elements, then iterate:
+
+- **Role:** first and foremost, tell it what you want it to be.
+- **Context:** situation, audience, decision, limits, and governing facts.
+- **Task:** request a deliverable, not a topic.
+- **Constraints:** length, exclusions, source rules, confidence flags, and assumptions.
+- **Format:** table, memo, bullets, model, exhibit, or another specified form.
+- **Examples:** show the desired result as written.
+
+Canonical workflow, example prompts, and Charter applications: [`SEAN-AI-WORKFLOW.md`](SEAN-AI-WORKFLOW.md).
+
 ### How to gather and test evidence (cable-relevant)
 
 Mental question #1 on any case: **what business is this company in?** Then the big buckets (for Charter: where is the last mile, who supplies mobile, who overbuilds).

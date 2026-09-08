@@ -12,6 +12,7 @@ MAN6930 Foundations of Consulting — Charter Communications (NASDAQ: CHTR) team
 | Need | File | Use it for |
 |---|---|---|
 | Fast orientation (case work) | [`CHTR-Case-Background.md`](CHTR-Case-Background.md) | Mandate, numbers, competition, deals, Q1 2026, and class notes. |
+| Sean’s AI workflow (course guidance) | [`SEAN-AI-WORKFLOW.md`](SEAN-AI-WORKFLOW.md) | Thought partner vs virtual expert vs human ownership; six prompt controls and Charter examples. |
 | Facts only (no analysis) | [`PrimarySources/CORE-INFORMATION.md`](PrimarySources/CORE-INFORMATION.md) | Disclosed figures and quoted statements. |
 | Critical tables (Excel) | [`PrimarySources/readable/CHTR-Critical-Tables.xlsx`](PrimarySources/readable/CHTR-Critical-Tables.xlsx) | Customers, P&L, FCF, capex, Q1 2026, Q2 2026, deals — disclosed figures only. |
 | AI reading map | [`PrimarySources/AI-INDEX.md`](PrimarySources/AI-INDEX.md) | What to open, in what order, originals vs readable copies. |
@@ -19,7 +20,7 @@ MAN6930 Foundations of Consulting — Charter Communications (NASDAQ: CHTR) team
 | Authoritative originals | [`PrimarySources/`](PrimarySources/) | `.htm` / `.pdf` / `.docx` if a converted number looks wrong. |
 | Diagnostic graphs (analysis) | [`Analysis/chtr-diagnostic-graphs.canvas.tsx`](Analysis/chtr-diagnostic-graphs.canvas.tsx) | Which charts/formulas to use; Pearson r on Quarterly_Trend. Not a filing. |
 | Issue-tree charts (analysis) | [`Analysis/chtr-issue-tree-charts.canvas.tsx`](Analysis/chtr-issue-tree-charts.canvas.tsx) | Six pass/fail charts mapped to the issue tree. Not a filing. |
-| MBB financial analyses (analysis) | [`Analysis/CHTR-MBB-Financial-Analyses.xlsx`](Analysis/CHTR-MBB-Financial-Analyses.xlsx) | All nine McKinsey/Bain analyses. Blue = assumption. Not a filing. |
+| MBB financial analyses (analysis) | [`Analysis/CHTR-MBB-Financial-Analyses.xlsx`](Analysis/CHTR-MBB-Financial-Analyses.xlsx) | Expert-reviewed nine-analysis workbook; ranges and break-even tests replace unsupported point estimates. Blue = assumption. Not a filing. |
 
 If a number in any markdown disagrees with a filing, **trust the 10-K / 10-Q HTML in `PrimarySources/`**. Books and HBR are excluded from that folder.
 

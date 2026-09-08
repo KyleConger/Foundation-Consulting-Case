@@ -1867,15 +1867,14 @@ def main():
                 )
 
     wb.save(OUT)
-    print(f"Wrote {OUT}")
-    print(f"WACC {WACC:.2%}  ke {KE:.2%}  mkt23 {MKT_APR23:,.0f}  mkt24 {MKT_APR24:,.0f}")
-    print(f"Gordon g 23/24 {g_gord_23:.2%} / {g_gord_24:.2%}")
-    print(f"5yr g 23/24 {g5_23:.2%} / {g5_24:.2%}")
-    print(f"ROIC {roic_fy25:.2%} EP {ep_fy25:,.0f}")
-    print(f"Inet NPV {inet_npv:,.0f} Mob NPV {mob_npv:,.0f}")
-    print(f"Prize {prize:,.0f}  eq_base {eq_base:,.0f} eq_full {eq_full:,.0f}")
-    print(f"Init A NPV {init_a_npv:,.0f}  B {init_b_npv:,.0f}")
+    print(f"Legacy staging workbook written: {OUT}")
+    print("Applying expert review; staging point estimates are not final outputs.")
 
 
 if __name__ == "__main__":
     main()
+    # The original build is intentionally followed by the expert-methodology
+    # review, which removes unsupported point estimates and false precision.
+    from expert_review_mbb_workbook import main as expert_review
+
+    expert_review()
