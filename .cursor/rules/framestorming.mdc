@@ -1,0 +1,40 @@
+---
+description: Framestorming method. Read the playbook before producing any problem framing, reframing, alternative framings, problem definition, or issue tree.
+alwaysApply: true
+---
+
+# Framestorming (framing phase)
+
+**Triggers.** Framestorm · frame or reframe · define the problem · problem statement · alternative
+framings · what is the real problem · issue tree · disaggregate · MECE.
+
+**When any of those apply, read `In Class Practice/Framestorming-Playbook.md` FIRST, before
+generating anything.** The bullets below are a reminder list, not the method.
+
+Non-negotiables:
+
+- **Interrogate the constraints before working.** Negative constraints especially ("no market data"
+  may mean "I am not supplying data," not "do not use data"). Ask whether the output is a draft or an
+  answer.
+- **Generate frames by relocating the problem**, not by rewording the question. Walk the "rooms" table
+  in the playbook: the cupboard, the planogram, the factory and port, the courtroom, the compliance
+  file, the returns dock, the cap table, the founder's own head.
+- **Run the failure tests before presenting.** Self-similarity, the desirability/access/viability
+  checklist trap, non-conflict, unfalsifiability, insufficient depth, symptom mistaken for cause.
+  Strong frames contradict each other.
+- **Classify perspectives by role on one dimension only** — root frame, rival mechanism, hard
+  constraint, sub-branch, decision architecture. Never mix quality with role in one rating.
+- **Do not grade your own homework.** If every frame you generated first survives your own assessment,
+  that is anchoring. Force at least one promotion and one demotion.
+- **Sequence by cost of resolution**, not intellectual interest. Cheap binary gates first.
+- **Flag source tier and who paid for the number.** Fluency is not accuracy.
+
+Default deliverable unless told otherwise: a table of **framing / underlying assumptions / what it
+would make us measure**, labeled as a draft, ending with the question you would ask the client next
+rather than a conclusion.
+
+When multiple models are run on the same prompt, forbid each from using prior runs as a basis, then
+reclassify all perspectives by role and rebuild one set from the parts. Do not simply pick a winner.
+
+**Handoff.** The moment the task turns to solving, sizing, or recommending, switch to
+`.cursor/rules/solving.mdc` and read `In Class Practice/Solving-Playbook.md`.

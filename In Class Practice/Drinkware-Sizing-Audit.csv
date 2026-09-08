@@ -1,0 +1,127 @@
+Line,Origin,Input,Arithmetic,Value,Unit,Confidence,Low confidence flag,Leverage on TAM,Source or basis,How to convert to retrieved,Cost to retrieve
+A1,RETRIEVED,YETI FY2025 total net sales,,1868.5,USD millions,High,,anchor,"YETI FY2025 earnings release ex-99.1, SEC.gov, Feb 19 2026",already retrieved,0
+A2,RETRIEVED,YETI FY2025 global drinkware net sales,,1085.8,USD millions,High,,anchor,"YETI FY2025 earnings release ex-99.1",already retrieved,0
+A3,RETRIEVED,YETI FY2025 US net sales,,1474.1,USD millions,High,,anchor,"YETI FY2025 earnings release ex-99.1",already retrieved,0
+A4,RETRIEVED,YETI FY2025 international net sales,,394.4,USD millions,High,,context,"YETI FY2025 earnings release ex-99.1",already retrieved,0
+A5,DERIVED,YETI US share of total sales,A3 / A1,78.9,percent,High,,low,Derived,,0
+A6,RETRIEVED,YETI FY2025 DTC channel sales,,1127.8,USD millions,High,,anchor,"YETI FY2025 earnings release ex-99.1",already retrieved,0
+A7,DERIVED,YETI DTC share of sales,A6 / A1,60.4,percent,High,,low,Derived,,0
+A8,RETRIEVED,"Disclosure: international drove drinkware growth; US drinkware declined FY25, flat in Q4",,qualitative,,High,,anchor,"YETI FY2025 earnings release ex-99.1",already retrieved,0
+A9,ESTIMATED,US share of YETI global drinkware,set below A5 because of A8,76,percent,Low,FLAG,"very low (+/-1.1% on TAM)",Team judgment,"YETI does not disclose drinkware by region; would require company disclosure or panel data",not obtainable
+A10,DERIVED,YETI US drinkware net sales,A2 x A9,825.2,USD millions,Medium,,low,Derived,,0
+A11,ESTIMATED,Wholesale price as percent of retail,,55,percent,Low,FLAG,"very low (+/-1.4% on TAM)",Team judgment,"Retailer margin benchmarks from trade sources",1-3K
+A12,DERIVED,DTC portion already at retail,A10 x A7,498.1,USD millions,Medium,,low,Derived,,0
+A13,DERIVED,Wholesale portion at wholesale,A10 x (1 - A7),327.1,USD millions,Medium,,low,Derived,,0
+A14,DERIVED,Wholesale portion grossed to retail,A13 / A11,594.8,USD millions,Low-Medium,,low,Derived,,0
+A15,DERIVED,YETI US drinkware retail value,A12 + A14,1092.9,USD millions,Medium,,moderate,Derived,,0
+A16,ESTIMATED,Stanley US retail value,,550,USD millions,Low,FLAG,high,"Loosely anchored on retrieved global 750-800M, US 71%, US DTC -20% in 2025","Circana or Consumer Edge tracked panel",5-15K
+A17,ESTIMATED,Owala US retail value,,500,USD millions,Low,FLAG,high,"Loosely anchored on retrieved 16.5% vs YETI 22.8% share estimate","Circana or Consumer Edge tracked panel",5-15K
+A18,ESTIMATED,Hydro Flask US retail value,,300,USD millions,Low,FLAG,high,"Loosely anchored on retrieved Helen of Troy segment data","Circana or Consumer Edge tracked panel",5-15K
+A19,ESTIMATED,Other branded US retail value,,850,USD millions,Low,FLAG,high,"NO RETRIEVED ANCHOR","Circana or Consumer Edge tracked panel",5-15K
+A20,ESTIMATED,Private label and marketplace unbranded,,500,USD millions,Low,FLAG,high,"Anchored on retrieved private label share of about 10%","Circana or Numerator",5-15K
+A21,DERIVED,US insulated drinkware retail all price points,A15+A16+A17+A18+A19+A20,3792.9,USD millions,Low,FLAG,,Derived,,0
+A22,ESTIMATED,Share of dollars at 35-50 dollars realized,,35,percent,Low,FLAG,"HIGHEST (+/-29% on TAM)","NO RETRIEVED ANCHOR - single most leveraged input in the model","POS data by price band from Circana or Numerator",5-15K
+A23,DERIVED,Bottom-up TAM,A21 x A22,1327.5,USD millions,Low,FLAG,,Derived,,0
+B1,RETRIEVED,US resident population Jul 1 2025,,341784857,persons,High,,anchor,"US Census Bureau Vintage 2025 estimate",already retrieved,0
+B2,ESTIMATED,Share aged 18 and over,,77.5,percent,Medium,,low,"Census publishes exact file SCPRC-EST2025-18+POP; not retrieved","Download the Census 18+ file",0
+B3,DERIVED,US adults 18 and over,B1 x B2,264.9,millions of persons,Medium,,low,Derived,,0
+B4,RETRIEVED,Ownership rate source 1,,85,percent,Low,FLAG,high,"Statista survey COMMISSIONED BY EVER VESSEL, a bottle startup","Independent replication",8-15K
+B5,RETRIEVED,Ownership rate source 2,,60,percent,Low,FLAG,high,"Secondary aggregator, low quality","Independent replication",8-15K
+B6,ESTIMATED,Ownership rate used,reconciliation of B4 and B5,70,percent,Low,FLAG,"high (+/-19% on TAM)",Team judgment,"Own survey n approx 1000",8-15K
+B7,DERIVED,Bottle owners,B3 x B6,185.4,millions of persons,Low,,,Derived,,0
+B8,RETRIEVED,51 percent replace within 12 months and 32 percent within 6,,,,Low,FLAG,high,"Same vendor-commissioned survey as B4","Independent replication",8-15K
+B9,ESTIMATED,Insulated purchases per owner per year,"discounted from B8, which implies over 1.0",0.60,units,Low,FLAG,"high (+/-25% on TAM)",Team judgment,"Own survey or panel purchase data",8-15K
+B10,DERIVED,Annual units all price points,B7 x B9,111.3,millions of units,Low,,,Derived,,0
+B11,ESTIMATED,Share of units at 35-50 dollars realized,,27,percent,Low,FLAG,high,Team judgment,"POS data by price band",5-15K
+B12,DERIVED,Units in band,B10 x B11,30.04,millions of units,Low,,,Derived,,0
+B13,RETRIEVED,"Average list price Amazon scan, 40 brands and 1403 offers to Sep 4 2025",,37.77,USD,Medium,,moderate,"IndexBox marketplace brand report",already retrieved,0
+B14,ESTIMATED,Realized ASP in band,"above B13 since band excludes sub-35; below MSRP for promo",41.00,USD,Low-Medium,,moderate,Team judgment,"POS data by price band",5-15K
+B15,DERIVED,Top-down TAM,B12 x B14,1231.5,USD millions,Low,FLAG,,Derived,,0
+C1,DERIVED,Bottom-up result,A23,1327.5,USD millions,Low,FLAG,,Derived,,0
+C2,DERIVED,Top-down result,B15,1231.5,USD millions,Low,FLAG,,Derived,,0
+C3,DERIVED,Midpoint,(C1 + C2) / 2,1279.5,USD millions,Low-Medium,,,Derived,,0
+C4,DERIVED,Spread as percent of midpoint,abs(C1 - C2) / C3,7.5,percent,Low-Medium,,,"NOT independent validation - both builds share the band-share construct",,0
+C5,DERIVED,COMMITTED TAM rounded down,,1250,USD millions,Low-Medium,FLAG,,Derived,,0
+D1,RETRIEVED,E-commerce share of insulated drinkware global 2025 from 28.7 in 2021,,41.3,percent,Low-Medium,,moderate,"Vendor market research report","Paid syndicated report",2-5K
+D2,ESTIMATED,US online share of the band,,42,percent,Low-Medium,,moderate,Team judgment near D1,"US-specific channel split from Circana",5-15K
+D3,DERIVED,Consumer online addressable,C5 x D2,525.0,USD millions,Low,,,Derived,,0
+D4,ESTIMATED,Replacement or addition share of purchases,,75,percent,Low,FLAG,high,"Implied by high ownership rate","Own survey",8-15K
+D5,RETRIEVED,Share citing odor or hygiene as replacement reason,,40,percent,Low,FLAG,high,"Same vendor-commissioned survey","Independent replication",8-15K
+D6,DERIVED,Hygiene-trigger online niche,D3 x D4 x D5,157.5,USD millions,Low,FLAG,,"COMPOUNDS THREE LOW-CONFIDENCE INPUTS",,0
+E1,RETRIEVED,North American promo distributor sales 2025,,27700,USD millions,High,,anchor,"ASI Research annual sales report, Jan 2026",already retrieved,0
+E2,RETRIEVED,2024 comparison up 4.2 percent,,26600,USD millions,High,,context,"ASI Research",already retrieved,0
+E3,RETRIEVED,"Method check T-shirts 16.1 percent equals 4280M in 2024","4280 / 26600 = 16.09 percent",validates,,High,,"validates share math","ASI State of the Industry",already retrieved,0
+E4,RETRIEVED,Drinkware is number 2 category at roughly 10.7 percent historically,,2800,USD millions,Low-Medium,,moderate,"ASI State of the Industry","ASI or PPAI category report",1-3K
+E5,ESTIMATED,Drinkware share used,"below E4; ASI reports drinkware declined in 2024 and 2025",10.5,percent,Low-Medium,,moderate,Team judgment,"ASI or PPAI category report",1-3K
+E6,DERIVED,Promo drinkware distributor sales,E1 x E5,2908.5,USD millions,Low-Medium,,,Derived,,0
+E7,ESTIMATED,US share of North America,,90,percent,Medium,,low,Team judgment,"ASI geographic split",1-3K
+E8,ESTIMATED,Premium insulated stainless share of promo drinkware,,40,percent,Low,FLAG,high,"NO RETRIEVED ANCHOR","ASI or PPAI category report",1-3K
+E9,ESTIMATED,Supplier-level price as percent of distributor price,,65,percent,Low,FLAG,high,Team judgment,"Supplier price lists from ESP platform",1-3K
+E10,DERIVED,B2B supplier-level pool,E6 x E7 x E8 x E9,680.6,USD millions,Low-Medium,,,Derived,,0
+E11,DERIVED,Ratio of B2B pool to consumer niche,E10 / D6,4.32,times,Low-Medium,,,Derived,,0
+E12,RETRIEVED,About 90 percent of promo distributors raised prices about 11 percent in 2025 to offset China and India import costs,,,,High,,"supports channel choice","ASI Research",already retrieved,0
+F1,DERIVED,Combined SAM,D6 + E10,838.1,USD millions,Low-Medium,,,Derived,,0
+G1,RETRIEVED,HTS classification for vacuum flasks,,9617.00.1000,code,Medium,,anchor,"Sourcing vendor guidance","Licensed customs broker ruling",1-2K
+G2,RETRIEVED,MFN base duty rate 6.9 to 7.2 cited,,7.0,percent,Medium,,high,"Sourcing vendor guidance","Licensed customs broker ruling",1-2K
+G3,RETRIEVED,Section 301 China steel drinkware,,25.0,percent,Medium,,high,"Sourcing vendor plus trade press","Licensed customs broker ruling",1-2K
+G4,RETRIEVED,Section 301 forced-labor duty China from Jul 24 2026,,12.5,percent,Medium,,high,"Trade press: Portless, DCL Logistics, Cubic","Licensed customs broker ruling",1-2K
+G5,DERIVED,China total duty stack,G2+G3+G4,44.5,percent,Medium,,high,Derived,,0
+G6,RETRIEVED,Forced-labor duty Vietnam,,12.5,percent,Medium,,high,"Trade press","Licensed customs broker ruling",1-2K
+G7,DERIVED,Vietnam total duty stack,G2+G6,19.5,percent,Medium,,high,Derived,,0
+G8,RETRIEVED,Forced-labor duty India,,10.0,percent,Medium,,high,"Trade press","Licensed customs broker ruling",1-2K
+G9,DERIVED,India total duty stack,G2+G8,17.0,percent,Medium,,high,Derived,,0
+G10,RETRIEVED,Section 232 steel derivative non-stacking with new 301,,50.0,percent,Medium,FLAG,"VENTURE-KILLING IF APPLICABLE","OPEN QUESTION: unresolved whether vacuum flasks are a covered derivative. Adds about 4 dollars per unit","Licensed customs broker ruling - HIGHEST PRIORITY",1-2K
+H1,ESTIMATED,FOB unit cost China,,10.00,USD per unit,Low,FLAG,high,"Retrieved analogue: vendor example used 10.00 FOB on 1500 units","Factory quotes",0
+H2,ESTIMATED,Freight and insurance per unit,,1.20,USD per unit,Low,FLAG,moderate,Team judgment,"Freight forwarder quote",0
+H3,DERIVED,CIF China,H1+H2,11.20,USD per unit,Low,,,Derived,,0
+H4,DERIVED,Duty China,H3 x G5,4.98,USD per unit,Medium,,high,Derived,,0
+H5,ESTIMATED,MPF and broker fees per unit,,0.08,USD per unit,Low,,low,"Retrieved MPF rate 0.3464 percent","Broker quote",0
+H6,DERIVED,Landed cost China,H3+H4+H5,16.26,USD per unit,Medium,,high,"Cross-checks within 5.1 percent of a retrieved vendor worked example",,0
+H7,ESTIMATED,FOB Vietnam premium for less mature base,,10.50,USD per unit,Low,FLAG,high,Team judgment,"Factory quotes",0
+H8,DERIVED,CIF Vietnam,H7+H2,11.70,USD per unit,Low,,,Derived,,0
+H9,DERIVED,Duty Vietnam,H8 x G7,2.28,USD per unit,Medium,,high,Derived,,0
+H10,DERIVED,Landed cost Vietnam,H8+H9+H5,14.06,USD per unit,Medium,,high,Derived,,0
+H11,DERIVED,Saving versus China,H6 - H10,2.20,USD per unit,Medium,,high,Derived,,0
+H12,DERIVED,Saving at year-3 volume,H11 x 128000,281920,USD per year,Medium,,high,Derived,,0
+I1,ESTIMATED,DTC price,within the stated band,40.00,USD per unit,Medium,,high,Team judgment,"Live pricing test",15-25K
+I2,ESTIMATED,Payment processing 3.0 percent,I1 x 0.03,1.20,USD per unit,Medium,,low,Standard rate,already standard,0
+I3,ESTIMATED,Pick pack and ship,,6.00,USD per unit,Low,FLAG,moderate,Team judgment,"3PL quote",0
+I4,ESTIMATED,Returns provision 4.0 percent,I1 x 0.04,1.60,USD per unit,Low,FLAG,moderate,Team judgment,"Live test",15-25K
+I5,DERIVED,DTC net,I1-I2-I3-I4,31.20,USD per unit,Low-Medium,,,Derived,,0
+I6,DERIVED,DTC contribution before marketing,I5-H10,17.14,USD per unit,Low-Medium,,high,Derived,,0
+I7,ESTIMATED,Blended cold-traffic CAC,,25-40,USD per unit,Low,FLAG,"DECIDES THE CHANNEL","NO RETRIEVED SOURCE","Live test on one SKU",15-25K
+I8,DERIVED,DTC after CAC,I6-I7,-7.86 to -22.86,USD per unit,Low,FLAG,"NEGATIVE - do not fund paid DTC",Derived,,0
+I9,ESTIMATED,Amazon referral fee 15 percent,I1 x 0.15,6.00,USD per unit,Medium,,moderate,Standard rate,"Amazon fee schedule",0
+I10,ESTIMATED,FBA fulfillment fee,,5.60,USD per unit,Low,FLAG,moderate,Team judgment,"Amazon fee schedule by size tier",0
+I11,ESTIMATED,Returns and reship,,1.20,USD per unit,Low,FLAG,low,Team judgment,"Live test",15-25K
+I12,DERIVED,Amazon net,I1-I9-I10-I11,27.20,USD per unit,Low-Medium,,,Derived,,0
+I13,DERIVED,Amazon contribution,I12-H10,13.14,USD per unit,Low-Medium,,high,Derived,,0
+I14,ESTIMATED,PPC at 18 percent TACoS,I1 x 0.18,7.20,USD per unit,Low,FLAG,"DECIDES THE CHANNEL",Team judgment,"Live test on one SKU",15-25K
+I15,DERIVED,Amazon after PPC,I13-I14,5.94,USD per unit,Low,,high,Derived,,0
+I16,ESTIMATED,Direct corporate price decorated,,31.00,USD per unit,Low,FLAG,"DECIDES THE RECOMMENDATION",Team judgment,"20 corporate buyer conversations",0
+I17,ESTIMATED,Decoration cost,,2.25,USD per unit,Low,FLAG,moderate,Team judgment,"Decorator quote",0
+I18,ESTIMATED,Freight out,,1.50,USD per unit,Low,FLAG,low,Team judgment,"Freight quote",0
+I19,DERIVED,Direct corporate contribution,I16-H10-I17-I18,13.19,USD per unit,Low-Medium,,"BEST AVAILABLE CHANNEL",Derived,,0
+J1,ESTIMATED,Fixed cost base,,450,USD thousands per year,Low,FLAG,high,Team judgment,"Founder operating plan",0
+J2,ESTIMATED,Year-3 channel mix,,60 B2B / 40 online,percent,Low,FLAG,high,Team judgment,"Pilot results",0
+J3,ESTIMATED,Online split,,50 Amazon / 50 organic,percent,Low,FLAG,moderate,Team judgment,"Pilot results",0
+J4,DERIVED,Mix-weighted contribution per unit,0.6 x I19 + 0.4 x (0.5 x I15 + 0.5 x I6),12.53,USD per unit,Medium,,high,Derived,,0
+J5,ESTIMATED,Planning contribution after haircut,,11.00,USD per unit,Medium,,high,"Conservative haircut to J4",,0
+J6,DERIVED,Break-even volume,J1 / J5,40909,units per year,Medium,,high,Derived,,0
+J7,DERIVED,Blended ASP,0.6 x I16 + 0.4 x I1,34.60,USD per unit,Medium,,high,"CORRECTS the 39.00 used in the first memo",,0
+J8,DERIVED,Break-even revenue,J6 x J7,1.42,USD millions,Medium,,high,Derived,,0
+SOM1,ESTIMATED,Year 1 units,,15000,units,Low,FLAG,high,Team judgment,"Pilot results",0
+SOM2,DERIVED,Year 1 revenue,SOM1 x J7,0.52,USD millions,Low,FLAG,,Derived,,0
+SOM3,ESTIMATED,Year 2 units,,52000,units,Low,FLAG,high,Team judgment,"Pilot results",0
+SOM4,DERIVED,Year 2 revenue,SOM3 x J7,1.80,USD millions,Low,FLAG,,Derived,,0
+SOM5,ESTIMATED,Year 3 units,,128000,units,Low-Medium,FLAG,high,Team judgment,"Pilot results",0
+SOM6,DERIVED,YEAR 3 REVENUE COMMITTED,SOM5 x J7,4.43,USD millions,Low-Medium,FLAG,,Derived,,0
+K1,DERIVED,Cross-check 1.5 percent of consumer online niche,D6 x 0.015,2.36,USD millions,Low,,,Derived,,0
+K2,DERIVED,Cross-check 0.3 percent of B2B supplier pool,E10 x 0.003,2.04,USD millions,Low,,,Derived,,0
+K3,DERIVED,Cross-check total,K1 + K2,4.40,USD millions,Low-Medium,,,"Agrees with SOM6 within 0.7 percent",,0
+K4,DERIVED,Year-3 share of TAM,SOM6 / C5,0.35,percent,Low-Medium,,,Derived,,0
+AUDIT1,DERIVED,Retrieved-anchored share of bottom-up build,A15 / A21,28.8,percent,,,,"Only the YETI line has a filed anchor",,0
+AUDIT2,DERIVED,Estimated share of bottom-up build,(A21 - A15) / A21,71.2,percent,,FLAG,,"Majority of the answer is team estimate",,0
+AUDIT3,DERIVED,Count of retrieved inputs,,25,inputs,,,,Derived,,0
+AUDIT4,DERIVED,Count of estimated inputs,,35,inputs,,FLAG,,Derived,,0
+AUDIT5,DERIVED,Count of derived lines,,38,lines,,,,Derived,,0

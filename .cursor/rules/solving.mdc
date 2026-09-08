@@ -1,0 +1,62 @@
+---
+description: Solving method for after a framestorm. Read the solving playbook before solving a framestorm, sizing a market, committing to a number, building a model, or writing a recommendation.
+alwaysApply: true
+---
+
+# Solving a framestorm (analysis phase)
+
+**Triggers — treat any of these as this rule firing.** Solve the framestorm · solve it · now do the
+analysis · let's start the analysis · pick a frame · which frame should we use · where should they go ·
+how big is the opportunity · market sizing · size it · commit to a number · TAM, SAM, SOM · build the
+model · unit economics · what should they do · recommendation · course of action · work plan · prove it
+can be done.
+
+**When any of those apply, read `In Class Practice/Solving-Playbook.md` FIRST, before generating
+anything.** The list below is a reminder, not the method.
+
+## Handoff: never solve a framestorm you have not read
+
+If framing work already exists in this project, read it before analyzing. Do not re-derive frames from
+scratch and do not silently substitute your own.
+
+| Look here | For |
+|---|---|
+| `In Class Practice/*.canvas.tsx` | Prior framestorm runs and the reclassified synthesis |
+| `~/.cursor/projects/<workspace>/canvases/` | Live canvas versions of the same |
+| `In Class Practice/*-Memo.md`, `*-Iteration-*.md` | Numbers already committed, and corrections |
+| `In Class Practice/*.csv` | Assumption registers with origin and confidence |
+
+If a prior document already committed a number, either reuse it or supersede it explicitly. Never let
+two live documents carry different headline numbers.
+
+## Non-negotiables
+
+- **Make every frame produce its own number.** A frame that stays a paragraph did no work. Let the
+  frames disagree about size; that disagreement is usually the finding.
+- **Commit to a point estimate**, not just a range, and round in the direction that costs you.
+- **Build it twice and reconcile** — but if both builds share an assumption, state that their agreement
+  is correlation by construction, not validation. Real cross-checks share no inputs.
+- **One assumption per line with a line ID**; write derived lines as formulas referencing them.
+- **Tag every input RETRIEVED or ESTIMATED**, then report the **dollar-weighted** split, not just counts.
+- **Convert every geography and channel on its own flagged line.** Never let a global or regional
+  figure stand in silently for a national one.
+- **Rank estimated inputs by leverage**, then check whether your effort went where the leverage is.
+  Precision migrates toward available data, not important data.
+- **Recompute the whole chain in code before shipping.** Your own memo is not exempt.
+- **Size is not opportunity** — run channel-level contribution before writing any recommendation.
+- **Write the kill rule and the "unwilling to claim" list before the recommendation**, not after.
+
+## Pre-delivery gate — do not deliver until all are true
+
+1. Each root frame has produced its own number.
+2. A single headline number is stated, with a range, and it is the first thing in the deliverable.
+3. Two builds exist and are reconciled, and shared assumptions between them are disclosed.
+4. At least one cross-check uses a structurally different route that shares no inputs.
+5. Every input is tagged retrieved or estimated; low-confidence figures are flagged visibly, not in
+   footnotes; anyone who funded a cited survey is named.
+6. A sensitivity ranking exists and the top-leverage inputs are identified.
+7. The arithmetic has been recomputed in code and matches the prose.
+8. Channel contribution has been run and the recommendation follows from it.
+9. A kill rule and an "unwilling to claim" list are present.
+10. If a prior number is being changed, the correction is stated plainly and the old document marked
+    superseded.

@@ -1,0 +1,100 @@
+Section,Assumption,Value,Unit,Confidence,Source status,Source
+Headline,Committed US TAM (realized price $35-50 band),1250,USD millions per year,Low-Medium,Derived,"Triangulation of bottom-up and top-down builds"
+Headline,TAM range low,1000,USD millions per year,Low-Medium,Derived,Team
+Headline,TAM range high,1700,USD millions per year,Low-Medium,Derived,Team
+Headline,Combined serviceable market (SAM),840,USD millions per year,Low-Medium,Derived,"Consumer online niche 158 plus B2B supplier-level pool 681"
+Headline,Realistic year-3 revenue (SOM),5.0,USD millions,Low-Medium,Derived,Team
+Headline,Year-3 revenue range low,3.0,USD millions,Low,Assumption,Team
+Headline,Year-3 revenue range high,6.5,USD millions,Low,Assumption,Team
+Headline,Year-3 share of TAM,0.40,percent,Low-Medium,Derived,Team
+Bottom-up,YETI FY2025 global drinkware net sales,1085.8,USD millions,High,Filed,"YETI Holdings FY2025 earnings release ex-99.1, SEC.gov, Feb 19 2026"
+Bottom-up,YETI FY2025 total net sales,1868.5,USD millions,High,Filed,"YETI FY2025 earnings release ex-99.1"
+Bottom-up,YETI FY2025 US net sales,1474.1,USD millions,High,Filed,"YETI FY2025 earnings release ex-99.1"
+Bottom-up,YETI FY2025 international net sales,394.4,USD millions,High,Filed,"YETI FY2025 earnings release ex-99.1"
+Bottom-up,YETI US share of total sales,78.9,percent,High,Derived,"1474.1 / 1868.5"
+Bottom-up,YETI FY2025 DTC channel sales,1127.8,USD millions,High,Filed,"YETI FY2025 earnings release ex-99.1"
+Bottom-up,YETI DTC share of sales,60.4,percent,High,Derived,"1127.8 / 1868.5"
+Bottom-up,YETI FY2025 gross margin,57.4,percent,High,Filed,"YETI FY2025 earnings release ex-99.1"
+Bottom-up,YETI FY2025 tariff impact on gross margin,-230,basis points,High,Filed,"YETI FY2025 earnings release ex-99.1"
+Bottom-up,US share of YETI global drinkware (below company US mix),76,percent,Low,Assumption,"YETI disclosed international drove drinkware growth while US declined"
+Bottom-up,YETI US drinkware net sales,825,USD millions,Medium,Derived,"1085.8 x 76%"
+Bottom-up,Wholesale-to-retail conversion ratio,55,percent,Low,Assumption,Team
+Bottom-up,YETI US drinkware retail value,1090,USD millions,Medium,Derived,"DTC at retail plus wholesale grossed up"
+Bottom-up,Stanley US retail value,550,USD millions,Low,Trade press,"Modern Retail / Fast Company / ecdb estimates; private company"
+Bottom-up,Owala US retail value,500,USD millions,Low,Third-party tracked,"Share estimates; private company"
+Bottom-up,Hydro Flask US retail value,300,USD millions,Low-Medium,Derived,"Helen of Troy Home & Outdoor segment disclosures"
+Bottom-up,Other branded US retail value,850,USD millions,Low,Assumption,"Thermos, Contigo, CamelBak, Brumate, Corkcicle, Simple Modern, Iron Flask, Takeya"
+Bottom-up,Private label and marketplace unbranded,500,USD millions,Low,Third-party tracked,"Private label share estimate ~10%"
+Bottom-up,Total US insulated drinkware retail (all price points),3790,USD millions,Low-Medium,Derived,Sum of above
+Bottom-up,Share of dollars at $35-50 realized price,35,percent,Low,Assumption,Team
+Bottom-up,Bottom-up TAM result,1330,USD millions,Low,Derived,"3790 x 35%"
+Top-down,US resident population Jul 1 2025,341784857,persons,High,Government,"US Census Bureau Vintage 2025 estimate"
+Top-down,Adults 18+ share,77.5,percent,High,Government,"Census age distribution"
+Top-down,US adults 18+,265000000,persons,High,Derived,Census-derived
+Top-down,Reusable bottle ownership rate,70,percent,Low,Vendor,"Conflicting sources: 85% (Statista survey commissioned by Ever Vessel, a bottle startup) and 60% (secondary aggregator)"
+Top-down,Bottle owners,185500000,persons,Low,Derived,"265M x 70%"
+Top-down,Insulated purchases per owner per year,0.60,units,Low,Assumption,"Blend of replacement, additions, gifting"
+Top-down,Annual units all price points,111300000,units,Low,Derived,"185.5M x 0.60"
+Top-down,Share of units at $35-50 realized,27,percent,Low,Assumption,Team
+Top-down,Units in band,30050000,units,Low,Derived,"111.3M x 27%"
+Top-down,Realized ASP in band,41,USD,Medium,Third-party tracked,"IndexBox Amazon scan average list $37.77, Sep 2025"
+Top-down,Top-down TAM result,1232,USD millions,Low-Medium,Derived,"30.05M x $41"
+SAM consumer,Online share of category sales,42,percent,Low-Medium,Third-party tracked,"E-commerce 41.3% of insulated drinkware globally 2025"
+SAM consumer,Consumer online addressable,525,USD millions,Low-Medium,Derived,"1250 x 42%"
+SAM consumer,Replacement or addition share of purchases,75,percent,Low,Assumption,"Implied by high ownership rate"
+SAM consumer,Hygiene or cleanability trigger share,40,percent,Low,Vendor,"40% cited odor/hygiene; 56% say cleaning difficult (startup-commissioned survey)"
+SAM consumer,Hygiene-triggered online niche,158,USD millions,Low,Derived,"525 x 75% x 40%"
+SAM B2B,North American promo industry distributor sales 2025,27700,USD millions,High,Third-party tracked,"ASI Research, Jan 2026; +4.2% vs $26.6B in 2024"
+SAM B2B,Drinkware share of promo category sales,10.5,percent,Low-Medium,Third-party tracked,"ASI: drinkware is #2 category; ~10.7% historical"
+SAM B2B,Promo drinkware distributor sales,2909,USD millions,Low-Medium,Derived,"27700 x 10.5%"
+SAM B2B,US share of North America,90,percent,Medium,Assumption,Team
+SAM B2B,Premium insulated stainless share of promo drinkware,40,percent,Low,Assumption,Team
+SAM B2B,Supplier-level share of distributor price,65,percent,Low,Assumption,Team
+SAM B2B,B2B supplier-level addressable pool,681,USD millions,Medium-Low,Derived,"2909 x 90% x 40% x 65%"
+SAM B2B,B2B pool vs consumer niche multiple,4.3,times,Medium-Low,Derived,"681 / 158"
+SAM B2B,Distributors raising prices in 2025,90,percent,High,Third-party tracked,"ASI: ~90% raised prices avg 11% to offset China and India import costs"
+Duty,HTS code for vacuum flasks,9617.00.1000,code,Medium,Government,"Harmonized Tariff Schedule"
+Duty,MFN base duty rate,7.0,percent,Medium,Vendor,"Sourcing-vendor guidance; confirm with broker"
+Duty,Section 301 China rate,25.0,percent,Medium,Vendor,"Section 301 list on Chinese-origin steel drinkware"
+Duty,Section 301 forced-labor duty China (from Jul 24 2026),12.5,percent,Medium,Trade press,"Replaced expired 10% Section 122 surcharge; ~60 countries covered"
+Duty,Total China duty stack,44.5,percent,Medium,Derived,"7.0 + 25.0 + 12.5"
+Duty,Total Vietnam duty stack,19.5,percent,Medium,Derived,"7.0 MFN + 12.5 forced-labor"
+Duty,Total India duty stack,17.0,percent,Medium,Derived,"7.0 MFN + 10.0 forced-labor"
+Duty,OPEN QUESTION Section 232 steel derivative rate,50.0,percent,Low,Trade press,"Non-stacking with new Section 301; unresolved whether vacuum flasks are caught. Highest-value broker question"
+Landed cost,FOB unit cost China,10.00,USD per unit,Low,Assumption,Team
+Landed cost,Landed cost China,16.26,USD per unit,Medium,Derived,"CIF 11.20 + duty 4.98 + fees 0.08"
+Landed cost,Landed cost Vietnam,14.06,USD per unit,Medium,Derived,"CIF 11.70 + duty 2.28 + fees 0.08"
+Landed cost,Landed cost India,13.30,USD per unit,Medium,Derived,"CIF 11.30 + duty 1.92 + fees 0.08"
+Landed cost,Saving China to Vietnam,2.20,USD per unit,Medium,Derived,Team
+Landed cost,Saving China to India,2.96,USD per unit,Medium,Derived,Team
+Landed cost,Annual saving at year-3 volume,281,USD thousands,Medium,Derived,"2.20 x 128000"
+Contribution,Own DTC price,40.00,USD per unit,Medium,Assumption,Team
+Contribution,Own DTC contribution before marketing,17.14,USD per unit,Medium,Derived,Team
+Contribution,Blended cold-traffic CAC range,25-40,USD per unit,Low,Assumption,"Category benchmark; exceeds contribution"
+Contribution,Amazon FBA net after fees,27.20,USD per unit,Medium,Derived,"15% referral + FBA fee + returns"
+Contribution,Amazon contribution after PPC,5.94,USD per unit,Low-Medium,Derived,"assumes 18% TACoS"
+Contribution,Promo distributor price decorated,23.00,USD per unit,Low,Assumption,Team
+Contribution,Promo distributor contribution,6.69,USD per unit,Low,Derived,Team
+Contribution,Direct corporate price decorated,31.00,USD per unit,Low,Assumption,Team
+Contribution,Direct corporate contribution,13.19,USD per unit,Low-Medium,Derived,"Best available channel economics"
+Break-even,Fixed cost base,450,USD thousands per year,Low,Assumption,Team
+Break-even,Mix-weighted contribution per unit,12.53,USD per unit,Medium,Derived,"0.6 x 13.19 B2B + 0.4 x (50/50 Amazon 5.94 and organic DTC 17.14)"
+Break-even,Planning contribution per unit after haircut,11.00,USD per unit,Medium,Assumption,"Conservative haircut to mix-weighted figure"
+Break-even,Break-even volume,41000,units per year,Medium,Derived,"450000 / 11.00"
+Break-even,Break-even revenue,1.6,USD millions,Medium,Derived,Team
+Break-even,Peak working capital at year-3 volume,700-900,USD thousands,Low-Medium,Derived,"90-day inventory plus 45-day B2B receivables"
+SOM,Year 1 units,15000,units,Low,Assumption,Team
+SOM,Year 1 revenue,0.6,USD millions,Low,Derived,Team
+SOM,Year 2 units,52000,units,Low,Assumption,Team
+SOM,Year 2 revenue,2.0,USD millions,Low,Derived,Team
+SOM,Year 3 units,128000,units,Low-Medium,Assumption,Team
+SOM,Year 3 revenue,5.0,USD millions,Low-Medium,Derived,Team
+SOM,Year 3 blended ASP,39,USD per unit,Medium,Derived,"60% B2B at $31 / 40% online at $40"
+Context,Category growth at sporting goods retailers 2023,38,percent,Medium,Third-party tracked,"Circana via Modern Retail and Fast Company"
+Context,Category growth at sporting goods retailers 2024,14,percent,Medium,Third-party tracked,"Circana via Modern Retail and Fast Company"
+Context,Consecutive months of YoY decline Sep 2024-Feb 2025,6,months,Medium,Third-party tracked,"Circana via Modern Retail"
+Context,Stanley US DTC spend change 2025,-20,percent,Low-Medium,Third-party tracked,"Consumer Edge via Modern Retail"
+Context,Brands competing in Amazon insulated bottle scan,40,brands,Medium,Third-party tracked,"IndexBox, data to Sep 4 2025"
+Context,Offers in that scan,1403,listings,Medium,Third-party tracked,IndexBox
+Context,Average rating in that scan,3.25,stars,Medium,Third-party tracked,"IndexBox; 120088 reviews. Signals category-wide quality gap"
+Context,YETI FY2026 guided sales growth,6-8,percent,High,Filed,"YETI FY2025 earnings release ex-99.1"
