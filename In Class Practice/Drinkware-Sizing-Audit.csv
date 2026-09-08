@@ -21,7 +21,7 @@ A19,ESTIMATED,Other branded US retail value,,850,USD millions,Low,FLAG,high,"NO 
 A20,ESTIMATED,Private label and marketplace unbranded,,500,USD millions,Low,FLAG,high,"Anchored on retrieved private label share of about 10%","Circana or Numerator",5-15K
 A21,DERIVED,US insulated drinkware retail all price points,A15+A16+A17+A18+A19+A20,3792.9,USD millions,Low,FLAG,,Derived,,0
 A22,ESTIMATED,Share of dollars at 35-50 dollars realized,,35,percent,Low,FLAG,"HIGHEST (+/-29% on TAM)","NO RETRIEVED ANCHOR - single most leveraged input in the model","POS data by price band from Circana or Numerator",5-15K
-A23,DERIVED,Bottom-up TAM,A21 x A22,1327.5,USD millions,Low,FLAG,,Derived,,0
+A23,DERIVED,Bottom-up US annual market size (TAM) - US only,A21 x A22,1327.5,USD millions per year,Low,FLAG,,"Derived; all brand lines are US-only annual retail value",,0
 B1,RETRIEVED,US resident population Jul 1 2025,,341784857,persons,High,,anchor,"US Census Bureau Vintage 2025 estimate",already retrieved,0
 B2,ESTIMATED,Share aged 18 and over,,77.5,percent,Medium,,low,"Census publishes exact file SCPRC-EST2025-18+POP; not retrieved","Download the Census 18+ file",0
 B3,DERIVED,US adults 18 and over,B1 x B2,264.9,millions of persons,Medium,,low,Derived,,0
@@ -36,12 +36,12 @@ B11,ESTIMATED,Share of units at 35-50 dollars realized,,27,percent,Low,FLAG,high
 B12,DERIVED,Units in band,B10 x B11,30.04,millions of units,Low,,,Derived,,0
 B13,RETRIEVED,"Average list price Amazon scan, 40 brands and 1403 offers to Sep 4 2025",,37.77,USD,Medium,,moderate,"IndexBox marketplace brand report",already retrieved,0
 B14,ESTIMATED,Realized ASP in band,"above B13 since band excludes sub-35; below MSRP for promo",41.00,USD,Low-Medium,,moderate,Team judgment,"POS data by price band",5-15K
-B15,DERIVED,Top-down TAM,B12 x B14,1231.5,USD millions,Low,FLAG,,Derived,,0
-C1,DERIVED,Bottom-up result,A23,1327.5,USD millions,Low,FLAG,,Derived,,0
-C2,DERIVED,Top-down result,B15,1231.5,USD millions,Low,FLAG,,Derived,,0
+B15,DERIVED,Top-down US annual market size (TAM) - US only,B12 x B14,1231.5,USD millions per year,Low,FLAG,,"Derived; built from US resident population (B1) so no international demand is included. B9 sets the annual basis",,0
+C1,DERIVED,Bottom-up US annual TAM,A23,1327.5,USD millions per year,Low,FLAG,,Derived,,0
+C2,DERIVED,Top-down US annual TAM,B15,1231.5,USD millions per year,Low,FLAG,,Derived,,0
 C3,DERIVED,Midpoint,(C1 + C2) / 2,1279.5,USD millions,Low-Medium,,,Derived,,0
 C4,DERIVED,Spread as percent of midpoint,abs(C1 - C2) / C3,7.5,percent,Low-Medium,,,"NOT independent validation - both builds share the band-share construct",,0
-C5,DERIVED,COMMITTED TAM rounded down,,1250,USD millions,Low-Medium,FLAG,,Derived,,0
+C5,DERIVED,COMMITTED US ANNUAL TAM rounded down - US only,,1250,USD millions per year,Low-Medium,FLAG,,"Derived from C1 and C2; no global or North American total enters this figure",,0
 D1,RETRIEVED,E-commerce share of insulated drinkware global 2025 from 28.7 in 2021,,41.3,percent,Low-Medium,,moderate,"Vendor market research report","Paid syndicated report",2-5K
 D2,ESTIMATED,US online share of the band,,42,percent,Low-Medium,,moderate,Team judgment near D1,"US-specific channel split from Circana",5-15K
 D3,DERIVED,Consumer online addressable,C5 x D2,525.0,USD millions,Low,,,Derived,,0

@@ -1,12 +1,12 @@
 Section,Assumption,Value,Unit,Confidence,Source status,Source
-Headline,Committed US TAM (realized price $35-50 band),1250,USD millions per year,Low-Medium,Derived,"Triangulation of bottom-up and top-down builds"
+Headline,Committed US annual market size (TAM) - realized price $35-50 band - US only,1250,USD millions per year,Low-Medium,Derived,"Triangulation of bottom-up and top-down US annual builds; no global or North American total enters this figure"
 Headline,TAM range low,1000,USD millions per year,Low-Medium,Derived,Team
 Headline,TAM range high,1700,USD millions per year,Low-Medium,Derived,Team
 Headline,Combined serviceable market (SAM),840,USD millions per year,Low-Medium,Derived,"Consumer online niche 158 plus B2B supplier-level pool 681"
-Headline,Realistic year-3 revenue (SOM),5.0,USD millions,Low-Medium,Derived,Team
+Headline,Realistic year-3 revenue (SOM),4.4,USD millions,Low-Medium,Derived,"128000 units x $34.60 blended ASP = $4.43M; corrected Sep 8 2026 from $5.0M which used a $39 ASP inconsistent with the stated channel mix"
 Headline,Year-3 revenue range low,3.0,USD millions,Low,Assumption,Team
-Headline,Year-3 revenue range high,6.5,USD millions,Low,Assumption,Team
-Headline,Year-3 share of TAM,0.40,percent,Low-Medium,Derived,Team
+Headline,Year-3 revenue range high,6.0,USD millions,Low,Assumption,Team
+Headline,Year-3 share of TAM,0.35,percent,Low-Medium,Derived,"4.43 / 1250"
 Bottom-up,YETI FY2025 global drinkware net sales,1085.8,USD millions,High,Filed,"YETI Holdings FY2025 earnings release ex-99.1, SEC.gov, Feb 19 2026"
 Bottom-up,YETI FY2025 total net sales,1868.5,USD millions,High,Filed,"YETI FY2025 earnings release ex-99.1"
 Bottom-up,YETI FY2025 US net sales,1474.1,USD millions,High,Filed,"YETI FY2025 earnings release ex-99.1"
@@ -27,18 +27,18 @@ Bottom-up,Other branded US retail value,850,USD millions,Low,Assumption,"Thermos
 Bottom-up,Private label and marketplace unbranded,500,USD millions,Low,Third-party tracked,"Private label share estimate ~10%"
 Bottom-up,Total US insulated drinkware retail (all price points),3790,USD millions,Low-Medium,Derived,Sum of above
 Bottom-up,Share of dollars at $35-50 realized price,35,percent,Low,Assumption,Team
-Bottom-up,Bottom-up TAM result,1330,USD millions,Low,Derived,"3790 x 35%"
-Top-down,US resident population Jul 1 2025,341784857,persons,High,Government,"US Census Bureau Vintage 2025 estimate"
+Bottom-up,Bottom-up US annual market size (TAM) - US only,1327,USD millions per year,Low,Derived,"3790 x 35%; all brand lines are US-only annual retail value"
+Top-down,US resident population Jul 1 2025,341784857,persons,High,Government,"US Census Bureau Vintage 2025 estimate - sets US-only geography for this build"
 Top-down,Adults 18+ share,77.5,percent,High,Government,"Census age distribution"
 Top-down,US adults 18+,265000000,persons,High,Derived,Census-derived
 Top-down,Reusable bottle ownership rate,70,percent,Low,Vendor,"Conflicting sources: 85% (Statista survey commissioned by Ever Vessel, a bottle startup) and 60% (secondary aggregator)"
 Top-down,Bottle owners,185500000,persons,Low,Derived,"265M x 70%"
-Top-down,Insulated purchases per owner per year,0.60,units,Low,Assumption,"Blend of replacement, additions, gifting"
+Top-down,Insulated purchases per owner per year,0.60,units per owner per year,Low,Assumption,"Blend of replacement, additions, gifting - this line sets the annual basis for the top-down build"
 Top-down,Annual units all price points,111300000,units,Low,Derived,"185.5M x 0.60"
 Top-down,Share of units at $35-50 realized,27,percent,Low,Assumption,Team
 Top-down,Units in band,30050000,units,Low,Derived,"111.3M x 27%"
 Top-down,Realized ASP in band,41,USD,Medium,Third-party tracked,"IndexBox Amazon scan average list $37.77, Sep 2025"
-Top-down,Top-down TAM result,1232,USD millions,Low-Medium,Derived,"30.05M x $41"
+Top-down,Top-down US annual market size (TAM) - US only,1232,USD millions per year,Low-Medium,Derived,"30.05M units/yr x $41; built from US resident population so no international demand is included"
 SAM consumer,Online share of category sales,42,percent,Low-Medium,Third-party tracked,"E-commerce 41.3% of insulated drinkware globally 2025"
 SAM consumer,Consumer online addressable,525,USD millions,Low-Medium,Derived,"1250 x 42%"
 SAM consumer,Replacement or addition share of purchases,75,percent,Low,Assumption,"Implied by high ownership rate"
@@ -81,15 +81,15 @@ Break-even,Fixed cost base,450,USD thousands per year,Low,Assumption,Team
 Break-even,Mix-weighted contribution per unit,12.53,USD per unit,Medium,Derived,"0.6 x 13.19 B2B + 0.4 x (50/50 Amazon 5.94 and organic DTC 17.14)"
 Break-even,Planning contribution per unit after haircut,11.00,USD per unit,Medium,Assumption,"Conservative haircut to mix-weighted figure"
 Break-even,Break-even volume,41000,units per year,Medium,Derived,"450000 / 11.00"
-Break-even,Break-even revenue,1.6,USD millions,Medium,Derived,Team
+Break-even,Break-even revenue,1.42,USD millions per year,Medium,Derived,"41000 x $34.60 blended ASP; corrected from $1.6M which used a $39 ASP"
 Break-even,Peak working capital at year-3 volume,700-900,USD thousands,Low-Medium,Derived,"90-day inventory plus 45-day B2B receivables"
-SOM,Year 1 units,15000,units,Low,Assumption,Team
-SOM,Year 1 revenue,0.6,USD millions,Low,Derived,Team
-SOM,Year 2 units,52000,units,Low,Assumption,Team
-SOM,Year 2 revenue,2.0,USD millions,Low,Derived,Team
-SOM,Year 3 units,128000,units,Low-Medium,Assumption,Team
-SOM,Year 3 revenue,5.0,USD millions,Low-Medium,Derived,Team
-SOM,Year 3 blended ASP,39,USD per unit,Medium,Derived,"60% B2B at $31 / 40% online at $40"
+SOM,Year 1 units,15000,units per year,Low,Assumption,Team
+SOM,Year 1 revenue,0.52,USD millions,Low,Derived,"15000 x $34.60"
+SOM,Year 2 units,52000,units per year,Low,Assumption,Team
+SOM,Year 2 revenue,1.80,USD millions,Low,Derived,"52000 x $34.60"
+SOM,Year 3 units,128000,units per year,Low-Medium,Assumption,Team
+SOM,Year 3 revenue,4.43,USD millions,Low-Medium,Derived,"128000 x $34.60; cross-checked at $4.40M via 1.5% of consumer niche plus 0.3% of B2B pool"
+SOM,Year 3 blended ASP,34.60,USD per unit,Medium,Derived,"0.60 x $31 B2B + 0.40 x $40 online"
 Context,Category growth at sporting goods retailers 2023,38,percent,Medium,Third-party tracked,"Circana via Modern Retail and Fast Company"
 Context,Category growth at sporting goods retailers 2024,14,percent,Medium,Third-party tracked,"Circana via Modern Retail and Fast Company"
 Context,Consecutive months of YoY decline Sep 2024-Feb 2025,6,months,Medium,Third-party tracked,"Circana via Modern Retail"

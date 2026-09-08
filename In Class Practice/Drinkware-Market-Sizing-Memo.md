@@ -5,24 +5,39 @@
 **Date:** September 8, 2026
 **Re:** How big is this market, what can she realistically get, and where should she go
 **Companion data:** `Drinkware-Market-Sizing-Model.csv` (assumption register, this folder)
+**Audit build:** `Drinkware-Sizing-Iteration-2.md` (line-by-line arithmetic, retrieved vs estimated)
+
+> **Correction, Sep 8 2026.** An earlier version of this memo carried a $39 blended ASP into the
+> year-3 revenue line while the stated channel mix implies **$34.60**. Year-3 revenue is therefore
+> **$4.4M, not $5.0M**, and the share of TAM is **0.35%, not 0.40%**; break-even revenue is **$1.4M,
+> not $1.6M**. The TAM, the channel economics, and the recommendation are unchanged. This memo,
+> `Drinkware-Sizing-Iteration-2.md`, and the headline canvas now carry the same numbers.
 
 ---
 
 ## 1. The number, and the decision
 
-**Commit:** the US retail market for insulated bottles and tumblers selling at a realized
-price of $35–$50 is **≈ $1.25B per year** (range $1.0B–$1.7B). Two independent methods land within 8%
-of each other.
+**Commit — US annual market size (TAM): ≈ $1.25B per year.** Range $1.0B–$1.7B. That is the
+**United States only**, **per year**, for insulated bottles and tumblers at a **realized** price of
+$35–$50. No global or North American total is carried into this figure anywhere in the build.
 
-**Realistically achievable for her: ≈ $5.0M revenue by year 3** (range $3.0M–$6.5M), about
-**128,000 units** at a blended $39. That is **0.4% of the TAM**.
+| Build | US annual TAM, $35–$50 band |
+|---|---:|
+| **Top-down** (US population → owners → annual purchases → band units × ASP) | **$1,232M per year** |
+| **Bottom-up** (US brand-level annual retail → band share) | **$1,327M per year** |
+| **Committed, rounded down** | **$1,250M per year** |
+
+The two builds land within 7.5% of each other, but they are **not independent** — see the flag in §2.3.
+
+**Realistically achievable for her: ≈ $4.4M revenue by year 3** (range $3.0M–$6.0M), about
+**128,000 units** at a blended **$34.60**. That is **0.35% of the TAM**.
 
 **Recommendation: go — but not as a direct-to-consumer consumer brand.** Enter as a
 **B2B-led decorated hybrid**, sourced outside China, with Amazon as the consumer beachhead and a
 cleanability-led product claim. The consumer path at $35–$50 does not fund its own customer
 acquisition; the corporate channel does.
 
-The honest read: this is a **$5M niche operating business**, not a venture-scale outcome, unless the
+The honest read: this is a **$4.4M niche operating business**, not a venture-scale outcome, unless the
 product claim proves genuinely defensible. If she raised seed money against a Stanley-style narrative,
 the sizing says that story is not available anymore.
 
@@ -30,9 +45,13 @@ the sizing says that story is not available anymore.
 
 ## 2. Market size build
 
-### 2.1 Bottom-up: US insulated drinkware retail, all price points
+### 2.1 Bottom-up: US annual insulated drinkware retail, all price points
 
-| Brand / group | US retail est. ($M) | Confidence | Source status |
+All brand lines are **US-only, annual** retail value. Where a filed figure was global (YETI drinkware)
+or North American (the promo channel in §3), the conversion to US is shown on its own line rather than
+assumed away.
+
+| Brand / group | US annual retail est. ($M) | Confidence | Source status |
 |---|---:|---|---|
 | YETI | 1,090 | Medium | Derived from SEC-filed FY2025 figures |
 | Stanley (PMI) | 550 | Low | Trade press + third-party tracked estimates |
@@ -40,8 +59,9 @@ the sizing says that story is not available anymore.
 | Hydro Flask (HELE) | 300 | Low-Medium | Derived from filed segment data |
 | Other branded (Thermos, Contigo, CamelBak, Brumate, Corkcicle, Simple Modern, Iron Flask, Takeya) | 850 | Low | Estimate |
 | Private label + marketplace unbranded | 500 | Low | Third-party share estimate |
-| **Total US insulated drinkware retail** | **3,790** | **Low-Medium** | **Derived** |
-| Share of dollars at $35–$50 realized price (35%) | 1,330 | Low | Assumption |
+| **Total US insulated drinkware retail, all price points** | **3,790** | **Low-Medium** | **Derived** |
+| Share of dollars at $35–$50 realized price (35%) | — | Low | Assumption |
+| **Bottom-up US annual market size (TAM), $35–$50 band** | **1,327** | **Low** | **Derived** |
 
 YETI derivation, for audit: FY2025 filed global drinkware net sales **$1,085.8M**; US **$1,474.1M** of
 **$1,868.5M** total sales (78.9%); DTC **$1,127.8M** (60.4%). US drinkware taken at 76% of global
@@ -49,28 +69,35 @@ drinkware (below the company-wide US mix, because YETI disclosed that internatio
 growth while US drinkware declined) ≈ **$825M net sales**, converted to retail by leaving the DTC
 portion at retail and grossing the wholesale portion at a 55% wholesale-to-retail ratio ≈ **$1.09B**.
 
-### 2.2 Top-down cross-check
+### 2.2 Top-down: US annual market size (TAM)
+
+**Geography: United States only.** The build starts from US resident population, so no international
+demand enters it. **Period: one year.** The annualization happens at the purchase-frequency line
+("per owner per year"); every line below it is therefore an annual figure.
 
 | Step | Value | Confidence | Source status |
 |---|---:|---|---|
-| US resident population, Jul 1 2025 | 341,784,857 | High | Census Bureau |
-| Adults 18+ (77.5%) | 265,000,000 | High | Census-derived |
+| US resident population, Jul 1 2025 | 341,784,857 | High | Census Bureau — **US** |
+| Adults 18+ (77.5%) | 265,000,000 | High | Census-derived — **US** |
 | Own a reusable bottle (70%) | 185,500,000 | **Low** | Conflicting surveys: 60% and 85% |
-| Insulated purchases per owner per year (0.60) | 111,300,000 units | **Low** | Assumption |
-| Share of units at $35–$50 realized (27%) | 30,050,000 units | Low | Assumption |
-| Realized ASP in band | $41 | Medium | Marketplace scan avg list $37.77 |
-| **Top-down market** | **$1,232M** | **Low-Medium** | **Derived** |
+| Insulated purchases **per owner per year** (0.60) | 111,300,000 units/yr | **Low** | Assumption — *sets the annual basis* |
+| Share of units at $35–$50 realized (27%) | 30,050,000 units/yr | Low | Assumption |
+| Realized ASP in band | $41 | Medium | US marketplace scan, avg list $37.77 |
+| **Top-down US annual market size (TAM)** | **$1,232M per year** | **Low-Medium** | **Derived** |
 
 ### 2.3 Converged view
 
-| Method | Result ($M) |
-|---|---:|
-| Bottom-up | 1,330 |
-| Top-down | 1,232 |
-| **Committed TAM** | **1,250** |
+| Method | Result | Geography | Period |
+|---|---:|---|---|
+| Bottom-up US annual TAM | $1,327M | US only | Annual |
+| **Top-down US annual TAM** | **$1,232M** | **US only** | **Annual** |
+| **Committed US annual TAM** | **$1,250M per year** | **US only** | **Annual** |
 
-Flag: the convergence is reassuring but partly coincidental — ownership rate, purchase frequency, and
-band share are all judgment calls. Treat $1.25B as a planning anchor, not a measured fact.
+Flag: the convergence is reassuring but **not independent validation**. Both builds route through an
+estimated $35–$50 band share (35% bottom-up, 27% of units top-down), so they are correlated by
+construction; ownership rate and purchase frequency are judgment calls on top of that. Their agreement
+shows the arithmetic is consistent, not that the answer is right. Treat $1.25B as a planning anchor,
+not a measured fact.
 
 ---
 
@@ -140,22 +167,30 @@ DTC only works if average order value reaches roughly $70 through bundling, or i
 | Fixed cost base (founder, ops, compliance, tooling amortization) | $450K/yr | Low |
 | Mix-weighted contribution per unit (60% B2B / 40% online) | $12.53 | Medium |
 | Planning contribution per unit, after haircut | $11.00 | Medium |
-| **Break-even volume** | **41,000 units** | Medium |
-| **Break-even revenue** | **≈ $1.6M** | Medium |
+| Blended ASP at the year-3 mix (60% × $31 + 40% × $40) | $34.60 | Medium |
+| **Break-even volume** | **41,000 units/yr** | Medium |
+| **Break-even revenue** | **≈ $1.4M/yr** | Medium |
 | Peak working capital at year-3 volume | $700–900K | Low-Medium |
 
 ---
 
 ## 5. Realistic three-year path (SOM)
 
-| Year | Units | Revenue | Mix | Share of TAM |
-|---|---:|---:|---|---:|
-| 1 | 15,000 | $0.6M | B2B pilots + Amazon listing | 0.05% |
-| 2 | 52,000 | $2.0M | B2B repeat + Amazon scale | 0.16% |
-| 3 | **128,000** | **$5.0M** | 60% B2B / 40% online | **0.40%** |
+All revenue lines are units × the **$34.60** blended ASP from §4.3. Share of TAM is measured against
+the committed **US annual** TAM of $1,250M.
 
-Range on year 3: **$3.0M–$6.5M**. Confidence: **Low-Medium** — driven by how many corporate accounts
+| Year | Units | Revenue | Mix | Share of US annual TAM |
+|---|---:|---:|---|---:|
+| 1 | 15,000 | $0.52M | B2B pilots + Amazon listing | 0.04% |
+| 2 | 52,000 | $1.80M | B2B repeat + Amazon scale | 0.14% |
+| 3 | **128,000** | **$4.43M** | 60% B2B / 40% online | **0.35%** |
+
+Range on year 3: **$3.0M–$6.0M**. Confidence: **Low-Medium** — driven by how many corporate accounts
 convert, which is the single most testable variable in the model.
+
+Cross-checked by a route that shares no unit assumptions: 1.5% of the $157.5M consumer online niche
+($2.36M) plus 0.3% of the $680.6M B2B pool ($2.04M) = **$4.40M**, within 0.7% of the units-times-price
+result. Break-even at 41,000 units is crossed during year 2.
 
 ---
 
@@ -163,8 +198,8 @@ convert, which is the single most testable variable in the model.
 
 | Frame | What sizing did to it | So what |
 |---|---|---|
-| **1 · Displacement of a vessel already owned** | Confirmed the band is large ($1.25B) but showed the trigger-specific online slice is only ~$158M, inside the most crowded price point (about 40 brands, average list $37.77). | Displacement justifies a **product claim**, not a media budget. Build the cleanability wedge; do not buy traffic for it. |
-| **2 · Founder-specific right-to-win** | Relocated it. In consumer, the asset is brand and she has none. In B2B, the assets are spec, decoration, MOQ flexibility, and delivery — which a startup can actually hold. | Reframes the answer from "build a brand" to **"sell where brand is not the buying criterion."** The addressable pool is 4.4× bigger there. |
+| **1 · Displacement of a vessel already owned** | Confirmed the band is large ($1.25B US annual) but showed the trigger-specific online slice is only ~$158M, inside the most crowded price point (about 40 brands, average list $37.77). | Displacement justifies a **product claim**, not a media budget. Build the cleanability wedge; do not buy traffic for it. |
+| **2 · Founder-specific right-to-win** | Relocated it. In consumer, the asset is brand and she has none. In B2B, the assets are spec, decoration, MOQ flexibility, and delivery — which a startup can actually hold. | Reframes the answer from "build a brand" to **"sell where brand is not the buying criterion."** The addressable pool is 4.3× bigger there. |
 | **3 · Landed cost and duty stack** | Quantified it: $2.20–$2.96 per unit, 5.5–7.4 margin points at $40, $280–380K per year at year-3 volume. | Larger than any plausible pricing or CAC improvement. **Resolve first — it is days of work.** |
 
 ---

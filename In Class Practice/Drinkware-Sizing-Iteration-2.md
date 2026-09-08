@@ -83,11 +83,15 @@ input tagged **RETRIEVED** or **ESTIMATED**, and every low-confidence figure fla
 | A20 | **[E]** | Private label and marketplace unbranded | anchored on retrieved ~10% private-label share | $500M | **⚠ LOW** |
 | A21 | [D] | **US insulated drinkware retail, all price points** | A15+A16+A17+A18+A19+A20 | **$3,792.9M** | **⚠ LOW** |
 | A22 | **[E]** | Share of dollars at $35–$50 realized | — | 35% | **⚠ LOW** |
-| A23 | [D] | **Bottom-up TAM** | A21 × A22 = 3,792.9 × 0.35 | **$1,327.5M** | **⚠ LOW** |
+| A23 | [D] | **Bottom-up US annual market size (TAM), $35–$50 band** | A21 × A22 = 3,792.9 × 0.35 | **$1,327.5M per year, US only** | **⚠ LOW** |
 
 ---
 
-## Part 3 — Build B: top-down
+## Part 3 — Build B: top-down US annual market size (TAM)
+
+**Geography: United States only** — the build starts from US resident population (B1), so no
+international demand can enter it. **Period: one year** — B9 is purchases per owner *per year*, which
+is the line that sets the annual basis for B10 onward. B13's price scan is US marketplace data.
 
 | Line | Origin | Input | Arithmetic | Value | Confidence |
 |---|---|---|---|---:|---|
@@ -105,17 +109,17 @@ input tagged **RETRIEVED** or **ESTIMATED**, and every low-confidence figure fla
 | B12 | [D] | Units in band | B10 × B11 = 111.3 × 0.27 | 30.04M | Low |
 | B13 | **[R]** | Average list price, Amazon scan (40 brands, 1,403 offers, to Sep 4 2025) | — | $37.77 | Medium |
 | B14 | **[E]** | Realized ASP in band | above B13 since band excludes sub-$35; below MSRP for promo | $41.00 | Low-Med |
-| B15 | [D] | **Top-down TAM** | B12 × B14 = 30.04M × 41 | **$1,231.5M** | **⚠ LOW** |
+| B15 | [D] | **Top-down US annual market size (TAM), $35–$50 band** | B12 × B14 = 30.04M × 41 | **$1,231.5M per year, US only** | **⚠ LOW** |
 
 ### Reconciliation
 
 | Line | Arithmetic | Value |
 |---|---|---:|
-| C1 | Bottom-up (A23) | $1,327.5M |
-| C2 | Top-down (B15) | $1,231.5M |
-| C3 | Midpoint | $1,279.5M |
+| C1 | Bottom-up US annual TAM (A23) | $1,327.5M/yr |
+| C2 | **Top-down US annual TAM (B15)** | **$1,231.5M/yr** |
+| C3 | Midpoint | $1,279.5M/yr |
 | C4 | Spread as % of midpoint | 7.5% |
-| **C5** | **Committed TAM, rounded down for conservatism** | **$1,250M** |
+| **C5** | **Committed US annual TAM, rounded down for conservatism** | **$1,250M per year, US only** |
 
 The 7.5% spread is **not** independent validation. Both builds use the same estimated band share
 concept (A22 and B11), so they are correlated by construction. Two methods agreeing here means the
@@ -312,7 +316,7 @@ fastest, which is why they run first regardless of how interesting item 3 is.
 
 - That $1.25B is measured. **Roughly 71% of the bottom-up build is team estimate**, and the single most
   leveraged input in the model has no retrieved anchor at all.
-- That the two builds agreeing within 7.4% validates anything. They share the band-share construct and
+- That the two builds agreeing within 7.5% validates anything. They share the band-share construct and
   are correlated by design.
 - That the ownership and replacement rates are reliable. The 85%-own and 51%-replace figures come from a
   survey **commissioned by a bottle startup**, and a second source says 60% own. We used 70% and flagged it.
