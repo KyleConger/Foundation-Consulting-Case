@@ -1,0 +1,89 @@
+---
+description: Two-phase method — framestorm first, then solve. Read the matching playbook before framing a problem, sizing a market, committing to a number, or writing a recommendation.
+alwaysApply: true
+---
+
+# Framestorm and solve
+
+Two phases, two playbooks. Read the matching playbook **before generating anything**.
+If a task spans both phases, read both.
+
+| If the task is | Read first |
+|---|---|
+| Framestorm · frame or reframe · define the problem · problem statement · alternative framings · what is the real problem · issue tree · disaggregate · MECE | `playbooks/Framestorming-Playbook.md` |
+| Solve the framestorm · solve it · start the analysis · pick a frame · where should they go · how big is the opportunity · market sizing · size it · commit to a number · TAM / SAM / SOM · build the model · unit economics · recommendation · course of action · work plan · prove it can be done | `playbooks/Solving-Playbook.md` |
+
+The bullets below are reminders. The playbooks are the method.
+
+---
+
+## Framestorming (framing phase)
+
+Core rule: **if your three framings are variations on your first one, you accepted its frame.**
+
+Non-negotiables:
+
+- **Interrogate the constraints before working.** Negative constraints especially ("no market data" may mean "I am not supplying data," not "do not use data"). Ask whether the output is a draft or an answer.
+- **Generate frames by relocating the problem**, not by rewording the question. Walk the rooms in the playbook: installed base, identity/fashion object, buyer planogram, factory and port, courtroom, compliance file, returns dock, cap table, decision-maker's own head.
+- **Run the failure tests before presenting.** Self-similarity · desirability/access/viability checklist trap · non-conflict · unfalsifiability · insufficient depth · symptom mistaken for cause. Strong frames contradict each other.
+- **Classify perspectives by role on one dimension only** — root frame · rival mechanism · hard constraint · sub-branch · decision architecture. Never mix quality with role in one rating.
+- **Do not grade your own homework.** If every frame you generated first survives your own assessment, that is anchoring. Force at least one promotion and one demotion.
+- **Sequence by cost of resolution**, not intellectual interest. Cheap binary gates first.
+- **Flag source tier and who paid for the number.** Fluency is not accuracy.
+
+Default deliverable unless told otherwise: a table of **framing / underlying assumptions / what it would make us measure**, labeled as a draft, ending with the question you would ask the client next rather than a conclusion.
+
+When multiple models are run on the same prompt, forbid each from using prior runs as a basis, then reclassify all perspectives by role and rebuild one set from the parts. Do not simply pick a winner.
+
+**Handoff.** The moment the task turns to solving, sizing, or recommending, switch to the solving playbook. Do not re-derive frames you have already classified.
+
+---
+
+## Solving (analysis phase)
+
+Core rule: **a frame that does not produce its own number was decoration.**
+
+### Handoff: never solve a framestorm you have not read
+
+If framing work already exists in the project, read it before analyzing. Do not silently substitute your own frames.
+
+Look for prior framestorm canvases or tables, memos and iteration files that already committed a number, and assumption registers (CSV or equivalent) with origin and confidence tags.
+
+If a prior document already committed a number, either reuse it or supersede it explicitly. Never let two live documents carry different headline numbers.
+
+### Non-negotiables
+
+- **Make every frame produce its own number.** A frame that stays a paragraph did no work. Let the frames disagree about size; that disagreement is usually the finding.
+- **Commit to a point estimate**, not just a range, and round in the direction that costs you.
+- **Build it twice and reconcile** — but if both builds share an assumption, state that their agreement is correlation by construction, not validation. Real cross-checks share no inputs.
+- **One assumption per line with a line ID**; write derived lines as formulas referencing them.
+- **Tag every input RETRIEVED or ESTIMATED**, then report the **dollar-weighted** split, not just counts.
+- **Convert every geography and channel on its own flagged line.** Never let a global or regional figure stand in silently for a national one.
+- **Rank estimated inputs by leverage**, then check whether your effort went where the leverage is. Precision migrates toward available data, not important data.
+- **Recompute the whole chain in code before shipping.** Your own memo is not exempt.
+- **Size is not opportunity** — run channel-level contribution before writing any recommendation.
+- **Write the kill rule and the "unwilling to claim" list before the recommendation**, not after.
+
+### Pre-delivery gate — do not deliver until all are true
+
+1. Each root frame has produced its own number.
+2. A single headline number is stated, with a range, and it is the first thing in the deliverable.
+3. Two builds exist and are reconciled, and shared assumptions between them are disclosed.
+4. At least one cross-check uses a structurally different route that shares no inputs.
+5. Every input is tagged retrieved or estimated; low-confidence figures are flagged visibly, not in footnotes; anyone who funded a cited survey is named.
+6. A sensitivity ranking exists and the top-leverage inputs are identified.
+7. The arithmetic has been recomputed in code and matches the prose.
+8. Channel contribution has been run and the recommendation follows from it.
+9. A kill rule and an "unwilling to claim" list are present.
+10. If a prior number is being changed, the correction is stated plainly and the old document marked superseded.
+
+---
+
+## Install
+
+Copy this file to `.cursor/rules/framestorm-and-solve.mdc` and place the two playbooks at:
+
+- `playbooks/Framestorming-Playbook.md`
+- `playbooks/Solving-Playbook.md`
+
+relative to the project root. If you prefer a different folder name, update the paths in the table at the top of this rule to match.
