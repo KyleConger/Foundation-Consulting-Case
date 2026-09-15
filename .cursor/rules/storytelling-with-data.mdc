@@ -1,0 +1,102 @@
+---
+description: Chart rulebook from Storytelling with Data. Apply before generating any chart, graph, plot, figure, BarChart, LineChart, or PieChart.
+alwaysApply: true
+---
+
+# Storytelling with Data — generated charts
+
+**Triggers — treat any of these as this rule firing.** Chart · graph · plot · figure ·
+visualization · exhibit · BarChart · LineChart · PieChart · canvas with series.
+
+Cole Nussbaumer Knaflic, *Storytelling with Data*. Numbers still come from
+`.cursor/rules/solving.mdc`. This rule governs how those numbers are drawn.
+
+Write the takeaway sentence first. Then choose the visual that proves it. A
+chart with no claim is decoration.
+
+## Choose the visual
+
+| If the point is… | Use | Do not use |
+|---|---|---|
+| One or two numbers | `Stat` | A chart |
+| Lookup / mixed units | `Table` | Bars of incomparable units |
+| Change over time | `LineChart` | Bars of a long time series |
+| Categorical comparison or rank | `BarChart` (`horizontal` if labels are long) | Pie, donut, 3D |
+| Part-to-whole **and** the total is the story | Stacked bar, sparingly | Pie; never stacked to compare a middle segment over time |
+| Two points in time, many items | Two-column table or paired bars | Spaghetti lines |
+| Relationship between two measures | Scatter (custom SVG) or a stated r with the two series | A dual-axis chart |
+
+**Banned.** `PieChart` / donut. 3D. Dual axes. Rainbow default coloring.
+`LineChart fill` unless volume of a **single** series is the point.
+
+**Bars start at zero.** `beginAtZero` stays true on every bar chart. Line charts
+may zoom (`beginAtZero={false}`) only when the story is movement inside a tight
+band — and the caption must say so.
+
+**Order with intent.** Time is chronological. Rank is descending (or the order
+the story needs). Never alphabetical unless the job is lookup.
+
+## Gray first, then highlight
+
+Put every series in `tone: "neutral"` except the one the takeaway names. Give
+that series `info` (focal), `danger` (deterioration), or `success` (improvement)
+— one accent, used the same way across the whole artifact.
+
+The canvas `BarChart` **rainbows a single series by category** unless `tone` is
+set. Always set `tone`. To highlight one bar, split into two series (rest vs
+story) aligned on the same categories; do not leave the default palette on.
+
+If every series is colored, nothing is emphasized. Peers, prior periods, and
+denominators stay gray.
+
+## Declutter
+
+Remove anything that does not make the takeaway faster to read: extra decimals,
+redundant legends (label the story series in the title or an annotation), heavy
+gridlines, chart borders, background fills, data markers on every point, and
+category labels that repeat the title.
+
+Directly annotate the point on the chart (the inflection, the gap, the
+threshold). Use `referenceLines` for targets, means, and break-evens — not as
+decoration.
+
+One chart, one point. If you need two claims, draw two charts.
+
+## Title is the claim
+
+```tsx
+// ❌ BAD — names the metric
+<H2>Internet net adds by quarter</H2>
+<BarChart
+  categories={QTRS}
+  series={[{ name: "Net adds (000s)", data: netAdds }]}
+/>
+
+// ✅ GOOD — states the point; gray vs focal; zero baseline; source
+<H2>Internet net adds stayed negative for 10 straight quarters</H2>
+<BarChart
+  categories={QTRS}
+  series={[{ name: "Internet net adds (000s)", data: netAdds, tone: "danger" }]}
+  beginAtZero
+  valueSuffix="k"
+/>
+<Text size="small" tone="tertiary">
+  Source: Ex99.1 / trending · 2024Q1–2026Q2 · thousands of customers
+</Text>
+```
+
+The reader who sees only the chart must still get the claim, the units, the
+series names, and the source. Do not outsource the “so what” to a paragraph
+below.
+
+## Pre-delivery gate — do not ship a chart until all are true
+
+1. A takeaway sentence exists, and it is the title.
+2. The visual matches the table above; no pie, no dual axis, no 3D.
+3. Every non-story series is `neutral`; one accent carries the claim.
+4. Single-series bars have an explicit `tone` (no SDK rainbow).
+5. Bars begin at zero; any zoomed line axis is disclosed.
+6. Clutter is gone; the focal point is annotated on the chart.
+7. Units, source, and time range are on the exhibit.
+8. The chart can be removed without losing a second, different claim — if it
+   cannot, split it.
