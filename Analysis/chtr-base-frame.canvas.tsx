@@ -181,14 +181,46 @@ export default function ChtrBaseFrame() {
         </Stack>
       </Grid>
 
-      <Callout tone="info" title="Question for the client next (not a conclusion)">
-        When Comcast’s residential broadband losses improved by ~117k YoY in Q1
-        2026 while yours roughly doubled, what did you actually see in the
-        win/loss file — footprint mix, price gap to FWA, fiber overbuild
-        intensity, or something else — and has anyone outside Spectrum already
-        said no to the current Internet offer in a way that would show up in
-        that file?
-      </Callout>
+      <Stack gap={8}>
+        <H2>Ask the CEO — internal only, one answer each</H2>
+        <Text size="small" tone="secondary">
+          Public filings already give the raw CHTR vs CMCSA print. These four
+          are in the operating file. Ask one, stop, record the answer before
+          the next.
+        </Text>
+        <Table
+          headers={["Ask", "Direct response", "What it decides"]}
+          columnAlign={["left", "left", "left"]}
+          rows={[
+            [
+              "After DMA mix and fiber/FWA intensity, did Charter’s Q1 Internet loss rate still exceed Comcast’s?",
+              "Yes or no",
+              "Falsifier for Root B. Yes keeps the firm frame; no is mix, not GTM.",
+            ],
+            [
+              "What percent of Q1 Internet disconnects sat in fiber-overbuild zips?",
+              "A percent",
+              "Whether the hole is overbuild geography or the rest of the plant.",
+            ],
+            [
+              "In the worst-loss overlap zips, was Spectrum’s in-market promo above the offer the customer took?",
+              "Yes or no",
+              "Price/promo as the firm lever vs product or structure.",
+            ],
+            [
+              "In the Q1 disconnect sample — not agent codes — what is the single largest reason?",
+              "One named reason",
+              "Binds the mechanism: fiber, FWA, price, WiFi/reliability, or moves.",
+            ],
+          ]}
+          striped
+        />
+        <Text size="small" tone="tertiary">
+          Do not ask the public print (Internet −120k, CMCSA slope +118k). Do
+          not stack two asks in one sentence. If two people give different
+          answers to the mix question, you have a data fight, not a diagnosis.
+        </Text>
+      </Stack>
 
       <Text size="small" tone="tertiary">
         Source: chtr-industry-vs-firm-framestorm.canvas.tsx §4–5 · Operates under

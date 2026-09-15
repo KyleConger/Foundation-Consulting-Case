@@ -214,6 +214,53 @@ export default function ChtrBroadbandExpansionDiagnosis() {
 
       <Divider />
 
+      <Stack gap={8}>
+        <H2>Ask the CEO — internal only, one answer each</H2>
+        <Text size="small" tone="secondary">
+          Rural vs core conversion is already public (trending subset). These
+          five are not. Ask one, stop, record the answer before the next.
+        </Text>
+        <Table
+          headers={["Ask", "Direct response", "What it decides"]}
+          columnAlign={["left", "left", "left"]}
+          rows={[
+            [
+              "Of the 41k rural customer relationships added in Q1, how many were Internet?",
+              "A thousand count",
+              "Whether rural CR is Internet relief or a mixed/mobile-inflated add.",
+            ],
+            [
+              "What is today’s take rate on rural passings activated in 2023?",
+              "A percent",
+              "Vintage ripening vs a permanently ~38% take — product competitiveness on plant already lit.",
+            ],
+            [
+              "What payback year is written in the rural board pack?",
+              "A calendar year, or none",
+              "Whether rural is on a 24-month Internet clock or an infrastructure clock.",
+            ],
+            [
+              "On the non-rural base, mix-adjusted vs Comcast, did Q1 Internet loss rates still exceed theirs?",
+              "Yes / no / not run",
+              "Whether the core hole is offer/GTM or footprint mix. Remaining Root B gate.",
+            ],
+            [
+              "On the non-rural footprint, what is the single largest sampled disconnect reason in Q1?",
+              "One named reason",
+              "The lever on the −204k core hole — not more passings.",
+            ],
+          ]}
+          striped
+        />
+        <Text size="small" tone="tertiary">
+          Do not re-ask passings, grant dollars, or the 38% blended take — those
+          are retrieved. If vintage take on 2023 plant is still ~38%, expansion
+          is converting at a ceiling, not ramping.
+        </Text>
+      </Stack>
+
+      <Divider />
+
       <Grid columns={2} gap={16}>
         <Stack gap={8}>
           <H2>Kill rule</H2>
@@ -251,10 +298,10 @@ export default function ChtrBroadbandExpansionDiagnosis() {
       <Callout tone="info" title="Next measurement (what would falsify)">
         Rural vs core is now run (chtr-rural-core-conversion): rural converts
         and the YoY Internet gap vs CMCSA still widens on the non-rural base —
-        expansion is the wrong scale/layer for the slope. Remaining gate:
-        mix-adjusted core loss rates vs CMCSA. If those converge, Root B
-        (firm) is mix not offer. Do not use stock move alone as the
-        falsifier — use broadband outcomes.
+        expansion is the wrong scale/layer for the slope. Remaining gate is
+        the mix-adjusted core question above. If those rates converge, Root B
+        is mix not offer. Do not use stock move alone as the falsifier — use
+        broadband outcomes.
       </Callout>
 
       <Text size="small" tone="tertiary">
