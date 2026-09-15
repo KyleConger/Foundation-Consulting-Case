@@ -14,7 +14,6 @@
  * from contemporaneous reporting. Analysis, not a filing.
  */
 import {
-  BarChart,
   Callout,
   Card,
   CardBody,
@@ -30,7 +29,9 @@ import {
   Stat,
   Table,
   Text,
+  useHostTheme,
 } from "cursor/canvas";
+import type { ChartTone } from "cursor/canvas";
 
 const QTRS = [
   "24Q1",
@@ -44,6 +45,148 @@ const QTRS = [
   "26Q1",
   "26Q2",
 ];
+
+/** Custom bars — Canvas BarChart clips / hides negatives when the axis zooms past 0. */
+function SignedBarChart({
+  categories,
+  series,
+  height = 240,
+  valuePrefix = "",
+  valueSuffix = "",
+  yMin,
+  yMax,
+  zeroLabel = "0",
+}: {
+  categories: string[];
+  series: Array<{ name: string; data: number[]; tone?: ChartTone }>;
+  height?: number;
+  valuePrefix?: string;
+  valueSuffix?: string;
+  yMin?: number;
+  yMax?: number;
+  zeroLabel?: string;
+}) {
+  const theme = useHostTheme();
+  const pad = { top: 16, right: 12, bottom: 48, left: 52 };
+  const width = Math.max(520, categories.length * (series.length > 1 ? 56 : 44));
+  const innerW = width - pad.left - pad.right;
+  const innerH = height - pad.top - pad.bottom;
+  const all = series.flatMap((s) => s.data);
+  const lo = yMin ?? Math.min(0, ...all) * 1.08;
+  const hi = yMax ?? Math.max(0, ...all) * 1.08;
+  const span = hi - lo || 1;
+  const yScale = (v: number) => pad.top + ((hi - v) / span) * innerH;
+  const zeroY = yScale(0);
+  const groupW = innerW / categories.length;
+  const barW = Math.min(18, (groupW * 0.7) / series.length);
+
+  const toneFill = (tone: ChartTone | undefined, i: number) => {
+    if (tone === "danger") return theme.category.red;
+    if (tone === "warning") return theme.category.orange;
+    if (tone === "success") return theme.category.green;
+    if (tone === "info") return theme.category.blue;
+    if (tone === "neutral") return theme.category.gray;
+    const cycle = [
+      theme.category.blue,
+      theme.category.orange,
+      theme.category.purple,
+      theme.category.cyan,
+    ] as const;
+    return cycle[i % cycle.length];
+  };
+
+  const fmt = (v: number) => {
+    const sign = v < 0 ? "−" : "";
+    return `${sign}${valuePrefix}${Math.abs(v)}${valueSuffix}`;
+  };
+
+  const ticks = [lo, 0, hi].filter((v, i, a) => a.indexOf(v) === i);
+
+  return (
+    <Stack gap={6}>
+      <svg width="100%" viewBox={`0 0 ${width} ${height}`} style={{ display: "block" }}>
+        {ticks.map((t) => (
+          <g key={t}>
+            <line
+              x1={pad.left}
+              x2={width - pad.right}
+              y1={yScale(t)}
+              y2={yScale(t)}
+              stroke={theme.stroke.tertiary}
+              strokeWidth={t === 0 ? 1.5 : 1}
+              strokeDasharray={t === 0 ? undefined : "3 3"}
+            />
+            <text
+              x={pad.left - 6}
+              y={yScale(t) + 3}
+              textAnchor="end"
+              fill={theme.text.tertiary}
+              fontSize={10}
+            >
+              {t === 0 ? zeroLabel : fmt(Math.round(t * 10) / 10)}
+            </text>
+          </g>
+        ))}
+        {categories.map((cat, ci) => {
+          const gx = pad.left + ci * groupW + groupW / 2;
+          return (
+            <g key={cat}>
+              {series.map((s, si) => {
+                const v = s.data[ci] ?? 0;
+                const y0 = zeroY;
+                const y1 = yScale(v);
+                const top = Math.min(y0, y1);
+                const h = Math.max(2, Math.abs(y1 - y0));
+                const x =
+                  gx - (series.length * barW + (series.length - 1) * 3) / 2 + si * (barW + 3);
+                return (
+                  <rect
+                    key={s.name}
+                    x={x}
+                    y={top}
+                    width={barW}
+                    height={h}
+                    fill={toneFill(s.tone, si)}
+                  >
+                    <title>{`${s.name}: ${fmt(v)}`}</title>
+                  </rect>
+                );
+              })}
+              <text
+                x={gx}
+                y={height - 10}
+                textAnchor="middle"
+                fill={theme.text.tertiary}
+                fontSize={10}
+              >
+                {cat}
+              </text>
+            </g>
+          );
+        })}
+      </svg>
+      {series.length > 1 ? (
+        <Row gap={12} wrap>
+          {series.map((s, i) => (
+            <span key={s.name} style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+              <span
+                style={{
+                  width: 10,
+                  height: 10,
+                  background: toneFill(s.tone, i),
+                  display: "inline-block",
+                }}
+              />
+              <Text size="small" tone="secondary">
+                {s.name}
+              </Text>
+            </span>
+          ))}
+        </Row>
+      ) : null}
+    </Stack>
+  );
+}
 
 export default function ChtrIssueTreeCharts() {
   return (
@@ -80,7 +223,7 @@ export default function ChtrIssueTreeCharts() {
           was −120k. Q2 2026 (−172k) is worse still. A trajectory claim that
           only cites ARPU or mobile fails this chart.
         </Text>
-        <BarChart
+        <SignedBarChart
           categories={QTRS}
           series={[
             {
@@ -89,10 +232,11 @@ export default function ChtrIssueTreeCharts() {
               tone: "danger",
             },
           ]}
-          beginAtZero={false}
           height={240}
           valueSuffix="k"
-          referenceLines={[{ value: 0, label: "Zero", tone: "neutral" }]}
+          yMin={-200}
+          yMax={40}
+          zeroLabel="0"
         />
         <Text size="small" tone="tertiary">
           Thousands · restated basis · Source: trending / Ex99.1 · 2024Q1–2026Q2
@@ -154,7 +298,7 @@ export default function ChtrIssueTreeCharts() {
           volume) is the audited analog; quarterly figures below are the same
           identity on trending/Ex99.1.
         </Text>
-        <BarChart
+        <SignedBarChart
           categories={QTRS}
           series={[
             {
@@ -168,10 +312,12 @@ export default function ChtrIssueTreeCharts() {
               tone: "info",
             },
           ]}
-          height={260}
+          height={280}
           valuePrefix="$"
           valueSuffix="M"
-          referenceLines={[{ value: 0, label: "Zero", tone: "neutral" }]}
+          yMin={-120}
+          yMax={280}
+          zeroLabel="$0"
         />
         <Text size="small" tone="tertiary">
           YoY change in Internet revenue ($M) · Source: trending Internet
@@ -261,7 +407,7 @@ export default function ChtrIssueTreeCharts() {
           25.5%. Industry structure is in the multiple; Internet trajectory
           plus capital allocation is the extra Charter gap.
         </Text>
-        <BarChart
+        <SignedBarChart
           categories={["Apr 24 2026 close-to-close"]}
           series={[
             { name: "CHTR", data: [-25.5], tone: "danger" },
@@ -269,6 +415,9 @@ export default function ChtrIssueTreeCharts() {
           ]}
           height={200}
           valueSuffix="%"
+          yMin={-30}
+          yMax={5}
+          zeroLabel="0%"
         />
         <Text size="small" tone="tertiary">
           CHTR: Yahoo close $241.78 → $180.13. CMCSA: TIKR/Deadline ~$31.64 →
@@ -353,7 +502,7 @@ export default function ChtrIssueTreeCharts() {
           improvement vs last year or a doubling. Consensus miss (Q2 2025:
           −116k vs ~−73k expected) also sold the stock.
         </Text>
-        <BarChart
+        <SignedBarChart
           categories={[
             "Q4'24 −177k",
             "Q1'25 −59k",
@@ -370,10 +519,11 @@ export default function ChtrIssueTreeCharts() {
               tone: "danger",
             },
           ]}
-          beginAtZero={false}
           height={240}
           valueSuffix="%"
-          referenceLines={[{ value: 0, label: "Flat", tone: "neutral" }]}
+          yMin={-30}
+          yMax={15}
+          zeroLabel="Flat"
         />
         <Text size="small" tone="tertiary">
           Yahoo: Jan 31 2025 $336.62→$345.49; Apr 25 2025 $335.33→$373.65; Jul

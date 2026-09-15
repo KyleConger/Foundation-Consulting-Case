@@ -5,7 +5,6 @@
  * Assignment anchor: end Q1 2026; Q2 labeled as later public fact.
  */
 import {
-  BarChart,
   Callout,
   Card,
   CardBody,
@@ -21,11 +20,155 @@ import {
   Stat,
   Table,
   Text,
+  useHostTheme,
 } from "cursor/canvas";
+import type { ChartTone } from "cursor/canvas";
 
 const Bullet = ({ children }: { children: string }) => (
   <Text size="small">• {children}</Text>
 );
+
+/** Custom bars — Canvas BarChart clips / hides negatives when the axis zooms past 0. */
+function SignedBarChart({
+  categories,
+  series,
+  height = 240,
+  valuePrefix = "",
+  valueSuffix = "",
+  yMin,
+  yMax,
+  zeroLabel = "0",
+}: {
+  categories: string[];
+  series: Array<{ name: string; data: number[]; tone?: ChartTone }>;
+  height?: number;
+  valuePrefix?: string;
+  valueSuffix?: string;
+  yMin?: number;
+  yMax?: number;
+  zeroLabel?: string;
+}) {
+  const theme = useHostTheme();
+  const pad = { top: 16, right: 12, bottom: 48, left: 52 };
+  const width = Math.max(520, categories.length * (series.length > 1 ? 56 : 44));
+  const innerW = width - pad.left - pad.right;
+  const innerH = height - pad.top - pad.bottom;
+  const all = series.flatMap((s) => s.data);
+  const lo = yMin ?? Math.min(0, ...all) * 1.08;
+  const hi = yMax ?? Math.max(0, ...all) * 1.08;
+  const span = hi - lo || 1;
+  const yScale = (v: number) => pad.top + ((hi - v) / span) * innerH;
+  const zeroY = yScale(0);
+  const groupW = innerW / categories.length;
+  const barW = Math.min(18, (groupW * 0.7) / series.length);
+
+  const toneFill = (tone: ChartTone | undefined, i: number) => {
+    if (tone === "danger") return theme.category.red;
+    if (tone === "warning") return theme.category.orange;
+    if (tone === "success") return theme.category.green;
+    if (tone === "info") return theme.category.blue;
+    if (tone === "neutral") return theme.category.gray;
+    const cycle = [
+      theme.category.blue,
+      theme.category.orange,
+      theme.category.purple,
+      theme.category.cyan,
+    ] as const;
+    return cycle[i % cycle.length];
+  };
+
+  const fmt = (v: number) => {
+    const sign = v < 0 ? "−" : "";
+    return `${sign}${valuePrefix}${Math.abs(v)}${valueSuffix}`;
+  };
+
+  const ticks = [lo, 0, hi].filter((v, i, a) => a.indexOf(v) === i);
+
+  return (
+    <Stack gap={6}>
+      <svg width="100%" viewBox={`0 0 ${width} ${height}`} style={{ display: "block" }}>
+        {ticks.map((t) => (
+          <g key={t}>
+            <line
+              x1={pad.left}
+              x2={width - pad.right}
+              y1={yScale(t)}
+              y2={yScale(t)}
+              stroke={theme.stroke.tertiary}
+              strokeWidth={t === 0 ? 1.5 : 1}
+              strokeDasharray={t === 0 ? undefined : "3 3"}
+            />
+            <text
+              x={pad.left - 6}
+              y={yScale(t) + 3}
+              textAnchor="end"
+              fill={theme.text.tertiary}
+              fontSize={10}
+            >
+              {t === 0 ? zeroLabel : fmt(Math.round(t * 10) / 10)}
+            </text>
+          </g>
+        ))}
+        {categories.map((cat, ci) => {
+          const gx = pad.left + ci * groupW + groupW / 2;
+          return (
+            <g key={cat}>
+              {series.map((s, si) => {
+                const v = s.data[ci] ?? 0;
+                const y0 = zeroY;
+                const y1 = yScale(v);
+                const top = Math.min(y0, y1);
+                const h = Math.max(2, Math.abs(y1 - y0));
+                const x =
+                  gx - (series.length * barW + (series.length - 1) * 3) / 2 + si * (barW + 3);
+                return (
+                  <rect
+                    key={s.name}
+                    x={x}
+                    y={top}
+                    width={barW}
+                    height={h}
+                    fill={toneFill(s.tone, si)}
+                  >
+                    <title>{`${s.name}: ${fmt(v)}`}</title>
+                  </rect>
+                );
+              })}
+              <text
+                x={gx}
+                y={height - 10}
+                textAnchor="middle"
+                fill={theme.text.tertiary}
+                fontSize={10}
+              >
+                {cat}
+              </text>
+            </g>
+          );
+        })}
+      </svg>
+      {series.length > 1 ? (
+        <Row gap={12} wrap>
+          {series.map((s, i) => (
+            <span key={s.name} style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+              <span
+                style={{
+                  width: 10,
+                  height: 10,
+                  background: toneFill(s.tone, i),
+                  display: "inline-block",
+                }}
+              />
+              <Text size="small" tone="secondary">
+                {s.name}
+              </Text>
+            </span>
+          ))}
+        </Row>
+      ) : null}
+    </Stack>
+  );
+}
 
 export default function ChtrIndustryVsFirmFramestorm() {
   return (
@@ -145,7 +288,7 @@ export default function ChtrIndustryVsFirmFramestorm() {
           (yes). It is “facing the same attackers, is Charter’s Internet
           trajectory worse than the closest peer?”
         </Text>
-        <BarChart
+        <SignedBarChart
           categories={["Q1 2025", "Q1 2026", "Q2 2025", "Q2 2026 (later)"]}
           series={[
             {
@@ -159,10 +302,11 @@ export default function ChtrIndustryVsFirmFramestorm() {
               tone: "warning",
             },
           ]}
-          beginAtZero={false}
           height={260}
           valueSuffix="k"
-          referenceLines={[{ value: 0, label: "Zero", tone: "neutral" }]}
+          yMin={-220}
+          yMax={40}
+          zeroLabel="0"
         />
         <Text size="small" tone="tertiary">
           Thousands · CHTR Ex99.1 / trending · CMCSA Ex99.1 Q1–Q2 2026.
