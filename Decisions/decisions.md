@@ -394,3 +394,13 @@ All GAP “unwilling” lines still hold. Added for this section:
 
 *Q2 later fact: −172k; 54k close would leave −118k. Does not replace the Q1 anchor.*
 
+---
+
+## Pointer — six recommendation areas (does not alter GAP, playbook, or addenda)
+
+**Full memo:** `Decisions/six-recommendation-areas.md` · **Canvas:** `chtr-six-recommendation-areas`
+
+Sequence: (1) quarterly net-loss tracker, (2) one core reason-play after fill, (3) capex productivity not 2027, (4) rural take-not-miles, (5) Cox offer/brand/WTP gate, (6) non-mover video-optional model. Does not fire empty-cell plays. Does not ship Kishore four-musts, Cox 70M homes, mobile-as-must, more rural miles, or upgrade-harder.
+
+Each area is presented with a grade-6 line next to the adult action (do / targeting / funded by). Sequence, numbers, and kill list unchanged.
+
