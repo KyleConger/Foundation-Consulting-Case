@@ -13,7 +13,7 @@ licensing, not "license Spectrum onto Cox" (Area 5). Rival mechanism noted
 if Frontier-as-other-FTTH (YE2025 10-K) — Frontier closed into Verizon on
 20 Jan 2026 and is no longer "smaller."
 
-Run: python Decisions/small_fiber_licensing_model.py
+Run: python "Decisions/IMP TO CAPEX/small_fiber_licensing_model.py"
 """
 
 from __future__ import annotations

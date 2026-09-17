@@ -1,9 +1,10 @@
 # Small-fiber licensing cost (solving)
 
 **Status:** analysis with a recommendation · does not overwrite GAP, `six-recommendation-areas.md` (54k / −66k), or `ifxy-stock-signal.md`  
+**Type 3 analog** (`Decisions/IMP TO CAPEX/`): cheaper access than rural build is not a customer-performance fix unless MRC falls.  
 **Anchor:** end Q1 2026 · Q2 labeled later public fact  
 **Canvas:** [chtr-small-fiber-licensing-cost](C:/Users/Owner/.cursor/projects/c-Users-Owner-Desktop-MAN6930-Case/canvases/chtr-small-fiber-licensing-cost.canvas.tsx)  
-**Model:** `Decisions/small_fiber_licensing_model.py` (recomputed; numbers below match the run)
+**Model:** `Decisions/IMP TO CAPEX/small_fiber_licensing_model.py` (recomputed; numbers below match the run)
 
 ---
 

@@ -20,6 +20,20 @@ Our job is not “explain why the stock is down” as a story. It is to name the
 
 ---
 
+## 1a. Three types of decisions going forward
+
+Not a new diagnosis. Same GAP. Same numbers. From here the work breaks into three types of decisions. Each type has a folder.
+
+**1. Churn (if-lost-to-X then Y)** — folder `Decisions/CHURN/`. If they lose a customer to move-out, **FWA**, **fiber**, or **nonpay**, then do the matching play. First they need **G1**: a quarterly **net-loss** tracker by category. Cells are empty on purpose. The **54k excess** versus Comcast (**1.8×**) is unallocated until the first fill. **−66k** is a *ceiling* after that fill, not the briefing plan.
+
+**2. EH&B expansion — stop the Internet bleed** — folder `Decisions/EH&B/`. **EH&B** means existing homes and businesses: grow **Internet** on plant already built (the **HFC**/fiber-powered network already passed), not new rural miles. Target is **net adds** (**Root C**: the tape prices the Internet print). **Overlap GTM** versus **FWA**/fiber. **Cox** is not the closer. Rural leftover miles cannot close a **179k** quarterly peer gap.
+
+**3. Better utilize previous capex** — folder `Decisions/IMP TO CAPEX/`. Get more Internet out of capital already spent. Score **capex** dollars per net Internet add. Freeze “wait for 2027 / run the upgrade harder” (rebuild already **+71%**). Raise rural **take** on lit plant (**38% → 54%**) rather than more miles.
+
+Sequence still cheapest binary first: tracker yes/no before firing **churn** plays. The six recommendation areas map **1–2 → CHURN**, **5–6 → EH&B**, **3–4 → IMP TO CAPEX**.
+
+---
+
 ## 2. Why the stock fell (three causes, short)
 
 Not one narrative. Three causes at once.
@@ -86,7 +100,7 @@ Spend, if any, comes from named existing pools (upgrade/rebuild increment, avoid
 
 ## 6. Does it move the stock?
 
-Closing the full **54k excess** versus Comcast would take a later Internet print to about **−66k** (range **−93k** to **−66k**). That is enough to **MATTER** versus the Q1 tape — most of the year-over-year slope investors sold. It is **not** enough to **RE-RATE** the five-year ~80% loss.
+Closing the full **54k excess** versus Comcast would take a later Internet print to about **−66k** (range **−93k** to **−66k**). **−66k is a ceiling after G1 fill, not the briefing plan.** That is enough to **MATTER** versus the Q1 tape — most of the year-over-year slope investors sold. It is **not** enough to **RE-RATE** the five-year ~80% loss.
 
 Half a close (**−93k**) still looks like Q1. **−59k** and zero are not playbook-claimable. The cash story in Q1 was capex, not that 54k cohort. Capex intensity ~2× Comcast and rural remainder still sit after a successful play. No price target.
 
@@ -98,19 +112,19 @@ Q2 later public fact: Internet **−172k**. A 54k close would leave **−118k**.
 
 ## 7. The six recommendation areas (in order)
 
-These are jobs the files already earn, sequenced cheapest binary first. They are **not** six new ideas, and they do **not** fire empty-cell plays. Full adult write-up: `Decisions/six-recommendation-areas.md`.
+These are jobs the files already earn, sequenced cheapest binary first. They are **not** six new ideas, and they do **not** fire empty-cell plays. Full adult write-up: `Decisions/six-recommendation-areas.md`. Each area sits in one of the three type folders as **primary**.
 
-**1. Quarterly net-loss-by-category tracker (G1).** They only see **−120k**, not who left or why. **Do:** ask the CEO yes/no; if no, stand up the tracker and fill the empty cells before any reason play. **Targeting:** belief / decision quality — this unblocks the Internet-print play; it does not itself close 54k. **Funded by:** existing ops/marketing data work, not plant.
+**1. Quarterly net-loss-by-category tracker (G1).** Type 1 · `CHURN/`. They only see **−120k**, not who left or why. **Do:** ask the CEO yes/no; if no, stand up the tracker and fill the empty cells before any reason play. **Targeting:** belief / decision quality — this unblocks the Internet-print play; it does not itself close 54k. **Funded by:** existing ops/marketing data work, not plant.
 
-**2. One core reason-play after the first fill.** Fix the biggest leak only — one **if-lost-to-X** play on the **core**, not four expensive fixes, and not “build more network” as the default. **Do:** fire the single largest (or cheaper co-equal) reason branch; never two expensive levers in the same quarter. **Targeting:** **54k** → next print **−66k**. **Funded by:** the matching named pool (P1–P4 in the full memo), not new capital. Must still move after a successful play: capex intensity and rural remainder.
+**2. One core reason-play after the first fill.** Type 1 · `CHURN/`. Fix the biggest leak only — one **if-lost-to-X** play on the **core**, not four expensive fixes, and not “build more network” as the default. **Do:** fire the single largest (or cheaper co-equal) reason branch; never two expensive levers in the same quarter. **Targeting:** **54k** → next print **−66k** (ceiling after fill, not the plan). **Funded by:** the matching named pool (P1–P4 in the full memo), not new capital. Must still move after a successful play: capex intensity and rural remainder.
 
-**3. Capex productivity, not a 2027 date.** Score spend by dollars of capital per **net Internet add**, not miles of plant or “on time versus 2027.” **Do:** freeze company-wide evolution acceleration; redirect or cut the upgrade/rebuild increment; name what gets cut. **Targeting:** FCF and belief — Q1 capex **+19%** while Internet and FCF went the wrong way. **Funded by:** intensity already being spent (**21.3%** vs **10.8%**). No new capital.
+**3. Capex productivity, not a 2027 date.** Type 3 · `IMP TO CAPEX/`. Score spend by dollars of capital per **net Internet add**, not miles of plant or “on time versus 2027.” **Do:** freeze company-wide evolution acceleration; redirect or cut the upgrade/rebuild increment; name what gets cut. **Targeting:** FCF and belief — Q1 capex **+19%** while Internet and FCF went the wrong way. **Funded by:** intensity already being spent (**21.3%** vs **10.8%**). No new capital.
 
-**4. Rural take, not miles.** Sell the countryside houses already wired. **Do:** lift take on plant already lit (**38%** toward company **54%**); stop remainder beyond the subsidy floor; honor contracted **RDOF/BEAD**. **Do not** add rural miles to close the core. **Targeting:** FCF via avoided leftover spend, not the quarterly Internet slope (the arithmetic already says leftover miles cannot close the Comcast quarterly gap). **Funded by:** not spending the rural remainder.
+**4. Rural take, not miles.** Type 3 · `IMP TO CAPEX/`. Sell the countryside houses already wired. **Do:** lift take on plant already lit (**38%** toward company **54%**); stop remainder beyond the subsidy floor; honor contracted **RDOF/BEAD**. **Do not** add rural miles to close the core. **Targeting:** FCF via avoided leftover spend, not the quarterly Internet slope (the arithmetic already says leftover miles cannot close the Comcast quarterly gap). **Funded by:** not spending the rural remainder.
 
-**5. Cox offer / brand / willingness-to-pay gate.** **Cox** is not a magic wand. **Do:** before treating Cox as a closer, test whether those customers will take Spectrum Internet offers, brand, and price — or print Charter’s **1.8×** loss rate on a new base. Size Cox passings, customers, and debt on their own lines. **Targeting:** kill a false closer, and the first combined Internet print. **Funded by:** cheap offer tests, not a 70-million-home story.
+**5. Cox offer / brand / willingness-to-pay gate.** Type 2 · `EH&B/`. **Cox** is not a magic wand. **Do:** before treating Cox as a closer, test whether those customers will take Spectrum Internet offers, brand, and price — or print Charter’s **1.8×** loss rate on a new base. Size Cox passings, customers, and debt on their own lines. **Targeting:** kill a false closer, and the first combined Internet print. **Funded by:** cheap offer tests, not a 70-million-home story.
 
-**6. Non-mover, video-optional growth model.** Stop planning as if housing-driven **net adds** and video lock-in are coming back. **Do:** write a gross-add plan versus **FWA** and **fiber**, not versus last year’s mover. Same-day transfer and landlord capture is the leftover mover play, not the whole answer. Do not credit mobile against Internet (**Root C**). **Targeting:** belief — and the Internet print **if** Area 2’s kill fires (move-out matching Comcast). **Funded by:** sales-ops plus stopping retention promo on vacated addresses. Not rural miles. Not company rebuild.
+**6. Non-mover, video-optional growth model.** Type 2 · `EH&B/`. Stop planning as if housing-driven **net adds** and video lock-in are coming back. **Do:** write a gross-add plan versus **FWA** and **fiber**, not versus last year’s mover. Same-day transfer and landlord capture is the leftover mover play, not the whole answer. Do not credit mobile against Internet (**Root C**). **Targeting:** belief — and the Internet print **if** Area 2’s kill fires (move-out matching Comcast). **Funded by:** sales-ops plus stopping retention promo on vacated addresses. Not rural miles. Not company rebuild.
 
 ---
 
@@ -128,4 +142,4 @@ If field + care opex stay down, losses stay up, **and** the sample does **not** 
 
 ---
 
-*Q1 2026 figures used throughout: Internet **−120k**; capex **+19%**; FCF **−12%**; rural **+41k** vs core **−204k**; capex/revenue **21.3%** vs **10.8%**; rural take **38%** vs company **54%**. Parent file: `Decisions/decisions.md`. Pointers there to customer-performance, ifxy-stock-signal, and six recommendation areas are unchanged.*
+*Q1 2026 figures used throughout: Internet **−120k**; capex **+19%**; FCF **−12%**; rural **+41k** vs core **−204k**; capex/revenue **21.3%** vs **10.8%**; rural take **38%** vs company **54%**. Parent file: `Decisions/decisions.md`. Type folders: `CHURN/`, `EH&B/`, `IMP TO CAPEX/`. Pointers there to customer-performance, ifxy-stock-signal, and six recommendation areas are unchanged in substance.*

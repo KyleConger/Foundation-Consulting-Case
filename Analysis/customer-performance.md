@@ -2,7 +2,7 @@
 
 **Status:** analysis, not a recommendation · does not supersede GAP or the if-lost-to-X playbook  
 **Anchor:** end Q1 2026 · Q2 labeled later public fact  
-**Companion:** [chtr-customer-performance canvas](C:/Users/Owner/.cursor/projects/c-Users-Owner-Desktop-MAN6930-Case/canvases/chtr-customer-performance.canvas.tsx) · `Decisions/customer_performance_model.py`
+**Companion:** [chtr-customer-performance canvas](C:/Users/Owner/.cursor/projects/c-Users-Owner-Desktop-MAN6930-Case/canvases/chtr-customer-performance.canvas.tsx) · `Analysis/customer_performance_model.py` · LOB scorecard (not moved into `CHURN/`)
 
 ---
 

@@ -4,7 +4,8 @@
 **Anchor:** end Q1 2026 · Q2 labeled later public fact  
 **Does not overwrite:** `Decisions/decisions.md` (GAP + dormant if-lost-to-X)  
 **Canvas:** `chtr-six-recommendation-areas`  
-**Parents:** GAP G1–G4 · playbook funding pools P1–P4 · ifxy-stock-signal · customer-performance · kishore-critical-review · rural-core-conversion · cmcsa-capex · network-churn · check-in #2 judgment
+**Parents:** GAP G1–G4 · playbook funding pools P1–P4 · ifxy-stock-signal · customer-performance · kishore-critical-review · rural-core-conversion · cmcsa-capex · network-churn · check-in #2 judgment  
+**Decision types (folders):** `Decisions/CHURN/` · `Decisions/EH&B/` · `Decisions/IMP TO CAPEX/`
 
 This is not six new ideas. Each area is a job the files already earn. Rank is **sequence** (leverage ÷ cost, cheapest binary first), not intellectual interest.
 
@@ -18,7 +19,17 @@ Grade-6 lines below are **presentation only**. Sequence, numbers, and kill list 
 
 **Fill the quarterly net-loss tracker first. Then five funded plays — none of which is “run the upgrade harder.”**
 
-The only Internet-print close the files can claim is **54k → a subsequent print of −66k** (range **−93k to −66k**) against the **−120k** investors sold. That is enough to **MATTER** vs the Q1 tape (88% of the 61k YoY slope). It is **not** enough to **RE-RATE** five-year ~80%. Recs that only close 54k must name what else still has to move: **capex intensity ~2× Comcast C&P** and **rural remainder**.
+The only Internet-print close the files can claim is **54k → a subsequent print of −66k** (range **−93k to −66k**) against the **−120k** investors sold. **−66k is a ceiling after G1 fill, not the plan.** That is enough to **MATTER** vs the Q1 tape (88% of the 61k YoY slope). It is **not** enough to **RE-RATE** five-year ~80%. Recs that only close 54k must name what else still has to move: **capex intensity ~2× Comcast C&P** and **rural remainder**.
+
+### Map onto the three types (primary folder)
+
+| Type | Folder | Areas (primary) |
+|---|---|---|
+| 1. Churn (if-lost-to-X then Y) | `Decisions/CHURN/` | **1** tracker · **2** one core reason-play |
+| 2. EH&B expansion — stop the Internet bleed | `Decisions/EH&B/` | **5** Cox gate · **6** non-mover model |
+| 3. Better utilize previous capex | `Decisions/IMP TO CAPEX/` | **3** capex productivity · **4** rural take-not-miles |
+
+**EH&B** = existing homes and businesses on plant already built, not new rural miles. Sequence still cheapest binary first: tracker yes/no before firing Type 1 plays.
 
 The cash print was spend, not the 54k cohort: Q1 capex increment **$456M** is **2.4×** the **$192M** FCF hole; **$43M/yr** of that cohort is **3.1%** of Q1 FCF **$1,372M**. FCF YoY **−12.3%** (Kishore’s figure, matches CORE; `decisions.md` rounds to −12%).
 
@@ -33,20 +44,20 @@ Do not add 54k customers, 221k missing rural CR, and Cox homes. They are differe
 | Rural remainder avoided if leftover miles stop | **~$1.9B** | derived · 315k × ~$5,900 |
 | Cox debt on its own line | **$12.6B** | RETRIEVED · 10-K (Q2 later $12.4B) |
 
-No new combined opportunity number. No python in this file — arithmetic already recomputed in `stock_signal_model.py`, `network_churn_model.py`, `kishore_arithmetic_check.py`.
+No new combined opportunity number. No python in this file — arithmetic already recomputed in `Decisions/CHURN/stock_signal_model.py`, `Decision Planning/network_churn_model.py`, `kishore_arithmetic_check.py`.
 
 ---
 
 ## Sequence (do these in this order)
 
-| # | Area | Like you're 12 | Do / targeting / funded by | Time to first decision |
-|---|---|---|---|---|
-| 1 | Quarterly net-loss-by-category tracker (G1 insight) | Scoreboard — they only see −120k, not who left or why. | Ask the CEO yes/no; if no, stand up the tracker and fill empty cells before any reason play. Targeting: belief. Funded by: existing ops/marketing data work. | This week / one quarter to first fill |
-| 2 | One core reason-play (core GTM once filled) | Fix the biggest leak only — one play, not four expensive fixes. | Fire a single largest (or cheaper co-equal) reason branch **on the core** — never two expensive levers, never company-wide upgrade. Targeting: 54k → −66k print. Funded by: matching named pool P1–P4. | 2–4 quarters after first fill |
-| 3 | Capex productivity (G2 spend mix) | Stop spending like more construction is the answer. | Reclassify $ per net Internet add; freeze evolution acceleration; redirect or cut the +$280M upgrade/rebuild increment. Targeting: FCF and belief. Funded by: intensity already being spent (21¢ vs 11¢). | Next two budget cycles |
-| 4 | Rural take, not miles (G3 harvest lit plant) | Sell the countryside houses already wired. | Lift take on 1.385M already-lit passings (38% → 54%); stop remainder beyond the subsidy floor; do not add miles. Targeting: FCF via avoided remainder. Funded by: not spending P2. | Budget this year / 4–8 quarters for take |
-| 5 | Cox offer / brand / WTP (integration gate) | Cox is not a magic wand. | Answer Kishore’s Sept 3 questions before treating Cox as a closer; size passings, customers, and $12.6B debt on their own lines. Targeting: belief and first combined print. Funded by: cheap offer tests. | Before close / first combined print |
-| 6 | Non-mover, video-optional model (G4 demand regime) | Stop planning like 2015. | Replace the growth plan that assumes housing-driven adds and video glue; GTM vs FWA/fiber, not vs last year’s mover. Targeting: belief (print if Area 2’s kill fires). Funded by: sales-ops + stopping vacated-address promo. | 6–12 months to a plan the tape can believe |
+| # | Type / folder | Area | Like you're 12 | Do / targeting / funded by | Time to first decision |
+|---|---|---|---|---|---|
+| 1 | 1 · `CHURN/` | Quarterly net-loss-by-category tracker (G1 insight) | Scoreboard — they only see −120k, not who left or why. | Ask the CEO yes/no; if no, stand up the tracker and fill empty cells before any reason play. Targeting: belief. Funded by: existing ops/marketing data work. | This week / one quarter to first fill |
+| 2 | 1 · `CHURN/` | One core reason-play (core GTM once filled) | Fix the biggest leak only — one play, not four expensive fixes. | Fire a single largest (or cheaper co-equal) reason branch **on the core** — never two expensive levers, never company-wide upgrade. Targeting: 54k → −66k print (ceiling after fill, not the plan). Funded by: matching named pool P1–P4. | 2–4 quarters after first fill |
+| 3 | 3 · `IMP TO CAPEX/` | Capex productivity (G2 spend mix) | Stop spending like more construction is the answer. | Reclassify $ per net Internet add; freeze evolution acceleration; redirect or cut the +$280M upgrade/rebuild increment. Targeting: FCF and belief. Funded by: intensity already being spent (21¢ vs 11¢). | Next two budget cycles |
+| 4 | 3 · `IMP TO CAPEX/` | Rural take, not miles (G3 harvest lit plant) | Sell the countryside houses already wired. | Lift take on 1.385M already-lit passings (38% → 54%); stop remainder beyond the subsidy floor; do not add miles. Targeting: FCF via avoided remainder. Funded by: not spending P2. | Budget this year / 4–8 quarters for take |
+| 5 | 2 · `EH&B/` | Cox offer / brand / WTP (integration gate) | Cox is not a magic wand. | Answer Kishore’s Sept 3 questions before treating Cox as a closer; size passings, customers, and $12.6B debt on their own lines. Targeting: belief and first combined print. Funded by: cheap offer tests. | Before close / first combined print |
+| 6 | 2 · `EH&B/` | Non-mover, video-optional model (G4 demand regime) | Stop planning like 2015. | Replace the growth plan that assumes housing-driven adds and video glue; GTM vs FWA/fiber, not vs last year’s mover. Targeting: belief (print if Area 2’s kill fires). Funded by: sales-ops + stopping vacated-address promo. | 6–12 months to a plan the tape can believe |
 
 **Forced promotion (Kishore):** Area 5 (Cox offer/brand/WTP questions) and the mobile-offset refusal kept as a **constraint** on Areas 2 and 6 — not “make mobile economically meaningful” as must #2.
 
@@ -55,6 +66,8 @@ No new combined opportunity number. No python in this file — arithmetic alread
 ---
 
 ## Area 1 — Quarterly net-loss-by-category tracker
+
+**Type 1 · `Decisions/CHURN/`**
 
 **Like you're 12.** They only see the final score (−120k), not who left or why — until a quarterly board splits the losses (core vs countryside, overlap vs not, moved vs wireless vs stopped paying), they are guessing.
 
@@ -71,6 +84,8 @@ No new combined opportunity number. No python in this file — arithmetic alread
 ---
 
 ## Area 2 — One core reason-play after the first fill
+
+**Type 1 · `Decisions/CHURN/`**
 
 **Like you're 12.** After the board fills, fix the biggest leak only: one play, not four expensive fixes at once, and not “build more network” as the default. Following movers is not the same as laying more plant.
 
@@ -108,6 +123,8 @@ Funded by: the matching named pool — not new capital:
 
 ## Area 3 — Capex productivity (spend mix, not a 2027 date)
 
+**Type 3 · `Decisions/IMP TO CAPEX/`**
+
 **Like you're 12.** They spend about twice as much plant money as Comcast’s cable side, and extra upgrade dollars did not stop internet losses — score spend by whether it keeps or wins internet customers.
 
 **Why it fits this diagnosis.** FY2025 Charter spent **$11.7B** — **21.3% of revenue**, **51% of Adj. EBITDA** — vs Comcast Connectivity & Platforms **10.8% / 27%**. Q1 capex **+19%** ($2.86B vs $2.40B), upgrade/rebuild **+71%**, Internet **−120k**, FCF **−12.3%**. The market is punishing plant that does not produce Internet customers. Waiting for end-2027 is management’s existing story; O’Donnell already flagged “run the upgrade harder” as the move most likely to fail the out-of-the-box test.
@@ -124,6 +141,8 @@ Funded by: the matching named pool — not new capital:
 
 ## Area 4 — Rural take on plant already lit (not more miles)
 
+**Type 3 · `Decisions/IMP TO CAPEX/`**
+
 **Like you're 12.** Sell the countryside houses already wired (38% take vs ~54% company): cheaper than more miles. Leftover build cannot plug the old-neighborhood hole, and subsidies make walking away expensive.
 
 **Why it fits this diagnosis.** Rural is doing what it was built to do (**+41k CR**, 38% take stuck 8 quarters) and still cannot close the hole (covers **20%** of a **−204k** core CR identity; **1.6%** of company revenue). Remainder to the 1.7M floor is **315k** passings → **120k** CR at 38% take, **170k** at company 54% — a **one-time stock** smaller than one quarter of the **179k** Comcast slope gap. RDOF/BEAD: miss the rules and the FCC can treat Charter as in default (penalties, forfeitures, withheld support). Sunk plant plus a ten-year subsidy obligation is not a program you pause because the core is bleeding.
@@ -139,6 +158,8 @@ Funded by: the matching named pool — not new capital:
 ---
 
 ## Area 5 — Cox offer / brand / willingness-to-pay gate
+
+**Type 2 · `Decisions/EH&B/`** (Cox is not the closer)
 
 **Like you're 12.** Cox is not a magic wand — whose offer and brand, will customers want Spectrum, and the debt sits on its own line. Mobile growing does not cancel internet shrinking.
 
@@ -164,6 +185,8 @@ Sequence **after** the tracker (Area 1). Not the April diagnosis. Not a 24-month
 ---
 
 ## Area 6 — Non-mover, video-optional growth model
+
+**Type 2 · `Decisions/EH&B/`**
 
 **Like you're 12.** Stop planning like 2015: people move less, they do not need cable TV to keep internet, and you have to win people who already have a provider — versus wireless and fiber, not versus last year’s mover.
 
@@ -247,4 +270,4 @@ That is Area 1. Areas 2–6 do not rearrange if the answer is yes — they skip 
 
 ---
 
-*Draft synthesis. Sources: Team Case Brief; CHTR Ex99.1 Q1 2026 / FY2025 10-K / trending (CORE-INFORMATION); CMCSA Ex99.1 Q1 2026; Cox PR 16 May 2025; `Decisions/decisions.md`; `Analysis/ifxy-stock-signal.md`; `Analysis/customer-performance.md`; `Analysis/kishore-critical-review.md`; rural-core-conversion, cmcsa-capex, network-churn, check-in #2 canvases. Does not clobber GAP, the if-lost-to-X playbook, customer-performance, or the Kishore critique. Does not commit a new combined opportunity number.*
+*Draft synthesis. Sources: Team Case Brief; CHTR Ex99.1 Q1 2026 / FY2025 10-K / trending (CORE-INFORMATION); CMCSA Ex99.1 Q1 2026; Cox PR 16 May 2025; `Decisions/decisions.md`; `Decisions/CHURN/ifxy-stock-signal.md`; `Analysis/customer-performance.md`; `Analysis/kishore-critical-review.md`; rural-core-conversion, cmcsa-capex, network-churn, check-in #2 canvases. Does not clobber GAP, the if-lost-to-X playbook, customer-performance, or the Kishore critique. Does not commit a new combined opportunity number.*

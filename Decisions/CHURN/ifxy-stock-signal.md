@@ -3,7 +3,7 @@
 **Status:** analysis, not a buy/sell · does not fire the playbook · does not supersede GAP, the if-lost-to-X map, or customer-performance  
 **Anchor:** end Q1 2026 · Q2 labeled later public fact  
 **Frames:** Root C (the tape prices the Internet print) · CEO charge (share-price trajectory)  
-**Companion:** [chtr-ifix-y-stock-signal canvas](C:/Users/Owner/.cursor/projects/c-Users-Owner-Desktop-MAN6930-Case/canvases/chtr-ifix-y-stock-signal.canvas.tsx) · `Decisions/stock_signal_model.py`
+**Companion:** [chtr-ifix-y-stock-signal canvas](C:/Users/Owner/.cursor/projects/c-Users-Owner-Desktop-MAN6930-Case/canvases/chtr-ifix-y-stock-signal.canvas.tsx) · `Decisions/CHURN/stock_signal_model.py`
 
 ---
 

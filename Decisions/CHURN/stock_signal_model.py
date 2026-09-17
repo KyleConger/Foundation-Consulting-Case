@@ -6,10 +6,10 @@ Question: if the material leak is identified AND the matching play works,
 is the close large enough for investors to notice? Not a buy/sell. Not a
 price target.
 
-Recomputes Decisions/ifxy-stock-signal.md and the chtr-ifix-y-stock-signal
+Recomputes Decisions/CHURN/ifxy-stock-signal.md and the chtr-ifix-y-stock-signal
 canvas. Run:
 
-  python Decisions/stock_signal_model.py
+  python "Decisions/CHURN/stock_signal_model.py"
 
 Shared with network-churn / customer-performance (disclosed, not independent):
   peer net-loss rate (CMCSA domestic resid. BB), FY25 Internet $/sub,

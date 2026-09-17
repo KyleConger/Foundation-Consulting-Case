@@ -24,6 +24,24 @@ The company is not in financial distress. Owners sold the *direction*: spend wen
 
 ---
 
+## Three decision types going forward
+
+Not a new diagnosis. The GAP, playbook, and headlines below are unchanged. Going forward we break the work into three types of decisions. Breakdown files live in the folders named.
+
+| Type | Folder | What it is | Live constraint | Primary rec areas |
+|---|---|---|---|---|
+| 1. **Churn (if-lost-to-X then Y)** | [`Decisions/CHURN/`](CHURN/README.md) | G1 quarterly net-loss-by-category tracker; dormant playbook until first fill | **54k** excess unallocated; **−66k** is a *ceiling* after fill, not the plan | 1 tracker, 2 one core reason-play |
+| 2. **EH&B expansion — stop the Internet bleed** | [`Decisions/EH&B/`](EH&B/README.md) | Grow Internet on **existing homes and businesses** (plant already passed), not new rural miles | Target: Internet net adds (Root C). Rural remainder cannot close a **179k** quarterly peer gap. Cox is not the closer. | 5 Cox gate, 6 non-mover model |
+| 3. **Better utilize previous capex** | [`Decisions/IMP TO CAPEX/`](IMP%20TO%20CAPEX/README.md) | Capex productivity ($ per net Internet add); freeze evolution-as-the-play (already **+71%** rebuild); raise rural take on lit plant (**38% → 54%**) rather than more miles | Intensity **21.3%** vs Comcast C&P **10.8%**. Small-fiber is cheaper on access (**$6,400 vs $15,486**/customer) but COGS eats contribution (**−$79**/sub-year) — not a customer-performance fix unless MRC falls. | 3 capex productivity, 4 rural take |
+
+**EH&B** here means existing homes and businesses on the HFC/fiber-powered plant already built — not subsidized rural line extensions (those stay killed as the closer). Class notes and this file did not previously use “EH&B”; this is the working definition.
+
+Sequence still cheapest binary first: tracker yes/no (Type 1) before firing churn plays. Kill list unchanged: more rural miles, wait-for-2027, mobile offset, Kishore four-musts, 70M homes, empty-cell plays.
+
+The playbook section below stays in this file. Type folders hold the idea note plus dedicated memos/models — they do not replace G1–G4.
+
+---
+
 ## Why the stock fell — three causes, not one narrative
 
 ### 1. Poor capex — intensity without Internet conversion
@@ -187,6 +205,8 @@ The tracker’s unit is quarterly net loss (prefer gross adds vs disconnects). C
 ---
 
 ## DRAFT playbook — if lost to X, do Y (does not fire until tracker cells are filled)
+
+**Type 1 folder:** [`Decisions/CHURN/`](CHURN/README.md). The playbook stays here so GAP and if-lost-to-X are not orphaned.
 
 **Headline.** We **can** propose a response for each leak once the quarterly net-loss-by-category tracker exists. We **will not** fire any of those responses until the cells are filled. This section is a dormant map, not a mix we have measured. The company print remains **−120k** Internet (RETRIEVED · Ex99.1); the peer gap remains **1.8× / 54k excess** (derived · network-churn work). No cell below is the largest. Call-center codes are not the file that turns a branch on.
 
@@ -372,7 +392,7 @@ All GAP “unwilling” lines still hold. Added for this section:
 
 ## ADDENDUM — Customer performance by disclosed LOB (does not alter GAP or the playbook above)
 
-**Full memo:** `Decisions/customer-performance.md` · **Model:** `Decisions/customer_performance_model.py` · **Canvas:** `chtr-customer-performance`
+**Full memo:** `Analysis/customer-performance.md` · **Model:** `Analysis/customer_performance_model.py` · **Canvas:** `chtr-customer-performance` · LOB scorecard — not moved into `CHURN/`
 
 **Verdict.** Partially: **accurate** for net customers + revenue by disclosed LOB; **not accurate** as a churn / retention-quality analysis. Filings do not disclose gross adds vs disconnects. This addendum does not fill the empty tracker cells above and does not fire the if-lost-to-X playbook.
 
@@ -386,9 +406,9 @@ All GAP “unwilling” lines still hold. Added for this section:
 
 ## ADDENDUM — If-lost-to-X stock signal (does not alter GAP, playbook, or customer-performance)
 
-**Full memo:** `Decisions/ifxy-stock-signal.md` · **Model:** `Decisions/stock_signal_model.py` · **Canvas:** `chtr-ifix-y-stock-signal`
+**Full memo:** `Decisions/CHURN/ifxy-stock-signal.md` · **Model:** `Decisions/CHURN/stock_signal_model.py` · **Canvas:** `chtr-ifix-y-stock-signal`
 
-**Verdict.** Enough to **MATTER** vs the Q1 tape **if** the full 54k peer excess closes (next Internet print **−66k**, range −93k to −66k, 88% of the 61k YoY slope investors sold). Not enough to **RE-RATE** five-year ~80%. Half a close (−93k) still looks like Q1. −59k and zero are not playbook-claimable. $43M/yr is 3.1% of Q1 FCF $1.37B — not the cash story; capex +$456M was. Capex ~2× CMCSA C&P and rural remainder still sit. No price target.
+**Verdict.** Enough to **MATTER** vs the Q1 tape **if** the full 54k peer excess closes (next Internet print **−66k**, range −93k to −66k, 88% of the 61k YoY slope investors sold). **−66k is a ceiling after G1 fill, not the plan.** Not enough to **RE-RATE** five-year ~80%. Half a close (−93k) still looks like Q1. −59k and zero are not playbook-claimable. $43M/yr is 3.1% of Q1 FCF $1.37B — not the cash story; capex +$456M was. Capex ~2× CMCSA C&P and rural remainder still sit. No price target.
 
 **Kill.** Tracker fill shows move-out matching Comcast → playbook cannot produce a Charter-specific print the tape will pay for.
 
@@ -400,7 +420,7 @@ All GAP “unwilling” lines still hold. Added for this section:
 
 **Full memo:** `Decisions/six-recommendation-areas.md` · **Canvas:** `chtr-six-recommendation-areas`
 
-Sequence: (1) quarterly net-loss tracker, (2) one core reason-play after fill, (3) capex productivity not 2027, (4) rural take-not-miles, (5) Cox offer/brand/WTP gate, (6) non-mover video-optional model. Does not fire empty-cell plays. Does not ship Kishore four-musts, Cox 70M homes, mobile-as-must, more rural miles, or upgrade-harder.
+Sequence: (1) quarterly net-loss tracker, (2) one core reason-play after fill, (3) capex productivity not 2027, (4) rural take-not-miles, (5) Cox offer/brand/WTP gate, (6) non-mover video-optional model. Mapped onto the three types: 1–2 → `CHURN/`; 5–6 → `EH&B/`; 3–4 → `IMP TO CAPEX/`. Does not fire empty-cell plays. Does not ship Kishore four-musts, Cox 70M homes, mobile-as-must, more rural miles, or upgrade-harder.
 
 Each area is presented with a grade-6 line next to the adult action (do / targeting / funded by). Sequence, numbers, and kill list unchanged.
 
