@@ -19,7 +19,7 @@ from reportlab.platypus import (
     TableStyle,
 )
 
-OUT = Path(r"c:\Users\Owner\Desktop\MAN6930 Case\Analysis\CHTR-Relative-Performance.pdf")
+OUT = Path(r"c:\Users\Owner\Desktop\MAN6930 Case\Decisions\CHTR-Relative-Performance.pdf")
 
 # Palette (flat, print-friendly)
 RED = colors.HexColor("#C44B4B")
