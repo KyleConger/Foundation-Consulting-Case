@@ -9,7 +9,7 @@ NOT ACCURATE for: gross churn, disconnect reasons, overlap-zip losses,
   A net-add analysis is not a churn analysis.
 
 Recomputes the canvas / memo arithmetic. Run:
-  python Decisions/customer_performance_model.py
+  python Analysis/customer_performance_model.py
 """
 
 from __future__ import annotations
