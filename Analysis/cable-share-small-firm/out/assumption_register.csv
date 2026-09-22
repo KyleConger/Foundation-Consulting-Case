@@ -1,0 +1,9 @@
+line_id,item,value,origin,source,url
+A1,BDC vintage,"December 31, 2025 (D25)",RETRIEVED,"FCC National Broadband Map data download; process filing December 31, 2025; file revision 15 Sep 2026",https://broadbandmap.fcc.gov/data-download
+A2,Charter holding company / FRN / provider_id,Charter Communications / FRN 0025646373 / provider_id 130235,RETRIEVED,bdc_us_provider_list_D25_15sep2026.csv,https://broadbandmap.fcc.gov/data-download
+A3,Comcast holding company / FRN / provider_id,Comcast Corporation / FRN 0003768165 / provider_id 130317,RETRIEVED,bdc_us_provider_list_D25_15sep2026.csv,https://broadbandmap.fcc.gov/data-download
+A4,Charter national residential cable locations,33899996,RETRIEVED,bdc_us_fixed_broadband_provider_summary_D25_15sep2026.csv,https://broadbandmap.fcc.gov/data-download
+A5,Comcast national residential cable locations,37853171,RETRIEVED,bdc_us_fixed_broadband_provider_summary_D25_15sep2026.csv,https://broadbandmap.fcc.gov/data-download
+B1,State leader rule,Strictly larger res_st_pct on Fixed Broadband; missing row = absent; equal pct = tie,RETRIEVED metric + stated rule,bdc_us_provider_summary_by_geography_D25_15sep2026.csv,https://broadbandmap.fcc.gov/data-download
+B2,Estimated residential units served,round(res_st_pct × total_residential_units); same-state ranking identical to pct ranking,DERIVED from two RETRIEVED inputs,bdc_us_provider_summary_by_geography_D25_15sep2026.csv × bdc_us_fixed_broadband_summary_by_geography_D25_15sep2026.csv,https://broadbandmap.fcc.gov/data-download
+X1,What this is not,Not subscriber share. Not Form 477 subscriptions. Not SUSB employment. National 49/51 mix not allocated to states.,n/a,n/a,
