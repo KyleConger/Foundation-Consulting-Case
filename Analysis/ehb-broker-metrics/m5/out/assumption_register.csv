@@ -1,0 +1,15 @@
+line_id,item,value,origin,source
+A1,M5 definition,enrolled/covered employees whose home address passes Spectrum residential serviceability ÷ enrolled/covered employees who supply a home address,RETRIEVED,Decisions/EH&B/Brokerage Metrics.xlsx · Core metrics · M5; chtr-ehb-broker-channel-core-metrics.canvas.tsx
+A2,M5 number for any broker book,"none — no roster, no address match",BLOCKING,repo contains no employer/broker home-address file
+B1,Charter-present jurisdictions (50 states + DC),42,RETRIEVED,"FCC BDC D25 as of 2025-12-31, revision 15 Sep 2026; Analysis/cable-share-small-firm/out/chtr_vs_cmcsa_state_leads.csv; charter_present = any residential fixed-broadband filing"
+B2,Charter-absent jurisdictions,9,RETRIEVED,"same BDC file; absent = AK, AR, DC, DE, IA, ND, OK, SD, UT"
+C1,US SUSB 2022 payroll employment,135748407,RETRIEVED,U.S. Census Bureau SUSB 2022; Analysis/small-large-employment/out/us_employment_by_firm_size.csv
+C2,SUSB employment in Charter-present jurisdictions,128435628,DERIVED,"C1 geography joined to B1; workplace establishment employment, not home address"
+C3,SUSB employment in Charter-absent jurisdictions,7312779,DERIVED,C1 − C2
+C4,Share of US SUSB employment in Charter-present jurisdictions,0.94613,ESTIMATED as crude ceiling — not M5,C2 ÷ C1. Bias: workplace not home; any-presence not plant coverage; broker book ≠ national employment; intra-state plant often far below 100%
+D1,Charter estimated residential units in present jurisdictions,50939445,RETRIEVED / DERIVED in BDC build,res_st_pct × state residential fabric; Analysis/cable-share-small-firm
+D2,Residential fabric units in Charter-present jurisdictions,151719024,RETRIEVED,FCC BDC state residential fabric (total_units)
+D3,Charter location share of fabric inside the 42 present jurisdictions,0.335749,"DERIVED — plant metric, not M5","D1 ÷ D2. Homes Charter can serve among BSLs in states where it files, not employee homes."
+D4,Charter location share of all 51-jurisdiction residential fabric,0.317017,"DERIVED — plant metric, not M5",D1 ÷ sum of 51-jurisdiction fabric. Still not an employee-home rate.
+X1,Employment-weighted state location share (REFUSED as M5),0.316742,REFUSED — do not cite as serviceable-home share,"Σ (state employment × charter_res_st_pct) ÷ US employment. Shares two wrong substitutions: workplace for home, and random BSL for employee address. Computed only to document the conversion we will not ship as M5."
+X2,What this file is not,Not M5. Not TAM. Not subscriber share. Not a national serviceable-employee percent.,n/a,n/a

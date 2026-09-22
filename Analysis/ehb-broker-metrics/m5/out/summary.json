@@ -1,0 +1,57 @@
+{
+  "metric": "M5 Serviceable-home share of enrolled employees",
+  "m5_verdict_on_metric": "valid \u2014 footprint hard gate for corporate \u2192 consumer internet",
+  "m5_verdict_on_number": "cannot claim \u2014 no roster \u00d7 BSL/addressability match",
+  "m5_value": null,
+  "blocking_input": "employer or broker roster of enrolled/eligible employees with home addresses, consented, geocoded, matched to Charter residential serviceability / FCC BSL",
+  "charter_present_jurisdictions": 42,
+  "charter_absent_jurisdictions": 9,
+  "absent_names": [
+    "Alaska",
+    "Arkansas",
+    "Delaware",
+    "District of Columbia",
+    "Iowa",
+    "North Dakota",
+    "Oklahoma",
+    "South Dakota",
+    "Utah"
+  ],
+  "us_susb_employment_2022": 135748407,
+  "employment_in_present": 128435628,
+  "employment_in_absent": 7312779,
+  "share_employment_in_present": 0.9461299092813664,
+  "share_employment_in_present_rounded_pct": 94.6,
+  "share_employment_in_present_label": "ESTIMATED crude ceiling \u2014 workplace employment in states with any Charter filing; not serviceable-home share",
+  "charter_est_residential_units_in_present": 50939445,
+  "fabric_units_in_present": 151719024,
+  "fabric_units_51": 160683483,
+  "charter_location_share_of_present_fabric": 0.3357485676944508,
+  "charter_location_share_of_51_fabric": 0.3170173066263444,
+  "present_state_location_share_min": 0.0002,
+  "present_state_location_share_max": 0.9228,
+  "present_state_location_share_median": 0.2034,
+  "highest_present": {
+    "state": "Hawaii",
+    "pct": 0.9228
+  },
+  "lowest_present": {
+    "state": "Rhode Island",
+    "pct": 0.0002
+  },
+  "refused_employment_weighted_location_share": 0.31674182171213255,
+  "refused_note": "X1 is not M5 and must not be quoted as a serviceable-employee percent.",
+  "sources": {
+    "definition": "Decisions/EH&B/Brokerage Metrics.xlsx Core metrics M5",
+    "bdc": "Analysis/cable-share-small-firm/out/chtr_vs_cmcsa_state_leads.csv",
+    "susb": "Analysis/small-large-employment/out/state_employment_by_firm_size.csv",
+    "bdc_vintage": "December 31, 2025 (D25), revision 15 Sep 2026",
+    "susb_vintage": "2022 mid-March payroll employment"
+  },
+  "arithmetic_checks": {
+    "present_n_plus_absent_n": 51,
+    "present_emp_plus_absent_emp": 135748407,
+    "equals_us_emp": true,
+    "c4_recomputed": 0.9461299092813664
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "verdict": "valid-with-caveats",
+  "metric_id": "M2",
+  "definition": {
+    "numerator": "covered lives at the top N broker firms (e.g. top 5 / top 10)",
+    "denominator": "total broker-placed covered lives in the same geography (M1 / Spectrum states)",
+    "unit": "percent",
+    "gate": "Whether a few national brokers can move volume or the channel is fragmented"
+  },
+  "lives_share_pct": null,
+  "headline_proxy": {
+    "label": "PlanOptica top 10 share of US health-and-welfare Form 5500 compensation",
+    "value_pct": 44.0,
+    "unit": "percent of compensation, not lives",
+    "line_id": "B2"
+  },
+  "bi_2024": {
+    "top5_usd": 37289055284,
+    "top10_usd": 53611551395,
+    "top100_usd": 79801766514,
+    "top5_pct_of_top100": 46.73,
+    "top10_pct_of_top100": 67.18,
+    "named_marsh_aon_ajg_wtw_lockton_pct_of_top100": 44.1
+  },
+  "planoptica": {
+    "top5_pct": 28.1,
+    "top10_pct": 44.0,
+    "tail_pct": 56.0,
+    "marsh_mma_plus_mercer_pct": 12.1,
+    "named_list_pct": 32.5,
+    "broker_names_on_table": 43129,
+    "implied_universe_from_mma_share_usd": 11330985915,
+    "top10_pct_from_dollars_check": 44.3
+  },
+  "marshberry_2025_vintage": {
+    "top100_usd": 83300000000.0,
+    "top10_usd": 58500000000.0,
+    "top10_pct_stated": 70
+  },
+  "ten_k": {
+    "mmc_2024_revenue_usd": 24458000000.0,
+    "mercer_pct_of_mmc": 23.0,
+    "aon_health_solutions_2024_usd": 3335000000.0,
+    "wtw_hwc_pct": 59.0,
+    "ajg_us_mix_pct": 64.0,
+    "covered_lives_disclosed": false
+  },
+  "kff_pmpm_2024": {
+    "small_group": 29.79,
+    "large_group": 10.0
+  },
+  "unknown_remainder": [
+    "Specified covered-lives share (X1)",
+    "Brokers below BI Top 100 and personal-lines-majority firms (X2)",
+    "Spectrum-state geography (X3)",
+    "Non-filers and off-Schedule-A jumbo consulting fees (X4)",
+    "Sister-entity undercount on Form 5500 names"
+  ],
+  "changes_go_no_go": "Yes as channel architecture (few national doors vs a long tail), not as a product launch decision. The EH&B compensation proxy says top 10 hold a minority (44%) of observed compensation, so a handful of national partnerships does not cover the book. Lives share still unknown."
+}

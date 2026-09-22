@@ -1,0 +1,52 @@
+abbr,state,charter_present,leader,charter_res_st_pct,esi_persons_m_cy2023,origin_esi,origin_footprint,unit_note
+CA,California,True,Charter,0.469900,19.3,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+TX,Texas,True,Charter,0.488200,15.0,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+FL,Florida,True,Comcast,0.361500,10.3,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+NY,New York,True,Charter,0.602200,10.0,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+PA,Pennsylvania,True,Comcast,0.027700,7.5,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+IL,Illinois,True,Comcast,0.049200,7.3,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+OH,Ohio,True,Charter,0.773500,6.7,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+MI,Michigan,True,Comcast,0.259300,6.0,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+GA,Georgia,True,Comcast,0.169300,5.7,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+NJ,New Jersey,True,Comcast,0.022100,5.7,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+NC,North Carolina,True,Charter,0.789900,5.2,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+VA,Virginia,True,Comcast,0.032700,4.9,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+MA,Massachusetts,True,Comcast,0.123700,4.5,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+WA,Washington,True,Comcast,0.086100,4.5,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+TN,Tennessee,True,Comcast,0.280300,3.9,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+IN,Indiana,True,Comcast,0.210600,3.8,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+MD,Maryland,True,Comcast,0.001600,3.8,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+AZ,Arizona,True,Comcast,0.026400,3.5,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+WI,Wisconsin,True,Charter,0.745300,3.5,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+CO,Colorado,True,Comcast,0.062800,3.4,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+MN,Minnesota,True,Comcast,0.174000,3.4,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+MO,Missouri,True,Charter,0.498700,3.4,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+SC,South Carolina,True,Charter,0.598600,2.8,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+AL,Alabama,True,Charter,0.420100,2.7,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+OR,Oregon,True,Comcast,0.207400,2.3,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+CT,Connecticut,True,Comcast,0.089300,2.2,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+UT,Utah,False,Comcast,,2.2,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+KY,Kentucky,True,Charter,0.598600,2.1,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+OK,Oklahoma,False,neither present,,2.1,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+IA,Iowa,False,neither present,,1.9,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+LA,Louisiana,True,Charter,0.134900,1.9,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+KS,Kansas,True,Charter,0.199400,1.7,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+NV,Nevada,True,Charter,0.211500,1.6,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+AR,Arkansas,False,Comcast,,1.5,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+MS,Mississippi,True,Comcast,0.011000,1.3,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+NE,Nebraska,True,Charter,0.313100,1.2,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+ID,Idaho,True,Charter,0.090400,1.1,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+WV,West Virginia,True,Comcast,0.033500,0.9,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+HI,Hawaii,True,Charter,0.922800,0.8,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+ME,Maine,True,Charter,0.735800,0.8,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+NH,New Hampshire,True,Comcast,0.139000,0.8,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+NM,New Mexico,True,Comcast,0.013100,0.8,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+DE,Delaware,False,Comcast,,0.6,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+MT,Montana,True,Charter,0.544300,0.6,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+RI,Rhode Island,True,Comcast,0.000200,0.6,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+SD,South Dakota,False,neither present,,0.6,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+ND,North Dakota,False,neither present,,0.5,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+AK,Alaska,False,neither present,,0.4,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+DC,District of Columbia,False,Comcast,,0.4,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+VT,Vermont,True,Comcast,0.059000,0.4,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1
+WY,Wyoming,True,Charter,0.517200,0.3,RETRIEVED EBSA Table 1A CY2023,RETRIEVED FCC BDC D25,ESI persons by residence; not broker-placed; not M1

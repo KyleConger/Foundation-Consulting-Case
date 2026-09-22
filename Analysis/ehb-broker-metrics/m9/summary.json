@@ -1,0 +1,27 @@
+{
+  "metric_id": "M9",
+  "name": "Payor model and enrollment take-up",
+  "verdict": "needs_split",
+  "verdict_sentence": "M9 is a valid gate that two different metrics were glued into — split payor mix (employers) from enrollment take-up (eligible employees), measure both in the same pilot, and do not invent a Charter take-up rate.",
+  "charter_internet_as_benefit_sku_in_repo": false,
+  "invented_charter_takeup": false,
+  "register_source": "Decisions/EH&B/Brokerage Metrics.xlsx Core metrics row M9; canvases/chtr-ehb-broker-channel-core-metrics.canvas.tsx",
+  "recommended_ids": ["M9a", "M9b"],
+  "analogue_file": "Analysis/ehb-broker-metrics/m9/analogue_register.csv",
+  "closest_employer_paid_internet_analogue": {
+    "line_id": "D1",
+    "value_pct": 5,
+    "year": 2017,
+    "role": "employer_offer_not_takeup",
+    "source": "SHRM Customized Employee Benefits Prevalence Benchmarking Report"
+  },
+  "kff_medical_takeup_eligible_2025_pct": 76,
+  "unwilling_to_claim": [
+    "Any Charter internet-as-benefit take-up rate",
+    "That SHRM at-home equipment subsidy (55% 2025 / 53% 2026) is an internet stipend",
+    "That the 2017 5% subsidized-home-internet offer rate is 2026 prevalence or Charter take-up",
+    "A blended M9 enrolled/eligible headline across payor models",
+    "LIMRA/EY or Aflac interest rates as take-up",
+    "Stealth Agents 38% SHRM internet-specific stipend (not in SHRM primary)"
+  ]
+}
