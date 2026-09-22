@@ -26,6 +26,7 @@ from openpyxl.styles import Alignment, Border, Font, PatternFill, Protection, Si
 from openpyxl.utils import get_column_letter
 from openpyxl.workbook.defined_name import DefinedName
 from openpyxl.worksheet.datavalidation import DataValidation
+from openpyxl.worksheet.pagebreak import Break
 from openpyxl.chart.layout import Layout, ManualLayout
 from openpyxl.drawing.line import LineProperties
 from openpyxl.chart.marker import Marker
@@ -289,11 +290,37 @@ def page(ws, *, landscape=True, freeze="A6", print_area=None, tab="1F4E79"):
 
 
 def link_chart_title(chart, cell_ref: str):
+    """Point the chart title at a cell. Clear empty rich text so Excel uses strRef."""
     title = Title()
     text = Text()
     text.strRef = StrRef(cell_ref)
+    text.rich = None
     title.tx = text
     chart.title = title
+
+
+def force_str_cats(chart):
+    """Category labels are text. openpyxl often writes numRef, which Excel then blanks."""
+    for series in chart.series or []:
+        if series.cat is None or series.cat.numRef is None:
+            continue
+        formula = series.cat.numRef.f
+        series.cat.numRef = None
+        series.cat.strRef = StrRef(formula)
+
+
+def formula_balance(s: str) -> int:
+    n = 0
+    in_str = False
+    for ch in s:
+        if ch == '"':
+            in_str = not in_str
+        elif not in_str:
+            if ch == "(":
+                n += 1
+            elif ch == ")":
+                n -= 1
+    return n
 
 
 def style_series(series, hex_color: str, *, no_line=False):
@@ -314,11 +341,12 @@ def protect(ws):
 
 
 def idx_q(sheet: str, row: int) -> str:
-    """INDEX/MATCH the selected quarter from a row on a sheet with E5:P5 headers."""
-    return (
-        f'IFERROR(INDEX(\'{sheet}\'!$E${row}:$P${row},'
-        f'MATCH(Param_Quarter,\'{sheet}\'!$E$5:$P$5,0)),"")'
+    """INDEX/MATCH the selected quarter. Blank source cells stay blank (not 0)."""
+    idx = (
+        f'INDEX(\'{sheet}\'!$E${row}:$P${row},'
+        f'MATCH(Param_Quarter,\'{sheet}\'!$E$5:$P$5,0))'
     )
+    return f'IFERROR(IF(COUNTBLANK({idx})=1,"",{idx}),"")'
 
 
 # ---------------------------------------------------------------------------
@@ -363,7 +391,7 @@ def build() -> Path:
         "Param_CMCSA_On": "Parameters!$C$18",
         "Param_InputMode": "Parameters!$C$19",
         "Param_CommitExcess": "Parameters!$C$22",
-        "Dash_Print": "Dashboard!$C$8",
+        "Dash_Print": "Dashboard!$B$6",
     }
     for name, ref in names.items():
         wb.defined_names.add(DefinedName(name, attr_text=ref))
@@ -373,6 +401,10 @@ def build() -> Path:
 
     for ws in wb.worksheets:
         protect(ws)
+
+    wb.calculation.calcMode = "auto"
+    wb.calculation.fullCalcOnLoad = True
+    wb.calculation.calcOnSave = True
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     wb.save(OUT)
@@ -416,8 +448,8 @@ def build_parameters(ws):
     rows = [
         (5, "P1", "Selected quarter", "Q1 2026", "INPUT",
          "Assignment anchor is Q1 2026. Q2 is a later public fact (pptx + six-recommendation-areas)."),
-        (6, "P2", "Reason taxonomy", "PPTX 6-scenario", "INPUT",
-         "PPTX scenarios 1–6. Alternate label only — codes stay R1–R4 + satellite + residual."),
+        (6, "P2", "Reason taxonomy", "GAP R1–R4 only", "INPUT",
+         "Dashboard router is GAP R1–R4 (decisions.md / six-recommendation-areas). PPTX S1–S6 stays on the Playbook sheet as reference only."),
         (7, "P3", "Highlight color (tables)", "2E75B6", "INPUT",
          "One accent. Charts use this hex for the story series; peers stay gray."),
         (8, "P4", "Dominant-driver threshold", 0.40, "ESTIMATED",
@@ -443,9 +475,9 @@ def build_parameters(ws):
         (18, "P14", "Use Comcast benchmark?", "Yes", "INPUT",
          "Apples-to-apples is residential broadband (CHTR res. Internet vs CMCSA domestic resid. BB)."),
         (19, "P15", "Attribution input mode", "Counts", "INPUT",
-         "Counts (preferred) = sampled disconnects. Percent allocates the selected base — not a measured rate."),
-        (20, "P16", "If only % is filled, allocate against", "Disconnects (if known), else |public print|", "ESTIMATED",
-         "Playbook: do not invent a mix. Allocating the net print is a PLACEHOLDER, not a churn rate."),
+         "Counts only. Percent mode was removed — allocating |print| is not a measured mix and cannot fire a scaled play."),
+        (20, "P16", "If only % is offered", "Reject — Counts required to fire", "ESTIMATED",
+         "Do not allocate the public print as a fake mix. Paste sampled disconnect COUNTS (T3 + A1–A6)."),
         (21, "P17", "Material share of peer excess", 0.25, "ESTIMATED",
          "GAP: a branch fires only if it is largest/co-equal AND closing the Comcast gap in that cell would absorb a material share of the excess."),
         (22, "P18", "Playbook committed excess (customers)", 54000, "RETRIEVED",
@@ -474,18 +506,18 @@ def build_parameters(ws):
     put(ws, 25, 4, "GAP branch", kind="head")
     put(ws, 25, 5, "Lead play (do not fire from empty cells)", kind="head")
     play_rows = [
-        ("R-FWA", "Competitive FWA", "S1 FWA-driven", "R2",
-         "Convergence pricing / FWA-match in FWA zones; economics gate on MVNO unit cost."),
-        ("R-FIB", "Competitive fiber (overbuild)", "S2 Fiber-driven", "R3",
-         "Re-sequence DOCSIS 4.0 by exposure + symmetric win-back. Node-split only if sample names speed."),
-        ("R-SAT", "LEO satellite", "S3 Satellite-driven", "W2 overlay",
-         "Accelerate rural subsidized activation ahead of Starlink/Kuiper. Honor RDOF/BEAD."),
-        ("R-MOV", "Move-out / housing", "S4 Housing-driven", "R1",
-         "Mover capture: Community Solutions / MDU / instant-on. Not a save-offer problem."),
-        ("R-NPY", "Non-pay / economic", "S5 Non-pay", "R4",
-         "Payment arrangement / value tier at delinquency. Funded by care opex if this is the leak."),
+        ("R-FWA", "Competitive FWA", "S1 FWA-driven (ref)", "R2",
+         "GAP: 12-month rate-lock on and off overlap; hand on-overlap FWA to fiber if it is a stepping-stone."),
+        ("R-FIB", "Competitive fiber (overbuild)", "S2 Fiber-driven (ref)", "R3",
+         "GAP: overlap-zip gig/symmetry; node-split only if the sample names speed. Off-overlap is the wrong play (W4)."),
+        ("R-SAT", "LEO satellite", "S3 Satellite-driven (ref)", "W2 overlay",
+         "Not a GAP spend program this quarter. WHERE overlay only — do not fire as R1–R4."),
+        ("R-MOV", "Move-out / housing", "S4 Housing-driven (ref)", "R1",
+         "GAP: TOS/MDU / instant-on for 6 months. Cheaper lever first. Not a save-offer problem."),
+        ("R-NPY", "Non-pay / economic", "S5 Non-pay (ref)", "R4",
+         "GAP: payment arrangement / 90-day first-bill save. Funded by care opex if this is the leak."),
         ("R-OTH", "Service / other", "Residual", "—",
-         "Unmapped residual. If this is largest, the sample is incomplete — do not fire a plant program."),
+         "Unmapped residual. If this is largest or ≥2% of base, HOLD — do not fire a plant program."),
     ]
     for i, (code, name, sc, gap, play) in enumerate(play_rows):
         r = 26 + i
@@ -504,9 +536,8 @@ def build_parameters(ws):
     put(ws, 34, 3, "Yes — skip Area 1 build", kind="label")
     put(ws, 35, 3, "No — fill G1 first", kind="label")
     put(ws, 34, 4, "Counts", kind="label")
-    put(ws, 35, 4, "Percent", kind="label")
-    put(ws, 34, 5, "PPTX 6-scenario", kind="label")
-    put(ws, 35, 5, "GAP R1–R4 only", kind="label")
+    put(ws, 34, 5, "GAP R1–R4 only", kind="label")
+    put(ws, 35, 5, "PPTX 6-scenario (Playbook ref only)", kind="label")
 
     dv_q = DataValidation(type="list", formula1="$A$34:$A$45", allow_blank=False)
     dv_q.add("C5")
@@ -518,7 +549,7 @@ def build_parameters(ws):
     dv_yn.add("C16")
     dv_yn.add("C18")
     ws.add_data_validation(dv_yn)
-    dv_mode = DataValidation(type="list", formula1="$D$34:$D$35", allow_blank=False)
+    dv_mode = DataValidation(type="list", formula1="$D$34:$D$34", allow_blank=False)
     dv_mode.add("C19")
     ws.add_data_validation(dv_mode)
     dv_tax = DataValidation(type="list", formula1="$E$34:$E$35", allow_blank=False)
@@ -543,8 +574,8 @@ def build_parameters(ws):
 # ---------------------------------------------------------------------------
 
 def build_tracker(ws):
-    page(ws, freeze="E6", print_area="A1:P32", tab="FFFF00")
-    ws.auto_filter.ref = "A5:P20"
+    page(ws, freeze="E6", print_area="A1:P22", tab="FFFF00")
+    ws.auto_filter.ref = "A5:P22"
     widths = {"A": 8, "B": 46, "C": 14, "D": 38}
     for col, w in widths.items():
         ws.column_dimensions[col].width = w
@@ -734,12 +765,31 @@ def build_tracker(ws):
 
     # hide engine rows from print by keeping them below print_area; leave visible for audit
     put(ws, 50, 1,
-        "Engine rows 32–48 feed the Dashboard. Q3–Q4 2026 begin/print stay blank until Ex99.1 or internals exist.",
+        "Engine rows 32–48 feed the Dashboard KPIs. Rows 53–54 are the line-chart feed (NA() = gap, not a zero). "
+        "Q3–Q4 2026 begin/print stay blank until Ex99.1 or internals exist.",
         kind="note")
     merge(ws, 50, 1, 50, 8)
 
+    put(ws, 52, 1, "DASHBOARD LINE-CHART FEED (NA gaps — do not edit)", kind="sec")
+    merge(ws, 52, 1, 52, 4)
+    put(ws, 53, 1, "CHTR plot", kind="label")
+    put(ws, 53, 4, "CHTR res. Internet", kind="label", bold=True)
+    put(ws, 54, 1, "CMCSA plot", kind="label")
+    put(ws, 54, 4, "CMCSA resid. BB", kind="label")
+    for i in range(N_Q):
+        L = qletter(i)
+        put(ws, 53, qcol(i), f'IF({L}11="",NA(),{L}11)', kind="calc", fmt=NUM)
+        put(ws, 54, qcol(i), f'IF({L}14="",NA(),{L}14)', kind="calc", fmt=NUM)
+
+    put(ws, 56, 1, "Overlap flag (both T6 and T9 filled)", kind="label")
+    for i in range(N_Q):
+        L = qletter(i)
+        put(ws, 56, qcol(i),
+            f'IF(AND({L}11<>"",{L}14<>""),1,0)',
+            kind="calc")
+
     ws.row_dimensions[5].height = 22
-    ws.auto_filter.ref = "A5:P5"
+    ws.auto_filter.ref = "A5:P22"
 
 
 # ---------------------------------------------------------------------------
@@ -747,7 +797,7 @@ def build_tracker(ws):
 # ---------------------------------------------------------------------------
 
 def build_attribution(ws):
-    page(ws, freeze="E6", print_area="A1:P36", tab="FFFF00")
+    page(ws, freeze="E6", print_area="A1:P16", tab="FFFF00")
     ws.column_dimensions["A"].width = 8
     ws.column_dimensions["B"].width = 36
     ws.column_dimensions["C"].width = 14
@@ -761,9 +811,8 @@ def build_attribution(ws):
         ws,
         2,
         1,
-        "PPTX cause-cohorts: FWA-covered · fiber-overbuilt · satellite-only · housing/move-out · non-pay · residual. "
-        "GAP R1–R4 maps onto the same rows (satellite is pptx-only). "
-        "Enter COUNTS of sampled disconnects (yellow). Residual is a formula. "
+        "Paste COUNTS of sampled disconnects in yellow (start cell E6). Residual is a formula. "
+        "Dashboard fires GAP R1–R4 from A1–A6 only. Residual cannot win rank or fire a play. "
         "Empty cells are on purpose — the playbook will not fire from a guess.",
         kind="note",
     )
@@ -778,7 +827,7 @@ def build_attribution(ws):
         put(ws, 5, qcol(i), q, kind="head")
 
     # Rows 6-11 reason INPUT counts; 12 residual; 13 sum; 14 tracker disconnects; 15 mix check
-    gap_tag = ["S1 / R2", "S2 / R3", "S3 / W2", "S4 / R1", "S5 / R4", "Residual"]
+    gap_tag = ["GAP R2", "GAP R3", "W2 overlay", "GAP R1", "GAP R4", "FLAG only"]
     for i, (name, tag) in enumerate(zip(REASONS, gap_tag)):
         r = 6 + i
         put(ws, r, 1, f"A{i+1}", kind="label", bold=True)
@@ -807,29 +856,26 @@ def build_attribution(ws):
         put(ws, 13, qcol(j), f'IF(COUNT({L}6:{L}11)=0,"",SUM({L}6:{L}11))', kind="calc", fmt=NUM)
 
     put(ws, 14, 1, "A9", kind="label", bold=True)
-    put(ws, 14, 2, "Tracker disconnects (T3) — or |print| placeholder", kind="label")
+    put(ws, 14, 2, "Tracker disconnects (T3) — Counts base; blank until T3 is pasted", kind="label")
     put(ws, 14, 3, "DERIVED", kind="label")
-    put(ws, 14, 4, "If T3 blank and mode is Percent, uses |T6| and labels PLACEHOLDER", kind="note")
+    put(ws, 14, 4, "Percent / |print| allocation removed — cannot fire a scaled play", kind="note")
     for j in range(N_Q):
         L = qletter(j)
-        # Pull T3 and T6 from tracker same column
         put(ws, 14, qcol(j),
-            f'IF(\'Net-loss tracker\'!{L}8<>"",\'Net-loss tracker\'!{L}8,'
-            f'IF(AND(Parameters!$C$19="Percent",\'Net-loss tracker\'!{L}11<>""),'
-            f'ABS(\'Net-loss tracker\'!{L}11),""))',
+            f'IF(\'Net-loss tracker\'!{L}8<>"",\'Net-loss tracker\'!{L}8,"")',
             kind="calc", fmt=NUM)
 
     put(ws, 15, 1, "A10", kind="label", bold=True)
     put(ws, 15, 2, "Mix status", kind="label")
     put(ws, 15, 3, "DERIVED", kind="label")
-    put(ws, 15, 4, "Empty until a reason or residual exists", kind="note")
+    put(ws, 15, 4, "HOLD if residual is largest or ≥2% of T3", kind="note")
     for j in range(N_Q):
         L = qletter(j)
         put(ws, 15, qcol(j),
             f'IF(AND(COUNT({L}6:{L}11)=0,{L}14=""),"EMPTY — do not fire a play",'
             f'IF(\'Net-loss tracker\'!{L}8="",'
-            f'"PLACEHOLDER — allocating |print|, not a churn mix",'
-            f'IF(ABS(N({L}12))>0.02*MAX(1,N({L}14)),"FLAG — residual is material","OK — reasons reconcile")))',
+            f'"HOLD — T3 disconnects required (Counts). |print| is not a mix",'
+            f'IF(ABS(N({L}12))>0.02*MAX(1,N({L}14)),"FLAG — residual is material — HOLD","OK — reasons reconcile")))',
             kind="calc")
 
     # % of disconnects
@@ -899,48 +945,72 @@ def build_attribution(ws):
         put(ws, r, 4, f'IF(OR(C{r}="",$C$47="",$C$47=0),"",C{r}/$C$47)', kind="calc", fmt=PCT)
         put(ws, r, 5, f'IF(C{r}="","",-C{r})', kind="calc", fmt=NUM)
         put(ws, r, 6, f'IF(C{r}="",0,ABS(C{r}))', kind="calc", fmt=NUM)
-        put(ws, r, 7, f'IF(SUM($F$40:$F$46)=0,"",RANK(F{r},$F$40:$F$46,0))', kind="calc")
-        put(ws, r, 8, f'IF(G{r}=1,"LARGEST","")', kind="calc")
-        put(ws, r, 9, f'IF(G{r}=1,0,IF(C{r}="",NA(),C{r}))', kind="calc", fmt=NUM)
-        put(ws, r, 10, f'IF(G{r}=1,IF(C{r}="",NA(),C{r}),0)', kind="calc", fmt=NUM)
+        if i < 6:
+            put(ws, r, 7, f'IF(SUM($F$40:$F$45)=0,"",RANK(F{r},$F$40:$F$45,0))', kind="calc")
+            put(ws, r, 8, f'IF(G{r}=1,"LARGEST","")', kind="calc")
+            put(ws, r, 9, f'IF($C$49<>"Yes",NA(),IF(G{r}=1,0,IF(C{r}="",NA(),C{r})))', kind="calc", fmt=NUM)
+            put(ws, r, 10, f'IF($C$49<>"Yes",NA(),IF(G{r}=1,IF(C{r}="",NA(),C{r}),0))', kind="calc", fmt=NUM)
+        else:
+            put(ws, r, 7, "n/a", kind="calc")
+            put(ws, r, 8, "FLAG only — cannot fire", kind="calc")
+            put(ws, r, 9, "=NA()", kind="calc", fmt=NUM)
+            put(ws, r, 10, "=NA()", kind="calc", fmt=NUM)
 
     put(ws, 47, 1, "Base", kind="label", bold=True)
-    put(ws, 47, 2, "Disconnects / allocation base", kind="label")
+    put(ws, 47, 2, "Disconnects / allocation base (T3 only)", kind="label")
     put(ws, 47, 3, f"={idx_q('Attribution', 14)}", kind="calc", fmt=NUM)
     put(ws, 48, 1, "Max share", kind="label", bold=True)
-    put(ws, 48, 2, "Largest reason share of base", kind="label")
-    put(ws, 48, 3, "=IF(COUNT(D40:D46)=0,\"\",MAX(D40:D46))", kind="calc", fmt=PCT)
-    put(ws, 48, 4, "=IF(C48=\"\",\"\",INDEX(B40:B46,MATCH(C48,D40:D46,0)))", kind="calc")
+    put(ws, 48, 2, "Largest A1–A6 share of base (residual excluded)", kind="label")
+    put(ws, 48, 3, "=IF(COUNT(D40:D45)=0,\"\",MAX(D40:D45))", kind="calc", fmt=PCT)
+    put(ws, 48, 4, "=IF(C48=\"\",\"\",INDEX(B40:B45,MATCH(C48,D40:D45,0)))", kind="calc")
     put(ws, 49, 1, "Entered?", kind="label", bold=True)
-    put(ws, 49, 2, "Any reason count filled this quarter?", kind="label")
-    put(ws, 49, 3, "=IF(COUNT(C40:C45)=0,\"No\",\"Yes\")", kind="calc")
+    put(ws, 49, 2, "A1–A6 counts in selected quarter AND T3 filled?", kind="label")
+    put(ws, 49, 3,
+        '=IFERROR(IF(OR(COUNT(INDEX($E$6:$P$11,0,MATCH(Param_Quarter,$E$5:$P$5,0)))=0,'
+        'COUNTBLANK(INDEX($E$14:$P$14,MATCH(Param_Quarter,$E$5:$P$5,0)))=1),'
+        '"No","Yes"),"No")',
+        kind="calc")
     put(ws, 50, 1, "Second share", kind="label")
-    put(ws, 50, 2, "2nd-largest share (mixed test)", kind="label")
-    put(ws, 50, 3, "=IF(COUNT(D40:D46)<2,\"\",LARGE(D40:D46,2))", kind="calc", fmt=PCT)
+    put(ws, 50, 2, "2nd-largest A1–A6 share (mixed test)", kind="label")
+    put(ws, 50, 3, "=IF(COUNT(D40:D45)<2,\"\",LARGE(D40:D45,2))", kind="calc", fmt=PCT)
+    put(ws, 51, 1, "Residual gate", kind="label", bold=True)
+    put(ws, 51, 2, "HOLD if residual is largest vs A1–A6 or ≥2% of T3", kind="label")
+    put(ws, 51, 3,
+        '=IF(OR(C49<>"Yes",C47=""),"",'
+        'IF(OR(N(C46)>=0.02*MAX(1,N(C47)),AND(COUNT(D40:D45)>0,N(D46)>=MAX(D40:D45))),'
+        '"HOLD","OK"))',
+        kind="calc")
+    put(ws, 52, 1, "Prior max", kind="label")
+    put(ws, 52, 2, "Prior-quarter max A1–A6 share (two-quarter interlock)", kind="label")
+    put(ws, 52, 3,
+        '=IFERROR(IF(MATCH(Param_Quarter,$E$5:$P$5,0)=1,"",'
+        'IF(COUNT(INDEX($E$19:$P$24,0,MATCH(Param_Quarter,$E$5:$P$5,0)-1))=0,"",'
+        'MAX(INDEX($E$19:$P$24,0,MATCH(Param_Quarter,$E$5:$P$5,0)-1)))),"")',
+        kind="calc", fmt=PCT)
 
-    # Sorted view for chart categories (rank 1..7)
-    put(ws, 52, 1, "SORTED FOR CHART (magnitude descending)", kind="sec")
-    merge(ws, 52, 1, 52, 6)
-    put(ws, 53, 1, "Rank", kind="head")
-    put(ws, 53, 2, "Reason", kind="head")
-    put(ws, 53, 3, "Count", kind="head")
-    put(ws, 53, 4, "Share", kind="head")
-    put(ws, 53, 5, "Rest (gray)", kind="head")
-    put(ws, 53, 6, "Largest (accent)", kind="head")
-    for k in range(7):
-        r = 54 + k
+    # Sorted view for chart — A1–A6 only (residual never a story bar)
+    put(ws, 54, 1, "SORTED FOR CHART (A1–A6 only, magnitude descending)", kind="sec")
+    merge(ws, 54, 1, 54, 6)
+    put(ws, 55, 1, "Rank", kind="head")
+    put(ws, 55, 2, "Reason", kind="head")
+    put(ws, 55, 3, "Count", kind="head")
+    put(ws, 55, 4, "Share", kind="head")
+    put(ws, 55, 5, "Rest (gray)", kind="head")
+    put(ws, 55, 6, "Largest (accent)", kind="head")
+    for k in range(6):
+        r = 56 + k
         put(ws, r, 1, k + 1, kind="label")
         put(ws, r, 2,
-            f'=IF($C$49="No","",IFERROR(INDEX($B$40:$B$46,MATCH({k+1},$G$40:$G$46,0)),""))',
+            f'=IF($C$49<>"Yes",NA(),IFERROR(INDEX($B$40:$B$45,MATCH({k+1},$G$40:$G$45,0)),NA()))',
             kind="calc")
         put(ws, r, 3,
-            f'=IF(B{r}="","",IFERROR(INDEX($C$40:$C$46,MATCH({k+1},$G$40:$G$46,0)),""))',
+            f'=IF($C$49<>"Yes",NA(),IFERROR(INDEX($C$40:$C$45,MATCH({k+1},$G$40:$G$45,0)),NA()))',
             kind="calc", fmt=NUM)
         put(ws, r, 4,
-            f'=IF(B{r}="","",IFERROR(INDEX($D$40:$D$46,MATCH({k+1},$G$40:$G$46,0)),""))',
+            f'=IF($C$49<>"Yes",NA(),IFERROR(INDEX($D$40:$D$45,MATCH({k+1},$G$40:$G$45,0)),NA()))',
             kind="calc", fmt=PCT)
-        put(ws, r, 5, f'=IF(OR(B{r}="",C{r}=""),NA(),IF(A{r}=1,0,C{r}))', kind="calc", fmt=NUM)
-        put(ws, r, 6, f'=IF(OR(B{r}="",C{r}=""),NA(),IF(A{r}=1,C{r},0))', kind="calc", fmt=NUM)
+        put(ws, r, 5, f'=IF($C$49<>"Yes",NA(),IF(A{r}=1,0,C{r}))', kind="calc", fmt=NUM)
+        put(ws, r, 6, f'=IF($C$49<>"Yes",NA(),IF(A{r}=1,C{r},0))', kind="calc", fmt=NUM)
 
     # Exposure class (pptx sensor)
     put(ws, 63, 1, "EXPOSURE CLASS · pptx sensor (fiber-overbuilt / FWA / satellite-only / uncontested)", kind="sec")
@@ -1020,7 +1090,7 @@ def build_attribution(ws):
 # ---------------------------------------------------------------------------
 
 def build_segments(ws):
-    page(ws, freeze="E6", print_area="A1:P28", tab="FFFF00")
+    page(ws, freeze="E6", print_area="A1:P43", tab="FFFF00")
     ws.column_dimensions["A"].width = 8
     ws.column_dimensions["B"].width = 32
     ws.column_dimensions["C"].width = 14
@@ -1253,40 +1323,40 @@ def build_segments(ws):
 # ---------------------------------------------------------------------------
 
 def build_dashboard(ws, wb):
-    page(ws, freeze="A5", print_area="A1:N58", tab="1F4E79")
-    ws.page_setup.fitToHeight = 1
-    ws.print_title_rows = "1:4"
+    # Freeze title + paste banner only. Exhibit print is diagnosis + one chart.
+    page(ws, freeze="A4", print_area="A1:N46", tab="1F4E79")
+    ws.page_setup.fitToHeight = 0
+    ws.print_title_rows = "1:3"
+    ws.row_breaks.append(Break(id=28))
     for col, w in {
-        "A": 3, "B": 28, "C": 16, "D": 16, "E": 16, "F": 16,
+        "A": 3, "B": 32, "C": 16, "D": 16, "E": 16, "F": 16,
         "G": 16, "H": 16, "I": 14, "J": 14, "K": 14, "L": 14, "M": 14, "N": 18,
     }.items():
         ws.column_dimensions[col].width = w
 
     put(ws, 1, 2, "CHARTER REC 1  ·  ATTRIBUTION DIAGNOSTIC", kind="title")
-    merge(ws, 1, 2, 1, 10)
-    # Formula-driven takeaway title (the claim)
+    merge(ws, 1, 2, 1, 13)
     put(
         ws,
         2,
         2,
-        '=IF(C15="","Fill the quarterly net-loss tracker first — attribution cells are empty on purpose.",C15)',
+        '=IF(C15="","Public prints are retrieved. Attribution / disconnect sample is empty — the playbook does not fire.",C15)',
         kind="h2",
     )
     merge(ws, 2, 2, 2, 13)
-    ws.row_dimensions[2].height = 28
+    ws.row_dimensions[2].height = 36
     put(
         ws,
         3,
         2,
-        '=CONCATENATE("Selected: ",Parameters!C5,"   ·   Units: residential Internet customers   ·   "'
-        '&"Yellow INPUT on Net-loss tracker / Attribution / Segments   ·   "'
-        '&"Public spine: Ex99.1 Q1 2026 res. Internet −117,000 · Q2 2026 −166,000 (RETRIEVED)   ·   "'
-        '&"Template — not a filled mix")',
+        "This sheet is OUTPUT (locked). Paste yellow INPUT on: Net-loss tracker E7 (T2 gross) / E8 (T3 disconnects); "
+        "Attribution E6 (A1–A6 counts); Segments E7 (WHERE). Public spine: Q1 2026 res. Internet -117,000 · Q2 2026 -166,000 "
+        "(RETRIEVED). GAP R1–R4 fires only from sampled COUNTS — not from |print|.",
         kind="note",
     )
     merge(ws, 3, 2, 3, 13)
     ws.row_dimensions[1].height = 24
-    ws.row_dimensions[3].height = 18
+    ws.row_dimensions[3].height = 36
 
     # KPI cards
     cards = [
@@ -1297,11 +1367,14 @@ def build_dashboard(ws, wb):
          '=IF(OR(Parameters!C18="No",\'Net-loss tracker\'!B40=""),"n/a",\'Net-loss tracker\'!B40)',
          NUM, '="CMCSA resid. BB"'),
         (5, 8, "Excess vs peer rate",
-         '=IF(OR(Parameters!C18="No",\'Net-loss tracker\'!B46=""),"n/a",\'Net-loss tracker\'!B46)',
-         NUM, '="Q1 playbook commit 54k"'),
-        (5, 11, "Largest reason",
-         '=IF(Attribution!C49="No","EMPTY",Attribution!D48)',
-         None, '=IF(Attribution!C49="No","do not fire a play",TEXT(Attribution!C48,"0% of disconnects"))'),
+         '=IF(Parameters!C18="No","n/a",IF(Parameters!C5="Q1 2026",Parameters!C22,'
+         'IF(\'Net-loss tracker\'!B46="","n/a",\'Net-loss tracker\'!B46)))',
+         NUM, '="unallocated until first fill — not a cell in the mix"'),
+        (5, 11, "Largest mapped reason",
+         '=IF(OR(Attribution!C49<>"Yes",Attribution!C48=""),"EMPTY",'
+         'IF(Attribution!C51="HOLD","HOLD — residual",Attribution!D48))',
+         None, '=IF(OR(Attribution!C49<>"Yes",Attribution!C48=""),"do not fire a play",'
+         'IF(Attribution!C51="HOLD","sample incomplete",TEXT(Attribution!C48,"0% of T3")))'),
     ]
     for r, c, title, val, fmt, sub in cards:
         put(ws, r, c, title, kind="label")
@@ -1325,19 +1398,23 @@ def build_dashboard(ws, wb):
         (11, "G1 tracker",
          '=Parameters!C17',
          '=IF(LEFT(Parameters!C17,3)="Yes","SKIP BUILD","FILL FIRST")'),
-        (12, "Dominant driver (pptx >= P4)",
-         '=IF(Attribution!C49="No","EMPTY — no reason fill",'
+        (12, "Dominant mapped driver (A1–A6 only)",
+         '=IF(OR(Attribution!C49<>"Yes",Attribution!C48=""),"EMPTY — no sampled mix",'
+         'IF(Attribution!C51="HOLD","HOLD — residual is largest or material. Sample incomplete.",'
          'IF(Attribution!C48>=Parameters!C8,'
          '"DOMINANT — "&Attribution!D48&" holds "&TEXT(Attribution!C48,"0%")&" (>= "&TEXT(Parameters!C8,"0%")&")",'
          'IF(Attribution!C48>=Parameters!C9,'
-         '"MIXED — largest is "&TEXT(Attribution!C48,"0%")&" (25-40% band). Run top two as experiments.",'
-         '"NULL — no cohort >= "&TEXT(Parameters!C9,"0%")&". Scenario 6 fires.")))',
-         '=IF(Attribution!C49="No","EMPTY",'
-         'IF(Attribution!C48>=Parameters!C8,"RED — fire one play",'
-         'IF(Attribution!C48>=Parameters!C9,"AMBER — experiment","GREEN — null / S6")))'),
-        (13, "Scenario routed",
+         '"MIXED — largest is "&TEXT(Attribution!C48,"0%")&". Run top two as experiments.",'
+         '"NULL — no GAP branch >= "&TEXT(Parameters!C9,"0%")&"."))))',
+         '=IF(OR(Attribution!C49<>"Yes",Attribution!C48=""),"EMPTY",'
+         'IF(Attribution!C51="HOLD","HOLD — residual",'
+         'IF(AND(Attribution!C48>=Parameters!C8,N(Attribution!C52)>=Parameters!C8,Parameters!C16="Yes"),'
+         '"RED — full-scale armed",'
+         'IF(Attribution!C48>=Parameters!C8,"AMBER — experiment only",'
+         'IF(Attribution!C48>=Parameters!C9,"AMBER — mixed experiment","GREEN — no branch")))))'),
+        (13, "GAP branch routed",
          "=C16",
-         '=IF(Attribution!C49="No","HOLD","SEE PLAYBOOK")'),
+         '=IF(OR(Attribution!C49<>"Yes",Attribution!C48="",Attribution!C51="HOLD"),"HOLD","SEE R1–R4")'),
         (14, "WHERE / WHO flag",
          "=Segments!C78",
          '=IF(LEFT(Segments!C78,5)="EMPTY","EMPTY","READ")'),
@@ -1348,23 +1425,29 @@ def build_dashboard(ws, wb):
         merge(ws, r, 3, r, 10)
         put(ws, r, 11, light, kind="calc", bold=True, align=center)
         merge(ws, r, 11, r, 13)
-        ws.row_dimensions[r].height = 22
+        ws.row_dimensions[r].height = 28
 
     put(ws, 15, 2, "Takeaway (engine)", kind="label")
     put(
         ws,
         15,
         3,
-        '=IF(Attribution!C49="No",'
-        '"Fill the quarterly net-loss tracker first — attribution cells are empty on purpose.",'
+        '=IF(OR(Attribution!C49<>"Yes",Attribution!C48=""),'
+        '"Public prints are retrieved. Attribution / disconnect sample is empty — the playbook does not fire.",'
+        'IF(Attribution!C51="HOLD",'
+        '"Sample incomplete — residual is largest or material (≥2% of T3). Do not fire a reason play.",'
         'IF(Attribution!C48>=Parameters!C8,'
-        'Attribution!D48&" accounts for "&TEXT(Attribution!C48,"0%")&" of disconnects — above the "'
-        '&TEXT(Parameters!C8,"0%")&" dominant-driver gate. Fire that one play on the core.",'
+        'Attribution!D48&" accounts for "&TEXT(Attribution!C48,"0%")&" of sampled disconnects — above the "'
+        '&TEXT(Parameters!C8,"0%")&" dominant-driver gate."&'
+        'IF(LEFT(Segments!C79,4)="Core"," Fire that GAP branch on the core — do not add rural miles.",'
+        'IF(LEFT(Segments!C79,5)="Rural"," Fire on rural Internet already passed — not more miles (W2).",'
+        'IF(LEFT(Segments!C79,5)="EMPTY"," WHERE untested — do not pick miles vs core yet.",'
+        '" Read F2 before picking geography."))),'
         'IF(Attribution!C48>=Parameters!C9,'
         '"Mixed picture: "&Attribution!D48&" is largest at "&TEXT(Attribution!C48,"0%")'
         '&" but below "&TEXT(Parameters!C8,"0%")&". Run the top two as controlled experiments.",'
-        '"No dominant driver — no cohort reaches "&TEXT(Parameters!C9,"0%")'
-        '&" of disconnects. Scenario 6 (null) is the recommendation, not a guess.")))',
+        '"No GAP branch reaches "&TEXT(Parameters!C9,"0%")'
+        '&" of disconnects. Disclose and experiment — do not fire an expensive lever."))))',
         kind="calc",
     )
     merge(ws, 15, 3, 15, 13)
@@ -1375,154 +1458,146 @@ def build_dashboard(ws, wb):
         ws,
         16,
         3,
-        '=IF(Attribution!C49="No","HOLD — empty cells. The playbook does not fire.",'
-        'IF(AND(INDEX(Attribution!D40:D45,1)>=Parameters!C10,N(Segments!D71)>=0.3),'
-        '"S1 FWA-driven — convergence pricing in FWA zones (kill: no churn split in 2 qtrs / negative bundle margin)",'
-        'IF(INDEX(Attribution!D40:D45,2)>=Parameters!C11,'
-        '"S2 Fiber-driven — re-sequence evolution on overlap + symmetric win-back (kill: completed zones bleed at same rate)",'
-        'IF(INDEX(Attribution!D40:D45,3)>=Parameters!C12,'
-        '"S3 Satellite-driven — accelerate rural activation (kill: new-passing penetration below underwriting)",'
-        'IF(INDEX(Attribution!D40:D45,4)>=Parameters!C9,'
-        '"S4 Housing / move-out — mover capture, not a save-offer (kill: port-out data contradicts the macro story)",'
-        'IF(INDEX(Attribution!D40:D45,5)>=Parameters!C9,'
-        '"S5 Non-pay — value tier at delinquency (kill: save-rate economics below LTV)",'
+        '=IF(OR(Attribution!C49<>"Yes",Attribution!C48="",Attribution!C51="HOLD"),'
+        '"HOLD — empty or incomplete sample. GAP R1–R4 does not fire.",'
+        'IF(Attribution!D48=Parameters!B29,'
+        '"R1 Move-out — TOS/MDU / instant-on for 6 months. Cheaper lever first. Not a save-offer.",'
+        'IF(Attribution!D48=Parameters!B26,'
+        '"R2 FWA — 12-month rate-lock on and off overlap; hand on-overlap FWA to fiber if it is a stepping-stone.",'
+        'IF(AND(Attribution!D48=Parameters!B27,N(Segments!D55)+N(Segments!D56)>=0.5),'
+        '"R3 Fiber — overlap zips concentrate losses. Gig/symmetry there; node-split only if the sample names speed.",'
+        'IF(Attribution!D48=Parameters!B27,'
+        '"R3 Fiber — overlap WHERE untested or rest-of-footprint. Do not fire company-wide rebuild off-overlap (W4).",'
+        'IF(Attribution!D48=Parameters!B30,'
+        '"R4 Nonpay — payment arrangement / 90-day first-bill save.",'
+        'IF(Attribution!D48=Parameters!B28,'
+        '"HOLD — satellite is a WHERE overlay (W2), not a GAP spend program.",'
         'IF(Attribution!C48<Parameters!C9,'
-        '"S6 Null — no dominant driver. Market-layer disclosure + spend-capped experiments.",'
-        '"Largest cell is "&Attribution!D48&" — apply the matching lead play; do not fire two expensive levers."))))))',
+        '"No GAP branch clears the mixed floor. Disclose and experiment; do not fire an expensive lever.",'
+        '"Largest mapped cell is "&Attribution!D48&" — that GAP branch only; never two expensive levers."))))))))',
         kind="calc",
     )
     merge(ws, 16, 3, 16, 13)
     ws.row_dimensions[16].hidden = True
 
     put(ws, 18, 2,
-        '=IF(Attribution!C49="No",'
-        '"Reason contribution is empty — fill Attribution before this chart can make a claim",'
-        '"Largest leak is "&Attribution!D48&" at "&TEXT(Attribution!C48,"0%")'
-        '&" of sampled disconnects  ·  gray = the rest  ·  accent = the story bar")',
+        '=IF(OR(Attribution!C49<>"Yes",Attribution!C48=""),'
+        '"No reason chart until a sampled mix and T3 base exist (empty is not seven zeros)",'
+        'IF(Attribution!C51="HOLD",'
+        '"HOLD — residual is material. Bars omitted until the sample reconciles.",'
+        '"Largest mapped leak is "&Attribution!D48&" at "&TEXT(Attribution!C48,"0%")'
+        '&" of T3  ·  gray = the rest  ·  accent = the story bar"))',
         kind="h2")
     merge(ws, 18, 2, 18, 13)
     ws.row_dimensions[18].height = 22
 
-    put(ws, 19, 2, "Reason (sorted)", kind="head")
+    put(ws, 19, 2, "Reason (A1–A6 sorted)", kind="head")
     put(ws, 19, 3, "Disconnects", kind="head")
     put(ws, 19, 4, "Share", kind="head")
     put(ws, 19, 5, "Rest", kind="head")
     put(ws, 19, 6, "Largest", kind="head")
-    for i in range(7):
+    for i in range(6):
         r = 20 + i
-        put(ws, r, 2, f"=Attribution!B{54+i}", kind="calc")
-        put(ws, r, 3, f"=Attribution!C{54+i}", kind="calc", fmt=NUM)
-        put(ws, r, 4, f"=Attribution!D{54+i}", kind="calc", fmt=PCT)
-        put(ws, r, 5, f"=Attribution!E{54+i}", kind="calc", fmt=NUM)
-        put(ws, r, 6, f"=Attribution!F{54+i}", kind="calc", fmt=NUM)
+        put(ws, r, 2, f'=IF(OR(Attribution!C49<>"Yes",Attribution!C48=""),NA(),Attribution!B{56+i})', kind="calc")
+        put(ws, r, 3, f'=IF(OR(Attribution!C49<>"Yes",Attribution!C48=""),NA(),Attribution!C{56+i})', kind="calc", fmt=NUM)
+        put(ws, r, 4, f'=IF(OR(Attribution!C49<>"Yes",Attribution!C48=""),NA(),Attribution!D{56+i})', kind="calc", fmt=PCT)
+        put(ws, r, 5, f'=IF(OR(Attribution!C49<>"Yes",Attribution!C48=""),NA(),Attribution!E{56+i})', kind="calc", fmt=NUM)
+        put(ws, r, 6, f'=IF(OR(Attribution!C49<>"Yes",Attribution!C48=""),NA(),Attribution!F{56+i})', kind="calc", fmt=NUM)
 
-    put(ws, 27, 2,
-        "Source: Attribution A1-A7 (user-entered counts) · Residual is derived · "
-        "Bars begin at zero · One accent (largest) vs gray · Not a pie",
+    put(ws, 26, 2,
+        "Source: Attribution A1–A6 sampled counts only · Residual is a FLAG, never a story bar · "
+        "NA() until C49=Yes and T3 exists · Bars begin at zero · One accent vs gray · Not a pie",
         kind="note")
-    merge(ws, 27, 2, 27, 6)
+    merge(ws, 26, 2, 26, 13)
 
     chart = BarChart()
     chart.type = "bar"
     chart.grouping = "stacked"
     chart.style = 10
-    chart.y_axis.scaling.min = 0
-    chart.y_axis.numFmt = "#,##0"
-    chart.x_axis.numFmt = "@"
+    chart.x_axis.scaling.min = 0
+    chart.x_axis.numFmt = "#,##0"
+    chart.y_axis.numFmt = "@"
     chart.legend.position = "b"
-    data = Reference(ws, min_col=5, min_row=19, max_col=6, max_row=26)
-    cats = Reference(ws, min_col=2, min_row=20, max_row=26)
+    data = Reference(ws, min_col=5, min_row=19, max_col=6, max_row=25)
+    cats = Reference(ws, min_col=2, min_row=20, max_row=25)
     chart.add_data(data, titles_from_data=True)
     chart.set_categories(cats)
+    force_str_cats(chart)
     chart.shape = 4
-    chart.height = 8
-    chart.width = 15
+    chart.height = 5
+    chart.width = 12
     if len(chart.series) >= 2:
         style_series(chart.series[0], GRAY)
         style_series(chart.series[1], ACCENT)
-    link_chart_title(chart, "'Dashboard'!$B$18")
+    chart.title = None
     chart.y_axis.title = None
     chart.x_axis.title = None
     ws.add_chart(chart, "H19")
 
-    put(ws, 29, 2,
-        '=IF(\'Net-loss tracker\'!J11="",'
-        '"Residential Internet print — public spine only until internals fill",'
-        '"Charter residential Internet stayed worse than Comcast in every quarter both prints exist")',
+    put(ws, 30, 2, "APPENDIX  ·  peer overlap (not a second exhibit) and kill rules", kind="sec")
+    merge(ws, 30, 2, 30, 13)
+    put(ws, 31, 2,
+        '=IF(SUM(\'Net-loss tracker\'!E56:P56)=0,'
+        '"No overlapping CHTR/CMCSA print — do not claim a multi-quarter peer gap.",'
+        'IF(SUM(\'Net-loss tracker\'!E56:P56)=1,'
+        'INDEX(\'Net-loss tracker\'!E5:P5,MATCH(1,\'Net-loss tracker\'!E56:P56,0))&": CHTR "&'
+        'TEXT(INDEX(\'Net-loss tracker\'!E11:P11,MATCH(1,\'Net-loss tracker\'!E56:P56,0)),"#,##0;(#,##0)")&'
+        '" vs CMCSA "&TEXT(INDEX(\'Net-loss tracker\'!E14:P14,MATCH(1,\'Net-loss tracker\'!E56:P56,0)),"#,##0;(#,##0)")&'
+        '" (only quarter both prints exist).",'
+        '"CHTR vs CMCSA overlap exists in "&TEXT(SUM(\'Net-loss tracker\'!E56:P56),"0")&'
+        '" quarters. Not a filled mix — see Net-loss tracker."))',
         kind="h2")
-    merge(ws, 29, 2, 29, 13)
+    merge(ws, 31, 2, 31, 13)
+    ws.row_dimensions[31].height = 28
+    put(ws, 32, 2,
+        "No second chart on this sheet. The exhibit above is the reason bars (or a blank plot with NA gaps when EMPTY).",
+        kind="note")
+    merge(ws, 32, 2, 32, 13)
 
-    put(ws, 30, 2, "Quarter", kind="head")
-    for i, q in enumerate(QUARTERS):
-        put(ws, 30, 3 + i, q, kind="head")
-    put(ws, 31, 2, "CHTR res. Internet", kind="label", bold=True)
-    put(ws, 32, 2, "CMCSA resid. BB", kind="label")
-    put(ws, 33, 2, "Excess vs CMCSA rate", kind="label")
-    for i in range(N_Q):
-        L = qletter(i)
-        put(ws, 31, 3 + i, f"=IF('Net-loss tracker'!{L}11=\"\",NA(),'Net-loss tracker'!{L}11)",
-            kind="calc", fmt=NUM)
-        put(ws, 32, 3 + i, f"=IF('Net-loss tracker'!{L}14=\"\",NA(),'Net-loss tracker'!{L}14)",
-            kind="calc", fmt=NUM)
-        put(ws, 33, 3 + i, f"=IF('Net-loss tracker'!{L}20=\"\",NA(),'Net-loss tracker'!{L}20)",
-            kind="calc", fmt=NUM)
-
-    line = LineChart()
-    line.style = 10
-    line.height = 7
-    line.width = 18
-    line.legend.position = "b"
-    ldata = Reference(ws, min_col=2, min_row=31, max_col=2 + N_Q, max_row=32)
-    lcats = Reference(ws, min_col=3, min_row=30, max_col=2 + N_Q)
-    line.add_data(ldata, from_rows=True, titles_from_data=True)
-    line.set_categories(lcats)
-    if len(line.series) >= 2:
-        style_series(line.series[0], ACCENT)
-        style_series(line.series[1], GRAY)
-        line.series[0].marker = Marker(symbol="circle", size=7)
-        line.series[1].marker = Marker(symbol="circle", size=7)
-        line.series[0].marker.graphicalProperties.solidFill = ACCENT
-        line.series[1].marker.graphicalProperties.solidFill = GRAY
-    link_chart_title(line, "'Dashboard'!$B$29")
-    ws.add_chart(line, "B34")
-
-    put(ws, 34, 11, "Axis note: line chart may zoom off zero because the story is movement in a tight negative band. Bars on this sheet still start at zero.", kind="note")
-    merge(ws, 34, 11, 36, 13)
-
-    put(ws, 48, 2, "KILL RULES AND UNWILLING-TO-CLAIM  ·  written before the recommendation", kind="sec")
-    merge(ws, 48, 2, 48, 13)
-    put(ws, 49, 2, "#", kind="head")
-    put(ws, 49, 3, "Rule (from pptx + six-recommendation-areas / decisions.md)", kind="head")
-    merge(ws, 49, 3, 49, 10)
-    put(ws, 49, 11, "This quarter", kind="head")
-    merge(ws, 49, 11, 49, 13)
+    put(ws, 34, 2, "APPENDIX  ·  kill rules (not the exhibit)", kind="sec")
+    merge(ws, 34, 2, 34, 13)
+    put(ws, 35, 2, "#", kind="head")
+    put(ws, 35, 3, "Rule (GAP / six-recommendation-areas / decisions.md)", kind="head")
+    merge(ws, 35, 3, 35, 10)
+    put(ws, 35, 11, "This quarter", kind="head")
+    merge(ws, 35, 11, 35, 13)
 
     kills = [
-        (50, "K1",
+        (36, "K1",
          "Tracker already exists and is used quarterly -> skip Area 1 build; go to mix control.",
          '=IF(LEFT(Parameters!C17,3)="Yes","KILL — skip G1 build","OPEN — fill G1")'),
-        (51, "K2",
-         "Fill shows move-out matching Comcast -> kill Area 2 as a Charter-specific print; Area 6 becomes the CEO-charge answer. Do not add rural miles.",
-         '=IF(OR(Attribution!C49="No",\'Net-loss tracker\'!B46=""),"UNTESTED",'
-         'IF(AND(Attribution!D48=Parameters!B29,\'Net-loss tracker\'!B46<=0),'
-         '"KILL Area 2 — move-out / no excess","OPEN")'),
-        (52, "K3",
+        (37, "K2",
+         "Fill shows move-out matching Comcast -> kill Area 2 as a Charter-specific print. Do not add rural miles.",
+         '=IF(OR(Attribution!C49<>"Yes",Attribution!C51="HOLD",\'Net-loss tracker\'!B46=""),"UNTESTED",'
+         'IF(AND(Attribution!D48=Parameters!B29,N(\'Net-loss tracker\'!B46)<=0),'
+         '"KILL Area 2 — move-out / no excess","OPEN"))'),
+        (38, "K3",
          "Do not fire two expensive levers in the same quarter. Co-equal cells: cheaper first (Parameters P9).",
-         '=IF(AND(Attribution!C49="Yes",Attribution!C50>=Parameters!C9,'
-         'ABS(Attribution!C48-Attribution!C50)<=Parameters!C13),'
-         '"CO-EQUAL — fire the cheaper lever only","OK")'),
-        (53, "K4",
+         '=IF(OR(Attribution!C49<>"Yes",Attribution!C51="HOLD"),"OK",'
+         'IF(AND(N(Attribution!C50)>=Parameters!C9,'
+         'ABS(N(Attribution!C48)-N(Attribution!C50))<=Parameters!C13),'
+         '"CO-EQUAL — fire the cheaper lever only","OK"))'),
+        (39, "K4",
          "Do not treat call-center reason codes as the trigger. Sample the disconnect (pptx slide 4).",
          "PROCESS — not a cell"),
-        (54, "K5",
+        (40, "K5",
          "Do not add rural miles to fix a core leak. Do not fire company-wide upgrade/rebuild as the default to move-out, FWA, nonpay, or off-overlap.",
          '=IF(LEFT(Segments!C79,4)="Core","CORE — no rural miles",'
          'IF(LEFT(Segments!C78,5)="EMPTY","UNTESTED","READ F2"))'),
-        (55, "K6",
-         "PPTX interlock: two consecutive quarters before full-scale (experiments may start on one).",
-         '=IF(Parameters!C16="Yes","ARMED — full-scale needs 2 qtrs","OFF")'),
-        (56, "K7",
-         "Unwilling to claim: a filled mix, a gross churn rate, that -66k re-rates five-year ~80%, that mobile offsets Internet, that 54k sits in any one cell until the first fill.",
+        (41, "K6",
+         "Two consecutive quarters over the dominant gate before full-scale; experiments may start on one.",
+         '=IF(Parameters!C16<>"Yes","OFF — two-quarter interlock not required",'
+         'IF(OR(Attribution!C49<>"Yes",Attribution!C48=""),"UNTESTED — no mix this quarter",'
+         'IF(OR(Attribution!C51="HOLD",Attribution!C52=""),'
+         '"EXPERIMENT ONLY — prior empty or residual HOLD; full-scale not armed",'
+         'IF(AND(Attribution!C48>=Parameters!C8,Attribution!C52>=Parameters!C8),'
+         '"FULL-SCALE armed — two consecutive quarters over P4",'
+         '"EXPERIMENT ONLY — needs two consecutive quarters over P4"))))'),
+        (42, "K7",
+         "Unwilling to claim: a filled mix, a gross churn rate, that -66k re-rates five-year ~80%, that 54k sits in any one cell until the first fill.",
+         "STANDING"),
+        (43, "K8",
+         "Do not credit mobile / video against this residential Internet print.",
          "STANDING"),
     ]
     for r, kid, text, status in kills:
@@ -1554,19 +1629,24 @@ def build_dashboard(ws, wb):
         FormulaRule(formula=['LEFT(K11,4)="SKIP"'], fill=fill_pass, font=font_b),
     )
     ws.conditional_formatting.add(
-        "K50:M56",
-        FormulaRule(formula=['LEFT(K50,4)="KILL"'], fill=fill_fail, font=font_b),
+        "K11:M14",
+        FormulaRule(formula=['LEFT(K11,4)="HOLD"'], fill=fill_warn, font=font_b),
     )
     ws.conditional_formatting.add(
-        "K50:M56",
-        FormulaRule(formula=['LEFT(K50,4)="OPEN"'], fill=fill_warn, font=font_b),
+        "K36:M43",
+        FormulaRule(formula=['LEFT(K36,4)="KILL"'], fill=fill_fail, font=font_b),
+    )
+    ws.conditional_formatting.add(
+        "K36:M43",
+        FormulaRule(formula=['LEFT(K36,4)="OPEN"'], fill=fill_warn, font=font_b),
     )
 
-    put(ws, 58, 2,
-        "Print-friendly: this sheet is the exhibit. Backup arithmetic lives on Net-loss tracker, Attribution, Segments, Assumptions. "
-        "Do not present empty attribution cells as a measured mix. Title (row 2) updates from formulas when numbers are pasted.",
+    put(ws, 45, 2,
+        "Exhibit is rows 1–27 (one takeaway + one chart). Kill rules are appendix. "
+        "Backup arithmetic: Net-loss tracker, Attribution, Segments, Assumptions. "
+        "Do not present empty attribution cells as a measured mix.",
         kind="note")
-    merge(ws, 58, 2, 58, 13)
+    merge(ws, 45, 2, 45, 13)
 
 
 # ---------------------------------------------------------------------------
@@ -1590,8 +1670,8 @@ def build_cover(ws):
     merge(ws, 4, 1, 4, 2)
     put(ws, 5, 1, "Job", kind="label", bold=True)
     put(ws, 5, 2,
-        "Rec 1 sensor + playbook from CHTR_Rec1_AttributionPlaybook.pptx, wired to the G1 quarterly "
-        "net-loss tracker language in Decisions/six-recommendation-areas.md and Decisions/decisions.md. "
+        "Rec 1 G1 tracker + GAP R1–R4 reason play from Decisions/six-recommendation-areas.md and Decisions/decisions.md. "
+        "The pptx is the Playbook leave-behind (reference only). Dashboard does not fire S1–S6. "
         "Charter (or the case team) pastes internals; Excel diagnoses them.",
         kind="note")
     put(ws, 6, 1, "What it is not", kind="label", bold=True)
@@ -1631,9 +1711,9 @@ def build_cover(ws):
          "Paste WHERE (core / rural / AT&T / Verizon / rest) and WHO (tenure, product at leave, ARPU, audited exit signal). "
          "27% / 16% are footprint mix — do not paste them as losses. Rural CR +41k is not the rural Internet cut."),
         ("5. Read Dashboard only after 2-4",
-         "Row 2 is the takeaway (formula). Traffic lights apply pptx 40 / 25 / 35 gates. "
-         "One accent bar vs gray. Kill rules sit on the same page. "
-         "If Attribution is empty, the title will tell you to fill the tracker first — believe it."),
+         "Row 2 is the takeaway (formula). Lights apply GAP R1–R4. Residual cannot fire. "
+         "Paste start cells: tracker E7/E8, Attribution E6, Segments E7. "
+         "If Attribution is empty, the title says the sample is empty while public −117k/−166k stay labeled RETRIEVED — believe it."),
     ]
     for i, (h, t) in enumerate(steps):
         r = 15 + i
@@ -1725,7 +1805,7 @@ def build_assumptions(ws):
          "Ex99.1 trending EOP identity; overwrite if internal", "Prior EOP. Q1 2026 = 27,641,000", "High where green"),
         ("T2", "Gross adds", "Net-loss tracker!E7:P7", "INPUT", "Internal billing", "Blank until filled", "—"),
         ("T3", "Disconnects", "Net-loss tracker!E8:P8", "INPUT", "Sampled disconnect file, not agent codes", "Blank until filled", "—"),
-        ("T4", "Internal net", "Net-loss tracker!E9:P9", "DERIVED", "T2 - T3", "=gross-disconnects", "Formula"),
+        ("T4", "Internal net", "Net-loss tracker!E9:P9", "DERIVED", "T2 - T3", "T2 − T3", "Formula"),
         ("T5", "Public res. Internet print", "Net-loss tracker!E10:P10", "RETRIEVED",
          "CHTR Ex99.1 / Q1 2026 trending", "Q1 2026 -117,000 · Q2 2026 -166,000", "High"),
         ("T6", "Print used", "Net-loss tracker!E11:P11", "DERIVED", "T4 if both internals filled, else T5", "IF(T4<>\"\",T4,T5)", "Formula"),
@@ -1807,12 +1887,11 @@ def build_playbook(ws):
     page(ws, freeze="A6", print_area="A1:G20", tab="2E75B6")
     for col, w in {"A": 6, "B": 22, "C": 36, "D": 40, "E": 32, "F": 36, "G": 32}.items():
         ws.column_dimensions[col].width = w
-    put(ws, 1, 1, "PLAYBOOK ON A PAGE  ·  reference only — does not fire from empty cells", kind="title")
+    put(ws, 1, 1, "PLAYBOOK ON A PAGE  ·  PPTX S1–S6 REFERENCE ONLY — Dashboard fires GAP R1–R4", kind="title")
     merge(ws, 1, 1, 1, 7)
     put(ws, 2, 1,
-        "PPTX slides 6-9 (scenarios 1-6) plus GAP R1-R4 / WHERE overlays from decisions.md. "
-        "Budgets and owners are pre-authorized in the deck, not sized here. "
-        "Dashboard routes a scenario; this sheet is the leave-behind.",
+        "Dashboard GAP R1–R4 is the rec in force (TOS/MDU, FWA rate-lock, overlap gig/symmetry, first-bill save). "
+        "This sheet is the pptx leave-behind. It does not fire from empty cells and it does not override the Dashboard router.",
         kind="note")
     merge(ws, 2, 1, 3, 7)
 
@@ -1899,9 +1978,114 @@ def build_playbook(ws):
 # main
 # ---------------------------------------------------------------------------
 
+def verify(path: Path) -> None:
+    from openpyxl import load_workbook
+
+    wb = load_workbook(path, data_only=False)
+    issues: list[str] = []
+    ws = wb["Dashboard"]
+    error_lits = ("#REF!", "#VALUE!", "#NAME?", "#DIV/0!", "#NULL!", "#NUM!", "#N/A")
+    for row in ws.iter_rows(min_row=1, max_row=ws.max_row, max_col=ws.max_column):
+        for cell in row:
+            v = cell.value
+            if not isinstance(v, str):
+                continue
+            if v.startswith("="):
+                bal = formula_balance(v)
+                if bal != 0:
+                    issues.append(f"UNBAL Dashboard!{cell.coordinate} bal={bal}")
+                # Chart feed may use NA() so EMPTY does not plot as zeros.
+                chart_na = cell.row in range(20, 26) and cell.column in range(2, 7)
+                if "NA()" in v.upper() and not chart_na:
+                    issues.append(f"NA() on Dashboard!{cell.coordinate}")
+            for tok in error_lits:
+                if tok in v and not (cell.row in range(20, 26) and cell.column in range(2, 7)):
+                    issues.append(f"LIT Dashboard!{cell.coordinate} {tok}")
+    if ws.freeze_panes != "A4":
+        issues.append(f"freeze={ws.freeze_panes} (expected A4)")
+    try:
+        dash_print = wb.defined_names["Dash_Print"]
+        dash_ref = dash_print.attr_text
+    except KeyError:
+        dash_ref = None
+    if dash_ref != "Dashboard!$B$6":
+        issues.append(f"Dash_Print={dash_ref}")
+    if len(ws._charts) != 1:
+        issues.append(f"charts={len(ws._charts)} (expected 1 exhibit chart)")
+    bar = ws._charts[0]
+    if getattr(bar.y_axis.scaling, "min", None) == 0:
+        issues.append("bar chart min=0 on category axis")
+    tr = wb["Net-loss tracker"]
+    q1 = tr.cell(10, qcol(QUARTERS.index("Q1 2026"))).value
+    q2 = tr.cell(10, qcol(QUARTERS.index("Q2 2026"))).value
+    if q1 != -117000 or q2 != -166000:
+        issues.append(f"public prints {q1} {q2}")
+    for r in (7, 8):
+        for i in range(N_Q):
+            if tr.cell(r, qcol(i)).value not in (None, ""):
+                issues.append(f"tracker INPUT {tr.cell(r, qcol(i)).coordinate} filled")
+    att = wb["Attribution"]
+    for r in range(6, 12):
+        for i in range(N_Q):
+            if att.cell(r, qcol(i)).value not in (None, ""):
+                issues.append(f"attribution INPUT {att.cell(r, qcol(i)).coordinate} filled")
+    c48 = str(att["C48"].value or "")
+    d48 = str(att["D48"].value or "")
+    if "D40:D45" not in c48 or "D40:D46" in c48:
+        issues.append(f"residual in C48 rank/max: {c48}")
+    if "B40:B45" not in d48 or "B40:B46" in d48:
+        issues.append(f"residual in D48 index: {d48}")
+    c51 = str(att["C51"].value or "")
+    if "HOLD" not in c51 or "D46" not in c51:
+        issues.append(f"C51 residual gate missing: {c51[:120]}")
+    e20 = str(ws["E20"].value or "")
+    if "NA()" not in e20.upper():
+        issues.append("E20 must NA() when empty (no fake zero mix)")
+    b31 = str(ws["B31"].value or "")
+    if "J11" in b31:
+        issues.append("B31 still gates vs-Comcast on J11")
+    if "E56" not in b31:
+        issues.append("B31 must count overlapping T6/T9 via tracker row 56")
+    c15 = str(ws["C15"].value or "")
+    if "Attribution / disconnect sample is empty" not in c15:
+        issues.append("C15 empty title must say sample is empty, not fill the tracker")
+    if "Fire that one play on the core." in c15:
+        issues.append("C15 still appends core unconditionally")
+    c16 = str(ws["C16"].value or "")
+    if "S1 FWA-driven — convergence" in c16 or "S6 Null" in c16:
+        issues.append("C16 still routes pptx S1–S6")
+    if "R1 Move-out" not in c16:
+        issues.append("C16 must be GAP R1–R4")
+    h6 = str(ws["H6"].value or "")
+    if "Parameters!C22" not in h6:
+        issues.append("H6 must show P18 commit 54k")
+    par = wb["Parameters"]
+    if par["C19"].value != "Counts":
+        issues.append(f"P15 mode={par['C19'].value} (Percent cannot fire)")
+    if par["D35"].value == "Percent":
+        issues.append("Percent still in the mode dropdown")
+    asm = wb["Assumptions"]
+    f9 = asm["F9"].value
+    if isinstance(f9, str) and f9.startswith("="):
+        issues.append(f"Assumptions!F9 is a formula: {f9}")
+    k41 = str(ws["K41"].value or "")
+    if "ARMED — full-scale needs 2 qtrs" in k41 and "C52" not in k41:
+        issues.append("K6 is still a Yes/No echo")
+    if "C52" not in k41:
+        issues.append("K6 must test prior-quarter share C52")
+    if issues:
+        raise SystemExit("Dashboard verify failed:\n  " + "\n  ".join(issues))
+    print(
+        "Dashboard verify: residual excluded from C48/D48; B31 overlap-only; "
+        "E20 NA(); Counts-only; GAP R1–R4; 54k commit; empty title is sample-empty; "
+        "K6 two-quarter; Assumptions F9 text; public prints intact; INPUT blanks empty"
+    )
+
+
 def main():
     path = build()
     print(f"Wrote {path} ({path.stat().st_size:,} bytes)")
+    verify(path)
 
 
 if __name__ == "__main__":

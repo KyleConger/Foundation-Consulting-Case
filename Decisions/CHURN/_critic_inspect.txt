@@ -1,0 +1,251 @@
+FILE C:\Users\Owner\Desktop\MAN6930 Case\Decisions\CHURN\CHTR Rec1 Attribution Dashboard.xlsx size=52561
+SHEETS ['Dashboard', 'Cover', 'Net-loss tracker', 'Attribution', 'Segments', 'Parameters', 'Assumptions', 'Playbook']
+CALC calcMode=None fullCalcOnLoad=True
+DEFINED NAMES
+  Param_Quarter = Parameters!$C$5
+  Param_Dominant = Parameters!$C$8
+  Param_Mixed = Parameters!$C$9
+  Param_FWA = Parameters!$C$10
+  Param_Fiber = Parameters!$C$11
+  Param_Satellite = Parameters!$C$12
+  Param_Coequal = Parameters!$C$13
+  Param_CoreShare = Parameters!$C$14
+  Param_RateSkew = Parameters!$C$15
+  Param_TwoQ = Parameters!$C$16
+  Param_TrackerExists = Parameters!$C$17
+  Param_CMCSA_On = Parameters!$C$18
+  Param_InputMode = Parameters!$C$19
+  Param_CommitExcess = Parameters!$C$22
+  Dash_Print = Dashboard!$C$8
+
+===== Dashboard =====
+freeze=A5 print='Dashboard'!$A$1:$N$58 fitW=1 fitH=1 orient=landscape paper=3
+protect=True password=None selectLocked=True autoFilter=True sort=True
+merges=50 charts=2
+hidden_rows=[15, 16]
+yellow=0 yellow_empty=0 green=0 formulas=98 unbal=2 unlocked=0
+  UNBAL C16 bal=1 =IF(Attribution!C49="No","HOLD — empty cells. The playbook does not fire.",IF(AND(INDEX(Attribution!D40:D45,1)>=Parameters!C10,N(Segments!D71)>=0.3),"S1 FWA-driven — convergence pricing in FWA zones (kill: no churn split in 2 qtrs / negative bundle margin)",IF(INDEX(Attribution!D40:D45,2)>=Parameter
+  UNBAL K51 bal=1 =IF(OR(Attribution!C49="No",'Net-loss tracker'!B46=""),"UNTESTED",IF(AND(Attribution!D48=Parameters!B29,'Net-loss tracker'!B46<=0),"KILL Area 2 — move-out / no excess","OPEN")
+  chart0 BarChart type=bar grouping=stacked anchor=c7r18 cx=5400000 cy=2880000
+    y_min=0.0 x_min=None y_fmt=<openpyxl.chart.data_source.NumFmt object>
+Parameters:
+formatCode='#,##0', sourceLinked=False x_fmt=<openpyxl.chart.data_source.NumFmt object>
+Parameters:
+formatCode='@', sourceLinked=False
+    title_strRef='Dashboard'!$B$18 title_rich=True nseries=2
+    series0 title=<openpyxl.chart.series.SeriesLabel object>
+Parameters:
+strRef=<openpyxl.chart.data_source.StrRef object>
+Parameters:
+f="'Dashboard'!E19", strCache=None, v=None val=<openpyxl.chart.data_source.NumDataSource object>
+Parameters:
+numLit=None, numRef=<openpyxl.chart.data_source.NumRef object>
+Parameters:
+f="'Dashboard'!$E$20:$E$26", numCache=None cat=<openpyxl.chart.data_source.AxDataSource object>
+Parameters:
+multiLvlStrRef=None, numLit=None, numRef=<openpyxl.chart.data_source.NumRef object>
+Parameters:
+f="'Dashboard'!$B$20:$B$26", numCache=None, strLit=None, strRef=None tx=<openpyxl.chart.series.SeriesLabel object>
+Parameters:
+strRef=<openpyxl.chart.data_source.StrRef object>
+Parameters:
+f="'Dashboard'!E19", strCache=None, v=None
+    series1 title=<openpyxl.chart.series.SeriesLabel object>
+Parameters:
+strRef=<openpyxl.chart.data_source.StrRef object>
+Parameters:
+f="'Dashboard'!F19", strCache=None, v=None val=<openpyxl.chart.data_source.NumDataSource object>
+Parameters:
+numLit=None, numRef=<openpyxl.chart.data_source.NumRef object>
+Parameters:
+f="'Dashboard'!$F$20:$F$26", numCache=None cat=<openpyxl.chart.data_source.AxDataSource object>
+Parameters:
+multiLvlStrRef=None, numLit=None, numRef=<openpyxl.chart.data_source.NumRef object>
+Parameters:
+f="'Dashboard'!$B$20:$B$26", numCache=None, strLit=None, strRef=None tx=<openpyxl.chart.series.SeriesLabel object>
+Parameters:
+strRef=<openpyxl.chart.data_source.StrRef object>
+Parameters:
+f="'Dashboard'!F19", strCache=None, v=None
+  chart1 LineChart type=None grouping=standard anchor=c1r33 cx=6480000 cy=2520000
+    y_min=None x_min=None y_fmt=None x_fmt=None
+    title_strRef='Dashboard'!$B$29 title_rich=True nseries=2
+    series0 title=<openpyxl.chart.series.SeriesLabel object>
+Parameters:
+strRef=<openpyxl.chart.data_source.StrRef object>
+Parameters:
+f="'Dashboard'!B31", strCache=None, v=None val=<openpyxl.chart.data_source.NumDataSource object>
+Parameters:
+numLit=None, numRef=<openpyxl.chart.data_source.NumRef object>
+Parameters:
+f="'Dashboard'!$C$31:$N$31", numCache=None cat=<openpyxl.chart.data_source.AxDataSource object>
+Parameters:
+multiLvlStrRef=None, numLit=None, numRef=<openpyxl.chart.data_source.NumRef object>
+Parameters:
+f="'Dashboard'!$C$30:$N$30", numCache=None, strLit=None, strRef=None tx=<openpyxl.chart.series.SeriesLabel object>
+Parameters:
+strRef=<openpyxl.chart.data_source.StrRef object>
+Parameters:
+f="'Dashboard'!B31", strCache=None, v=None
+    series1 title=<openpyxl.chart.series.SeriesLabel object>
+Parameters:
+strRef=<openpyxl.chart.data_source.StrRef object>
+Parameters:
+f="'Dashboard'!B32", strCache=None, v=None val=<openpyxl.chart.data_source.NumDataSource object>
+Parameters:
+numLit=None, numRef=<openpyxl.chart.data_source.NumRef object>
+Parameters:
+f="'Dashboard'!$C$32:$N$32", numCache=None cat=<openpyxl.chart.data_source.AxDataSource object>
+Parameters:
+multiLvlStrRef=None, numLit=None, numRef=<openpyxl.chart.data_source.NumRef object>
+Parameters:
+f="'Dashboard'!$C$30:$N$30", numCache=None, strLit=None, strRef=None tx=<openpyxl.chart.series.SeriesLabel object>
+Parameters:
+strRef=<openpyxl.chart.data_source.StrRef object>
+Parameters:
+f="'Dashboard'!B32", strCache=None, v=None
+
+===== Cover =====
+freeze=A5 print='Cover'!$A$1:$B$48 fitW=1 fitH=0 orient=portrait paper=1
+protect=True password=None selectLocked=True autoFilter=True sort=True
+merges=10 charts=0
+hidden_rows=[]
+yellow=1 yellow_empty=0 green=1 formulas=0 unbal=0 unlocked=2
+
+===== Net-loss tracker =====
+freeze=E6 print='Net-loss tracker'!$A$1:$P$32 fitW=1 fitH=0 orient=landscape paper=3
+protect=True password=None selectLocked=True autoFilter=True sort=True
+merges=10 charts=0
+hidden_rows=[]
+yellow=62 yellow_empty=62 green=34 formulas=125 unbal=0 unlocked=62
+
+===== Attribution =====
+freeze=E6 print='Attribution'!$A$1:$P$36 fitW=1 fitH=0 orient=landscape paper=3
+protect=True password=None selectLocked=True autoFilter=True sort=True
+merges=10 charts=0
+hidden_rows=[]
+yellow=168 yellow_empty=168 green=0 formulas=355 unbal=0 unlocked=168
+
+===== Segments =====
+freeze=E6 print='Segments'!$A$1:$P$28 fitW=1 fitH=0 orient=landscape paper=3
+protect=True password=None selectLocked=True autoFilter=True sort=True
+merges=17 charts=0
+hidden_rows=[]
+yellow=264 yellow_empty=264 green=0 formulas=117 unbal=0 unlocked=264
+
+===== Parameters =====
+freeze=A5 print='Parameters'!$A$1:$F$40 fitW=1 fitH=0 orient=portrait paper=1
+protect=True password=None selectLocked=True autoFilter=True sort=True
+merges=5 charts=0
+hidden_rows=[]
+yellow=12 yellow_empty=0 green=1 formulas=0 unbal=0 unlocked=23
+
+===== Assumptions =====
+freeze=A5 print='Assumptions'!$A$1:$G$80 fitW=1 fitH=0 orient=landscape paper=3
+protect=True password=None selectLocked=True autoFilter=True sort=True
+merges=5 charts=0
+hidden_rows=[]
+yellow=0 yellow_empty=0 green=0 formulas=3 unbal=0 unlocked=0
+
+===== Playbook =====
+freeze=A6 print='Playbook'!$A$1:$G$20 fitW=1 fitH=0 orient=landscape paper=3
+protect=True password=None selectLocked=True autoFilter=True sort=True
+merges=6 charts=0
+hidden_rows=[]
+yellow=0 yellow_empty=0 green=0 formulas=0 unbal=0 unlocked=0
+
+===== DASH KEY CELLS =====
+B2	=IF(C15="","Fill the quarterly net-loss tracker first — attribution cells are empty on purpose.",C15)
+B3	=CONCATENATE("Selected: ",Parameters!C5,"   ·   Units: residential Internet customers   ·   "&"Yellow INPUT on Net-loss tracker / Attribution / Segments   ·   "&"Public spine: Ex99.1 Q1 2026 res. Internet −117,000 · Q2 2026 −166,000 (RETRIEVED)   ·   "&"Template — not a filled mix")
+B6	='Net-loss tracker'!B37
+E6	=IF(OR(Parameters!C18="No",'Net-loss tracker'!B40=""),"n/a",'Net-loss tracker'!B40)
+H6	=IF(OR(Parameters!C18="No",'Net-loss tracker'!B46=""),"n/a",'Net-loss tracker'!B46)
+K6	=IF(Attribution!C49="No","EMPTY",Attribution!D48)
+B7	='Net-loss tracker'!B48
+C11	=Parameters!C17
+C12	=IF(Attribution!C49="No","EMPTY — no reason fill",IF(Attribution!C48>=Parameters!C8,"DOMINANT — "&Attribution!D48&" holds "&TEXT(Attribution!C48,"0%")&" (>= "&TEXT(Parameters!C8,"0%")&")",IF(Attribution!C48>=Parameters!C9,"MIXED — largest is "&TEXT(Attribution!C48,"0%")&" (25-40% band). Run top two as experiments.","NULL — no cohort >= "&TEXT(Parameters!C9,"0%")&". Scenario 6 fires.")))
+C13	=C16
+C14	=Segments!C78
+C15	=IF(Attribution!C49="No","Fill the quarterly net-loss tracker first — attribution cells are empty on purpose.",IF(Attribution!C48>=Parameters!C8,Attribution!D48&" accounts for "&TEXT(Attribution!C48,"0%")&" of disconnects — above the "&TEXT(Parameters!C8,"0%")&" dominant-driver gate. Fire that one play on the core.",IF(Attribution!C48>=Parameters!C9,"Mixed picture: "&Attribution!D48&" is largest at "&TEXT(Attribution!C48,"0%")&" but below "&TEXT(Parameters!C8,"0%")&". Run the top two as controlled experiments.","No dominant driver — no cohort reaches "&TEXT(Parameters!C9,"0%")&" of disconnects. Scenario 6 (null) is the recommendation, not a guess.")))
+C16	=IF(Attribution!C49="No","HOLD — empty cells. The playbook does not fire.",IF(AND(INDEX(Attribution!D40:D45,1)>=Parameters!C10,N(Segments!D71)>=0.3),"S1 FWA-driven — convergence pricing in FWA zones (kill: no churn split in 2 qtrs / negative bundle margin)",IF(INDEX(Attribution!D40:D45,2)>=Parameters!C11,"S2 Fiber-driven — re-sequence evolution on overlap + symmetric win-back (kill: completed zones bleed at same rate)",IF(INDEX(Attribution!D40:D45,3)>=Parameters!C12,"S3 Satellite-driven — accelerate rural activation (kill: new-passing penetration below underwriting)",IF(INDEX(Attribution!D40:D45,4)>=Parameters!C9,"S4 Housing / move-out — mover capture, not a save-offer (kill: port-out data contradicts the macro story)",IF(INDEX(Attribution!D40:D45,5)>=Parameters!C9,"S5 Non-pay — value tier at delinquency (kill: save-rate economics below LTV)",IF(Attribution!C48<Parameters!C9,"S6 Null — no dominant driver. Market-layer disclosure + spend-capped experiments.","Largest cell is "&Attribution!D48&" — apply the matching lead play; do not fire two expensive levers."))))))
+B18	=IF(Attribution!C49="No","Reason contribution is empty — fill Attribution before this chart can make a claim","Largest leak is "&Attribution!D48&" at "&TEXT(Attribution!C48,"0%")&" of sampled disconnects  ·  gray = the rest  ·  accent = the story bar")
+B29	=IF('Net-loss tracker'!J11="","Residential Internet print — public spine only until internals fill","Charter residential Internet stayed worse than Comcast in every quarter both prints exist")
+K51	=IF(OR(Attribution!C49="No",'Net-loss tracker'!B46=""),"UNTESTED",IF(AND(Attribution!D48=Parameters!B29,'Net-loss tracker'!B46<=0),"KILL Area 2 — move-out / no excess","OPEN")
+C8	None
+
+===== TRACKER PRINTS row10 / used row11 =====
+E5=Q1 2024 T5=-72000 T6f==IF(E9<>"",E9,IF(E10<>"",E10,"")) begin=28544000 gross=None disc=None cmcsa=None
+F5=Q2 2024 T5=-154000 T6f==IF(F9<>"",F9,IF(F10<>"",F10,"")) begin=28472000 gross=None disc=None cmcsa=None
+G5=Q3 2024 T5=-113000 T6f==IF(G9<>"",G9,IF(G10<>"",G10,"")) begin=28318000 gross=None disc=None cmcsa=None
+H5=Q4 2024 T5=-171000 T6f==IF(H9<>"",H9,IF(H10<>"",H10,"")) begin=28205000 gross=None disc=None cmcsa=None
+I5=Q1 2025 T5=-55000 T6f==IF(I9<>"",I9,IF(I10<>"",I10,"")) begin=28034000 gross=None disc=None cmcsa=None
+J5=Q2 2025 T5=-111000 T6f==IF(J9<>"",J9,IF(J10<>"",J10,"")) begin=27979000 gross=None disc=None cmcsa=None
+K5=Q3 2025 T5=-108000 T6f==IF(K9<>"",K9,IF(K10<>"",K10,"")) begin=27868000 gross=None disc=None cmcsa=None
+L5=Q4 2025 T5=-119000 T6f==IF(L9<>"",L9,IF(L10<>"",L10,"")) begin=27760000 gross=None disc=None cmcsa=None
+M5=Q1 2026 T5=-117000 T6f==IF(M9<>"",M9,IF(M10<>"",M10,"")) begin=27641000 gross=None disc=None cmcsa=-65000
+N5=Q2 2026 T5=-166000 T6f==IF(N9<>"",N9,IF(N10<>"",N10,"")) begin=27524000 gross=None disc=None cmcsa=None
+O5=Q3 2026 T5=None T6f==IF(O9<>"",O9,IF(O10<>"",O10,"")) begin=None gross=None disc=None cmcsa=None
+P5=Q4 2026 T5=None T6f==IF(P9<>"",P9,IF(P10<>"",P10,"")) begin=None gross=None disc=None cmcsa=None
+
+===== ATTRIBUTION A1-A6 Q1 2026 (col M = 13) =====
+r6 B==Parameters!B26 M=None
+r7 B==Parameters!B27 M=None
+r8 B==Parameters!B28 M=None
+r9 B==Parameters!B29 M=None
+r10 B==Parameters!B30 M=None
+r11 B==Parameters!B31 M=None
+r12 B=Residual (tracker disconnects − sum of A1–A6) M==IF(M14="","",M14-SUM(M6:M11))
+r13 B=Sum of entered reason counts (A1–A6) M==IF(COUNT(M6:M11)=0,"",SUM(M6:M11))
+r14 B=Tracker disconnects (T3) — or |print| placeholder M==IF('Net-loss tracker'!M8<>"",'Net-loss tracker'!M8,IF(AND(Parameters!$C$19="Percent",'Net-loss tracker'!M11<>""),ABS('Net-loss tracker'!M11),""))
+r15 B=Mix status M==IF(AND(COUNT(M6:M11)=0,M14=""),"EMPTY — do not fire a play",IF('Net-loss tracker'!M8="","PLACEHOLDER — allocating |print|, not a churn mix",IF(ABS(N(M12))>0.02*MAX(1,N(M14)),"FLAG — residual is material","OK — reasons reconcile")))
+
+===== PARAMETERS C5-C22 =====
+C5='Q1 2026' B=Selected quarter D=INPUT
+C6='PPTX 6-scenario' B=Reason taxonomy D=INPUT
+C7='2E75B6' B=Highlight color (tables) D=INPUT
+C8=0.4 B=Dominant-driver threshold D=ESTIMATED
+C9=0.25 B=Mixed-picture floor D=ESTIMATED
+C10=0.35 B=FWA scenario trigger D=ESTIMATED
+C11=0.4 B=Fiber scenario trigger D=ESTIMATED
+C12=0.25 B=Satellite scenario trigger D=ESTIMATED
+C13=0.05 B=Co-equal band (pp of mix) D=ESTIMATED
+C14=0.7 B=Core-drives-print share D=ESTIMATED
+C15=1.5 B=Segment rate-skew vs company D=ESTIMATED
+C16='Yes' B=Require two consecutive quarters before full-scale? D=ESTIMATED
+C17='No — fill G1 first' B=Tracker already exists and is used quarterly? D=INPUT
+C18='Yes' B=Use Comcast benchmark? D=INPUT
+C19='Counts' B=Attribution input mode D=INPUT
+C20='Disconnects (if known), else |public print|' B=If only % is filled, allocate against D=ESTIMATED
+C21=0.25 B=Material share of peer excess D=ESTIMATED
+C22=54000 B=Playbook committed excess (customers) D=RETRIEVED
+
+===== ZIP XML =====
+files: docProps/app.xml, docProps/core.xml, xl/theme/theme1.xml, xl/worksheets/sheet1.xml, xl/drawings/drawing1.xml, xl/drawings/_rels/drawing1.xml.rels, xl/worksheets/_rels/sheet1.xml.rels, xl/worksheets/sheet2.xml, xl/worksheets/sheet3.xml, xl/worksheets/sheet4.xml, xl/worksheets/sheet5.xml, xl/worksheets/sheet6.xml, xl/worksheets/sheet7.xml, xl/worksheets/sheet8.xml, xl/charts/chart1.xml, xl/charts/chart2.xml, xl/styles.xml, _rels/.rels, xl/workbook.xml, xl/_rels/workbook.xml.rels, [Content_Types].xml
+  xml name Param_Quarter hidden=None Parameters!$C$5
+  xml name Param_Dominant hidden=None Parameters!$C$8
+  xml name Param_Mixed hidden=None Parameters!$C$9
+  xml name Param_FWA hidden=None Parameters!$C$10
+  xml name Param_Fiber hidden=None Parameters!$C$11
+  xml name Param_Satellite hidden=None Parameters!$C$12
+  xml name Param_Coequal hidden=None Parameters!$C$13
+  xml name Param_CoreShare hidden=None Parameters!$C$14
+  xml name Param_RateSkew hidden=None Parameters!$C$15
+  xml name Param_TwoQ hidden=None Parameters!$C$16
+  xml name Param_TrackerExists hidden=None Parameters!$C$17
+  xml name Param_CMCSA_On hidden=None Parameters!$C$18
+  xml name Param_InputMode hidden=None Parameters!$C$19
+  xml name Param_CommitExcess hidden=None Parameters!$C$22
+  xml name Dash_Print hidden=None Dashboard!$C$8
+  xml name _xlnm.Print_Titles hidden=None 'Dashboard'!$1:$4
+  xml name _xlnm.Print_Area hidden=None 'Dashboard'!$A$1:$N$58
+  xml name _xlnm.Print_Area hidden=None 'Cover'!$A$1:$B$48
+  xml name _xlnm._FilterDatabase hidden=1 'Net-loss tracker'!$A$5:$P$5
+  xml name _xlnm.Print_Area hidden=None 'Net-loss tracker'!$A$1:$P$32
+  xml name _xlnm.Print_Area hidden=None 'Attribution'!$A$1:$P$36
+  xml name _xlnm.Print_Area hidden=None 'Segments'!$A$1:$P$28
+  xml name _xlnm.Print_Area hidden=None 'Parameters'!$A$1:$F$40
+  xml name _xlnm._FilterDatabase hidden=1 'Assumptions'!$A$5:$G$38
+  xml name _xlnm.Print_Area hidden=None 'Assumptions'!$A$1:$G$80
+  xml name _xlnm.Print_Area hidden=None 'Playbook'!$A$1:$G$20
+--- xl/charts/chart1.xml len=1858
+--- xl/charts/chart2.xml len=2291
