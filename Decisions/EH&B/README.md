@@ -18,7 +18,7 @@ This file is an **index + slide briefing**. It is not a memo and not a recommend
 
 ## Files in this folder
 
-Verified 2026-09-22. No critic files here. `State Region Density Maps.xlsx` is **absent — in progress**. Filename `Chtr Small Large Employment Shares.pdf` is **not present**; the PDF is `Small Large Employment Shares.pdf`.
+Verified 2026-09-22. No critic files here. `State Region Density Maps.xlsx` is **absent — in progress**. Filename `Chtr Small Large Employment Shares.pdf` is **not present**; the PDF is `Small Large Employment Shares.pdf`. Compiled workbook: `MASTER.xlsx` (every sheet from every .xlsx in this folder; values copy; originals unchanged).
 
 | File | What it is | Slide it supports | Source of numbers |
 |---|---|---|---|
