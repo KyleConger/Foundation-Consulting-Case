@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Churn Attribution Scenario Navigator</title>
+<style>
+  :root {
+    --navy: #1F4E79;
+    --navy-deep: #163a5c;
+    --accent: #2E75B6;
+    --accent-light: #D6E3F0;
+    --ink: #1A1A1A;
+    --gray: #595959;
+    --gray-soft: #A6A6A6;
+    --bg: #F7F9FC;
+    --card: #FFFFFF;
+    --line: #DDE4EC;
+    --input-bg: #FFFDE0;
+    --input-line: #E4D77A;
+    --pass-bg: #C6EFCE;
+    --pass-ink: #1E5E28;
+    --warn-bg: #FFF2CC;
+    --warn-ink: #7A5B00;
+    --fail-bg: #F8CBAD;
+    --fail-ink: #8A3418;
+    --null-bg: #E3E8EE;
+    --null-ink: #45536A;
+
+    --c-fwa: #2E75B6;
+    --c-fiber: #1F4E79;
+    --c-satellite: #6FA8DC;
+    --c-housing: #8C9AAB;
+    --c-nonpay: #C9A227;
+    --c-residual: #E3E8EE;
+
+    color-scheme: light;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #10151d;
+      --card: #171e2a;
+      --line: #2a3444;
+      --ink: #e8ecf2;
+      --gray: #a9b3c2;
+      --gray-soft: #7c8798;
+      --accent-light: #1c2c3f;
+      --input-bg: #2a2612;
+      --input-line: #6b5f1c;
+      --null-bg: #202836;
+      --null-ink: #c3ccd9;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #10151d;
+    --card: #171e2a;
+    --line: #2a3444;
+    --ink: #e8ecf2;
+    --gray: #a9b3c2;
+    --gray-soft: #7c8798;
+    --accent-light: #1c2c3f;
+    --input-bg: #2a2612;
+    --input-line: #6b5f1c;
+    --null-bg: #202836;
+    --null-ink: #c3ccd9;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .serif { font-family: Georgia, "Times New Roman", serif; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+  a { color: var(--accent); }
+
+  /* header, kept short so the workspace starts near the top of the screen */
+  header.hero {
+    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color: #fff;
+    padding: 20px 0 18px;
+    animation: rise .5s ease both;
+  }
+  @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .kicker { font-size: 12.5px; color: #bcd2ea; margin: 0 0 4px; font-weight: 600; }
+  header.hero h1 { font-size: clamp(20px, 2.6vw, 25px); margin: 0; font-weight: 700; }
+  header.hero p.meta { color: #9fb7cf; font-size: 12px; margin: 0; text-align: right; max-width: 320px; }
+
+  /* layout */
+  main { padding: 18px 0 20px; }
+
+  .workspace {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 18px;
+    align-items: start;
+    margin-bottom: 30px;
+  }
+  @media (max-width: 900px) {
+    .workspace { grid-template-columns: 1fr; }
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+  .panel-title {
+    font-size: 12.5px;
+    color: var(--gray);
+    margin: 0 0 4px;
+    font-weight: 600;
+  }
+  h2.section-title { font-size: 19px; margin: 0 0 6px; color: var(--ink); }
+  p.section-hint { color: var(--gray); font-size: 13px; margin: 0 0 14px; }
+
+  /* input panel */
+  .input-panel { position: sticky; top: 16px; }
+  .cohort-input { margin-bottom: 13px; }
+  .cohort-input:last-of-type { margin-bottom: 6px; }
+  .cohort-input label { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+  .cohort-input .hint { font-weight: 400; color: var(--gray); font-size: 11.5px; display: block; margin-bottom: 4px; }
+  .swatch { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 6px; }
+  .val-box { display: flex; align-items: center; gap: 6px; }
+  .val-box input[type="number"] {
+    width: 52px; border: 1px solid var(--input-line); background: var(--input-bg); color: var(--ink);
+    border-radius: 5px; padding: 3px 5px; font-size: 13px; text-align: right; font-family: inherit;
+  }
+  input[type="range"] { width: 100%; accent-color: var(--accent); cursor: pointer; }
+  .abs-figure { font-size: 11px; color: var(--gray-soft); margin-top: 1px; min-height: 13px; }
+
+  .residual-row {
+    display: flex; justify-content: space-between; font-size: 12.5px;
+    padding-top: 8px; border-top: 1px dashed var(--line); margin-top: 2px; color: var(--gray);
+  }
+  .residual-row strong { color: var(--ink); }
+  .sum-warn { margin-top: 8px; font-size: 12px; color: var(--fail-ink); background: var(--fail-bg); border-radius: 6px; padding: 6px 9px; display: none; }
+  .sum-warn.show { display: block; }
+
+  .total-loss-input { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+  .total-loss-input label { font-size: 12.5px; font-weight: 600; display: block; margin-bottom: 5px; }
+  .total-loss-input input {
+    width: 100%; border: 1px solid var(--input-line); background: var(--input-bg);
+    border-radius: 6px; padding: 6px 9px; font-size: 14px; color: var(--ink); font-family: inherit;
+  }
+
+  .panel-actions { display: flex; gap: 8px; margin-top: 14px; }
+  button.btn {
+    font-family: inherit; font-size: 12.5px; border-radius: 6px; padding: 7px 11px;
+    cursor: pointer; border: 1px solid var(--line); background: var(--card); color: var(--ink);
+    transition: background .15s ease, border-color .15s ease;
+  }
+  button.btn:hover { border-color: var(--accent); color: var(--accent); }
+  button.btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  button.btn.primary:hover { background: var(--navy); border-color: var(--navy); color:#fff; }
+
+  /* verdict panel (right column): compact gauge + live verdict, always visible beside inputs */
+  .verdict-panel { display: flex; flex-direction: column; }
+  .gauge-compact .g-row { display: flex; align-items: center; gap: 10px; padding: 3px 0; }
+  .gauge-compact .g-row .g-label {
+    width: 150px; font-size: 12px; font-weight: 600; flex-shrink: 0;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display:flex; align-items:center;
+  }
+  .gauge-compact .g-row .g-track { position: relative; flex: 1; height: 12px; border-radius: 4px; background: var(--null-bg); overflow: hidden; }
+  .gauge-compact .zone { position: absolute; top: 0; bottom: 0; }
+  .gauge-compact .zone.z-null { left: 0; width: 25%; background: rgba(248,203,173,.35); }
+  .gauge-compact .zone.z-mixed { left: 25%; width: 15%; background: rgba(255,242,204,.6); }
+  .gauge-compact .zone.z-dominant { left: 40%; right: 0; background: rgba(198,239,206,.5); }
+  .gauge-compact .fill { position: absolute; top: 0; bottom: 0; left: 0; width: 0%; border-radius: 4px; transition: width .3s ease; }
+  .gauge-compact .g-val { width: 34px; text-align: right; font-size: 11.5px; color: var(--gray); flex-shrink: 0; }
+  .gauge-scale { display: flex; justify-content: space-between; font-size: 10px; color: var(--gray-soft); margin: 4px 0 0 160px; }
+
+  .verdict-divider { height: 1px; background: var(--line); margin: 16px 0; }
+
+  .verdict-badge { display: inline-block; font-size: 11.5px; font-weight: 700; padding: 3px 9px; border-radius: 20px; margin-bottom: 9px; }
+  .verdict-scenario { font-size: 19px; margin: 0 0 4px; line-height: 1.25; }
+  .verdict-signal { font-size: 13.5px; color: var(--gray); margin: 0 0 14px; }
+  .detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 4px; }
+  .detail-block h4 { margin: 0 0 3px; font-size: 11.5px; color: var(--gray); font-weight: 700; }
+  .detail-block p { margin: 0; font-size: 13px; }
+  .empty-state, .invalid-state { padding: 4px 0 2px; color: var(--gray); font-size: 13.5px; }
+
+  /* known strip */
+  .known-strip-wrap { margin-top: 8px; }
+  .known-strip { display: grid; grid-auto-flow: column; grid-auto-columns: 168px; gap: 12px; overflow-x: auto; padding-bottom: 6px; }
+  .stat-card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+  .stat-card .num { font-size: 21px; font-weight: 700; color: var(--navy); }
+  :root[data-theme="dark"] .stat-card .num { color: var(--accent); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .stat-card .num { color: var(--accent); } }
+  .stat-card .label { font-size: 12px; color: var(--ink); margin-top: 3px; line-height: 1.3; }
+  .stat-card .src { font-size: 10.5px; color: var(--gray-soft); margin-top: 6px; }
+
+  /* reference table */
+  .ref-section { margin-top: 26px; }
+  table.quickref { width: 100%; border-collapse: collapse; font-size: 13px; }
+  table.quickref th, table.quickref td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  table.quickref th { color: var(--gray); font-weight: 600; font-size: 12px; }
+  table.quickref tr.is-current td { background: var(--accent-light); }
+
+  .accordion { margin-top: 16px; display: flex; flex-direction: column; gap: 10px; }
+  details.scn { border: 1px solid var(--line); border-radius: 8px; background: var(--card); padding: 0; }
+  details.scn[open] { border-color: var(--accent); }
+  details.scn.is-current { border-color: var(--navy); box-shadow: 0 0 0 1px var(--navy) inset; }
+  details.scn summary {
+    cursor: pointer; padding: 12px 16px; font-weight: 600; font-size: 14px;
+    display: flex; align-items: center; justify-content: space-between; list-style: none;
+  }
+  details.scn summary::-webkit-details-marker { display: none; }
+  details.scn summary .n { color: var(--gray); font-weight: 600; margin-right: 8px; }
+  .current-pill { font-size: 11px; font-weight: 700; color: #fff; background: var(--navy); border-radius: 20px; padding: 2px 9px; margin-left: 10px; }
+  .scn-body { padding: 0 16px 16px; }
+
+  /* timeline */
+  .timeline-section { margin-top: 28px; }
+  .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  @media (max-width: 760px) { .timeline { grid-template-columns: 1fr 1fr; } }
+  .tl-step { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+  .tl-step .tl-q { font-size: 12px; font-weight: 700; color: var(--accent); }
+  .tl-step h4 { margin: 4px 0 6px; font-size: 14px; }
+  .tl-step p { margin: 0; font-size: 12.5px; color: var(--gray); }
+
+  /* about / footer */
+  .about { margin-top: 26px; }
+  .about-body { padding: 4px 16px 18px; font-size: 13.5px; }
+  .about-body p { margin: 0 0 12px; }
+  .about-body h4 { margin: 14px 0 6px; font-size: 12.5px; color: var(--gray); }
+
+  footer { padding: 26px 0 46px; color: var(--gray-soft); font-size: 12px; }
+  footer .foot-line { border-top: 1px solid var(--line); padding-top: 16px; }
+
+  ::selection { background: var(--accent-light); }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-row">
+    <div>
+      <p class="kicker">Recommendation 1 &nbsp;&middot;&nbsp; Charter Communications (CHTR)</p>
+      <h1>Churn Attribution Scenario Navigator</h1>
+    </div>
+    <p class="meta">CHURN decisions branch &nbsp;&middot;&nbsp; built September 22, 2026</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="workspace">
+
+    <!-- INPUT PANEL -->
+    <section class="card input-panel">
+      <p class="panel-title">Your quarter</p>
+      <h2 class="section-title" style="font-size:16.5px;">Cohort share of net losses</h2>
+      <p class="section-hint">Percent of this quarter's disconnects in each cause-cohort. Leave at 0 until G1 is filled.</p>
+
+      <div id="cohort-inputs"></div>
+
+      <div class="residual-row">
+        <span>Uncontested / other</span>
+        <strong id="residual-val">100%</strong>
+      </div>
+      <div class="sum-warn" id="sum-warn">Inputs total more than 100%. Adjust the cohort shares so they sum to 100% or less.</div>
+
+      <div class="total-loss-input">
+        <label for="total-loss">Total quarterly net loss (thousands, optional)</label>
+        <input type="number" id="total-loss" min="0" step="1" placeholder="e.g. 120">
+      </div>
+
+      <div class="panel-actions">
+        <button class="btn primary" id="btn-reset">Reset to zero</button>
+        <button class="btn" id="btn-theme">Toggle theme</button>
+      </div>
+    </section>
+
+    <!-- VERDICT PANEL: gauge + live verdict, side by side with inputs so nothing scrolls out of view -->
+    <section class="card verdict-panel">
+      <div class="gauge-compact">
+        <p class="panel-title">Threshold gauge, dominant at 40%+, mixed 25 to 40%, no dominant driver under 25%</p>
+        <div id="gauge"></div>
+        <div class="gauge-scale"><span>0%</span><span>25%</span><span>40%</span><span>100%</span></div>
+      </div>
+
+      <div class="verdict-divider"></div>
+
+      <div id="verdict-card"><!-- filled by JS --></div>
+    </section>
+  </div>
+
+  <section class="ref-section">
+    <h2 class="section-title">All six scenarios, quick reference</h2>
+    <p class="section-hint">The row the navigator has selected is highlighted once you enter a cohort mix above.</p>
+    <div style="overflow-x:auto;">
+      <table class="quickref" id="quickref-table">
+        <thead>
+          <tr><th style="width:28px;">#</th><th>Trigger signal</th><th>Lead play</th><th>Kill condition</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="accordion" id="accordion"></div>
+  </section>
+
+  <section class="known-strip-wrap ref-section">
+    <h2 class="section-title">Known from Charter's filings</h2>
+    <p class="section-hint">Context only, not fed into the verdict above. The cohort mix behind these totals is unallocated until G1 is filled.</p>
+    <div class="known-strip" id="known-strip"></div>
+  </section>
+
+  <section class="timeline-section">
+    <h2 class="section-title">Governance timeline</h2>
+    <p class="section-hint">Live in one quarter, acting in three, inside the eight-quarter window the diagnostic set.</p>
+    <div class="timeline" id="timeline"></div>
+  </section>
+
+  <details class="about card" style="margin-top:26px;">
+    <summary style="font-size:15px;">About this playbook</summary>
+    <div class="about-body">
+      <p><strong>Why a sensor plus a pre-committed playbook.</strong> Nobody, including Charter's own filings, can currently say which competitor is taking the subscribers. Fiber, FWA, satellite, housing, and price sensitivity are jointly unidentified: no DMA or overlap split exists in any filing. The recommendation is not a guess. It is the sensor, plus a battle plan pre-authorized for every answer the sensor can return.</p>
+      <h4>Cost and time</h4>
+      <p>Sensor build: low single-digit millions, live within one quarter, with the first full attribution read the quarter after (data-science and BI build on existing billing, the public FCC BDC, and portability data; figure is a team assumption pending client data). Each play then carries its own pre-authorized budget, released only by its trigger and gated by its own economics test.</p>
+      <h4>Three honest risks</h4>
+      <p>BDC data can lag or overstate coverage, so validate it against port-out destinations. Exit surveys can under-sample silent churners, so weight them by portability data. Pre-commitment could misfire on a bad read, so thresholds require two consecutive quarters before a play scales to full size, though a controlled experiment can start on one.</p>
+      <h4>Open items for the client</h4>
+      <p>MVNO wholesale cost per line, which gates Scenario 1. Any churn split by exposure class that already exists internally, which would accelerate the first read from Q+2 to Q+1. Whether the leverage band and buyback program are board constants, which shapes Scenario 6's default track.</p>
+      <h4>Sources</h4>
+      <p>FY2025 10-K (overlap and housing commentary); Q1 and Q2 2026 earnings releases (rural relationships, delinquencies); team event study and issue tree from Check-in #2; <em>CHTR_Rec1_AttributionPlaybook.pptx</em> and the CHURN decisions branch.</p>
+    </div>
+  </details>
+</main>
+
+<footer>
+  <div class="wrap foot-line">
+    Recommendation 1 of 3 &nbsp;&middot;&nbsp; Josh &middot; Kishore &middot; Justin &middot; Kyle &nbsp;&middot;&nbsp; MAN 6930, Foundations of Consulting &nbsp;&middot;&nbsp; This tool operationalizes the Rec 1 playbook for quarterly use and does not replace the G1 net-loss tracker itself.
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var SCENARIOS = [
+    {
+      id: 1, key: "fwa", name: "FWA-driven losses", short: "Fixed wireless access",
+      signal: "More than 35 to 40% of losses map to FWA-covered addresses, skewing low-tenure and low-ARPU, with audited exit data citing price.",
+      play: "Convergence pricing attack: internet plus unlimited mobile at or below T-Mobile Home Internet's price point, offered only in FWA-exposed zones, marketed on speed and capacity superiority.",
+      gate: "Bundle discount must stay under churn-avoided LTV. Requires the MVNO wholesale cost per line. If the gate fails, the play works while destroying value, so it should not run.",
+      proof: "Churn delta, treated vs untreated FWA zones, within two quarters, run as a pre-registered controlled experiment.",
+      kill: "No churn separation after two quarters, or bundle margin turns negative after CBRS-offload assumptions.",
+      fallback: "Value flanker tier or brand to defend the base without repricing it, or concede the segment and route the budget to Scenarios 2 or 6."
+    },
+    {
+      id: 2, key: "fiber", name: "Fiber-driven losses", short: "Fiber overbuild",
+      signal: "Losses skew to AT&T, Verizon, or Frontier fiber DMAs, with higher-ARPU customers leaving and exit data citing speed, reliability, or upload.",
+      play: "Re-sequence network evolution by competitive exposure rather than construction cost: DOCSIS 4.0 or high-split first where fiber overlaps, paired with symmetric-speed win-back campaigns in completed zones.",
+      gate: "Re-sequencing premium weighed against LTV at risk in exposed DMAs, with the end-2027 completion target as the binding constraint.",
+      proof: "Charter's cleanest natural experiment: churn in evolution-complete vs incomplete overbuilt zones.",
+      kill: "Parity product, continued losses. If completed zones bleed at the same rate, fiber losses are brand or price structural, not product.",
+      fallback: "Harvest, don't chase: stop defending unwinnable zones at full cost, maximize cash from the remaining base, made legible to the market through the re-segmentation track."
+    },
+    {
+      id: 3, key: "satellite", name: "LEO-satellite-driven losses", short: "Satellite",
+      signal: "Losses map to low-density census blocks where Starlink, and Kuiper next, is the only alternative.",
+      play: "Accelerate rural subsidized build activation to penetrate new passings before satellite entrenches. Satellite is capacity-constrained: it wins by default where wireline is absent, not head-to-head.",
+      gate: "Program is already funded ($8B, more than $2B subsidies). The variable is activation pace vs BEAD/RDOF milestone penalties.",
+      proof: "Connect share of new move-ins inside the footprint, and penetration rate on new rural passings vs vintage cohorts.",
+      kill: "Penetration on new passings falls below the underwriting curve.",
+      fallback: "Slow the non-committed rural extensions; subsidy-committed builds continue regardless."
+    },
+    {
+      id: 4, key: "housing", name: "Housing-driven losses", short: "Move-outs",
+      signal: "Gross adds are down while churn-to-competitor is flat. Disconnects cluster on move-outs with no replacement household, and losses spread evenly across exposure classes.",
+      play: "Shift spend from retention to mover capture: builder and MDU partnerships, instant-on self-install, winning the connect when the move finally happens.",
+      gate: "Mover-capture cost per connect vs standard acquisition cost, with MDU deals underwritten building by building.",
+      proof: "Penetration rate on new rural passings vs vintage cohorts, and gross-add recovery as housing turnover normalizes.",
+      kill: "Port-out destination data contradicts the macro story, meaning losses were competitive after all, and re-routes to Scenarios 1 or 2.",
+      fallback: "This scenario activates the market layer hardest: disclose losses by cohort so the multiple stops pricing macro softness as competitive share loss."
+    },
+    {
+      id: 5, key: "nonpay", name: "Economic / non-pay churn", short: "Non-pay",
+      signal: "Losses skew to non-pay disconnects and downgrades, with demographics echoing the ACP-expiration cohort.",
+      play: "Retention-priced value tier with credit-friendly terms, such as deposit alternatives and seasonal pause options, offered at the point of delinquency.",
+      gate: "Save-rate times retained margin vs discount cost plus bad-debt exposure. 60+ day delinquencies actually improved in FY2025 (about 82k vs about 103k), so size this cohort before funding it.",
+      proof: "Save-rate on treated delinquent accounts vs control, and six-month survival of saved accounts.",
+      kill: "Save-rate economics fall below the LTV threshold, at which point the account should be let go rather than subsidized.",
+      fallback: "None needed. This scenario is self-limiting by design."
+    },
+    {
+      id: 6, key: null, name: "Null result, no dominant driver", short: "Diffuse losses",
+      signal: "No cause-cohort exceeds about 25 to 30% of losses. Everything is nibbling at once, plausibly the true state of the world, and the playbook does not skip it.",
+      play: "Default to the change-what-the-market-prices track: re-segment disclosure of rural build vs mature core, steady-state post-2027 capex guidance, and a capital-regime shift, plus small controlled bets from Scenarios 1 to 3 run as experiments, not campaigns.",
+      gate: "Disclosure costs almost nothing; experiments are spend-capped.",
+      proof: "Multiple response to disclosure, meaning whether the market starts pricing two businesses, with experiment read-outs feeding the next attribution cycle.",
+      kill: "A later quarter's read crosses a threshold, at which point the matching scenario fires. Null is a state, not a verdict.",
+      fallback: "Not applicable. Scenario 6 is the system's floor: it guarantees a defensible recommendation in every world, including the boring one."
+    }
+  ];
+
+  var COHORT_META = [
+    { key: "fwa", label: "FWA-covered", color: "var(--c-fwa)", hint: "Addresses covered by fixed wireless access (T-Mobile/Verizon Home Internet)" },
+    { key: "fiber", label: "Fiber-overbuilt", color: "var(--c-fiber)", hint: "AT&T, Verizon, or Frontier fiber DMAs" },
+    { key: "satellite", label: "Satellite-only", color: "var(--c-satellite)", hint: "Low-density blocks where LEO satellite is the only alternative" },
+    { key: "housing", label: "Housing / move-out", color: "var(--c-housing)", hint: "Disconnects tied to move-outs with no replacement household" },
+    { key: "nonpay", label: "Non-pay / downgrade", color: "var(--c-nonpay)", hint: "Delinquent or downgraded accounts, ACP-echo demographics" }
+  ];
+
+  var KNOWN_STATS = [
+    { num: "\u2212120k", label: "Company Internet net loss, Q1 2026", src: "Q1 2026 release" },
+    { num: "54k", label: "Excess vs Comcast's residential Internet net-loss rate (1.8\u00d7), unallocated", src: "Team diagnostic" },
+    { num: "\u221266k", label: "Ceiling on the next Internet print after a full 54k close, not a briefing plan", src: "Team diagnostic" },
+    { num: "~27%", label: "Footprint AT&T fiber overlaps at 100 Mbps+", src: "FY2025 10-K" },
+    { num: "~16%", label: "Footprint Verizon fiber overlaps", src: "FY2025 10-K" },
+    { num: "+41k / +47k", label: "Rural subsidized relationships added, Q1 / Q2 2026", src: "Q1, Q2 2026 releases" },
+    { num: "82k vs 103k", label: "60+ day delinquencies, FY2025 vs prior year, improved", src: "FY2025 10-K" },
+    { num: "$8B", label: "Rural build program funded, over $2B in subsidies", src: "Company disclosures" }
+  ];
+
+  var TIMELINE = [
+    { q: "Q+1", title: "Sensor live", body: "BDC cross-reference built, disconnect join complete, audited exit-survey sampling starts, thresholds and budgets ratified by the executive team." },
+    { q: "Q+2", title: "First attribution read", body: "Loss matrix by cause-cohort and value-cohort assembled, thresholds applied, scenario identified, board briefed on which plays fire." },
+    { q: "Q+3", title: "Plays trigger", body: "Lead play launches with its pre-authorized budget, controlled experiments start with pre-registered treatment, control, and review dates." },
+    { q: "Q+4\u20135", title: "Proof or kill", body: "Proof metrics read, kill conditions executed without renegotiation, winners scale, losers route to fallbacks." }
+  ];
+
+  var els = {};
+  ["gauge", "verdict-card", "accordion", "known-strip", "timeline", "cohort-inputs", "residual-val", "sum-warn", "total-loss", "quickref-table"]
+    .forEach(function (id) { els[id] = document.getElementById(id); });
+
+  var state = { fwa: 0, fiber: 0, satellite: 0, housing: 0, nonpay: 0 };
+
+  function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
+
+  function loadSaved() {
+    try {
+      var raw = localStorage.getItem("chtr-churn-nav-v1");
+      if (raw) {
+        var saved = JSON.parse(raw);
+        COHORT_META.forEach(function (c) {
+          if (typeof saved[c.key] === "number") state[c.key] = clamp(saved[c.key], 0, 100);
+        });
+        if (typeof saved.totalLoss === "number") els["total-loss"].value = saved.totalLoss;
+      }
+    } catch (e) { /* ignore, start clean */ }
+  }
+
+  function persist() {
+    try {
+      var payload = Object.assign({}, state);
+      var tl = parseFloat(els["total-loss"].value);
+      payload.totalLoss = isNaN(tl) ? null : tl;
+      localStorage.setItem("chtr-churn-nav-v1", JSON.stringify(payload));
+    } catch (e) { /* storage unavailable, continue without persistence */ }
+  }
+
+  // ---------- build cohort inputs ----------
+  function buildInputs() {
+    var html = "";
+    COHORT_META.forEach(function (c) {
+      html += '' +
+        '<div class="cohort-input">' +
+          '<label for="in-' + c.key + '"><span><span class="swatch" style="background:' + c.color + '"></span>' + c.label + '</span></label>' +
+          '<span class="hint">' + c.hint + '</span>' +
+          '<div class="val-box">' +
+            '<input type="range" id="rg-' + c.key + '" min="0" max="100" step="1" value="0">' +
+            '<input type="number" id="in-' + c.key + '" min="0" max="100" step="1" value="0">' +
+            '<span>%</span>' +
+          '</div>' +
+          '<div class="abs-figure" id="abs-' + c.key + '"></div>' +
+        '</div>';
+    });
+    els["cohort-inputs"].innerHTML = html;
+
+    COHORT_META.forEach(function (c) {
+      var rg = document.getElementById("rg-" + c.key);
+      var nb = document.getElementById("in-" + c.key);
+      rg.addEventListener("input", function () { nb.value = rg.value; state[c.key] = parseFloat(rg.value) || 0; recompute(); });
+      nb.addEventListener("input", function () {
+        var v = clamp(parseFloat(nb.value) || 0, 0, 100);
+        nb.value = v; rg.value = v; state[c.key] = v; recompute();
+      });
+    });
+  }
+
+  // ---------- compact gauge ----------
+  function buildGaugeSkeleton() {
+    var html = "";
+    COHORT_META.forEach(function (c) {
+      html += '' +
+        '<div class="g-row">' +
+          '<span class="g-label"><span class="swatch" style="background:' + c.color + '"></span>' + c.label + '</span>' +
+          '<div class="g-track">' +
+            '<div class="zone z-null"></div><div class="zone z-mixed"></div><div class="zone z-dominant"></div>' +
+            '<div class="fill" id="fill-' + c.key + '" style="background:' + c.color + '"></div>' +
+          '</div>' +
+          '<span class="g-val" id="gv-' + c.key + '">0%</span>' +
+        '</div>';
+    });
+    els["gauge"].innerHTML = html;
+  }
+
+  function updateGauge() {
+    COHORT_META.forEach(function (c) {
+      var v = state[c.key] || 0;
+      document.getElementById("gv-" + c.key).textContent = v + "%";
+      document.getElementById("fill-" + c.key).style.width = clamp(v, 0, 100) + "%";
+    });
+  }
+
+  // ---------- absolute figures ----------
+  function updateAbsFigures() {
+    var total = parseFloat(els["total-loss"].value);
+    COHORT_META.forEach(function (c) {
+      var box = document.getElementById("abs-" + c.key);
+      if (!box) return;
+      if (!isNaN(total) && total > 0) {
+        var abs = (total * (state[c.key] || 0) / 100);
+        box.textContent = "\u2248 " + abs.toFixed(1) + "k of the quarter's net loss";
+      } else {
+        box.textContent = "";
+      }
+    });
+  }
+
+  // ---------- verdict logic ----------
+  function computeVerdict() {
+    var entries = COHORT_META.map(function (c) { return [c.key, state[c.key] || 0]; });
+    var sum = entries.reduce(function (a, e) { return a + e[1]; }, 0);
+    var residual = 100 - sum;
+
+    els["residual-val"].textContent = Math.max(0, Math.round(residual)) + "%";
+    var overLimit = sum > 100.001;
+    els["sum-warn"].classList.toggle("show", overLimit);
+
+    if (overLimit) return { state: "invalid" };
+    if (sum <= 0.001) return { state: "empty" };
+
+    var sorted = entries.slice().sort(function (a, b) { return b[1] - a[1]; });
+    var top = sorted[0];
+
+    if (top[1] >= 40) return { state: "dominant", keys: [top[0]] };
+
+    var inBand = sorted.filter(function (e) { return e[1] >= 25; });
+    if (inBand.length >= 2) return { state: "mixed", keys: [inBand[0][0], inBand[1][0]] };
+    if (inBand.length === 1) return { state: "leading", keys: [inBand[0][0]] };
+
+    return { state: "null", keys: [] };
+  }
+
+  function scenarioByKey(key) {
+    for (var i = 0; i < SCENARIOS.length; i++) if (SCENARIOS[i].key === key) return SCENARIOS[i];
+    return null;
+  }
+
+  function detailBlockHTML(scn) {
+    return '' +
+      '<div class="detail-grid">' +
+        '<div class="detail-block"><h4>Signal</h4><p>' + scn.signal + '</p></div>' +
+        '<div class="detail-block"><h4>Lead play</h4><p>' + scn.play + '</p></div>' +
+        '<div class="detail-block"><h4>Economics gate</h4><p>' + scn.gate + '</p></div>' +
+        '<div class="detail-block"><h4>Proof metric</h4><p>' + scn.proof + '</p></div>' +
+        '<div class="detail-block"><h4>Kill condition</h4><p>' + scn.kill + '</p></div>' +
+        '<div class="detail-block"><h4>Fallback</h4><p>' + scn.fallback + '</p></div>' +
+      '</div>';
+  }
+
+  function renderVerdict(v) {
+    var card = els["verdict-card"];
+    var badge = "", title = "", lead = "", body = "";
+
+    if (v.state === "empty") {
+      card.innerHTML = '<p class="panel-title">Verdict</p><div class="empty-state">Enter this quarter\u2019s cohort shares on the left to see which scenario fires. The tracker cells are empty on purpose until G1 is filled, so the navigator will not guess a mix for you.</div>';
+      return;
+    }
+    if (v.state === "invalid") {
+      card.innerHTML = '<p class="panel-title">Verdict</p><div class="invalid-state">Cohort inputs total more than 100%. Adjust the values on the left before the navigator can flag a scenario.</div>';
+      return;
+    }
+
+    if (v.state === "dominant") {
+      var scn = scenarioByKey(v.keys[0]);
+      badge = '<span class="verdict-badge" style="background:var(--pass-bg);color:var(--pass-ink)">Dominant driver, ' + top1(v) + '% of losses</span>';
+      title = "Scenario " + scn.id + ": " + scn.name;
+      lead = scn.signal;
+      body = detailBlockHTML(scn);
+    } else if (v.state === "mixed") {
+      var s1 = scenarioByKey(v.keys[0]), s2 = scenarioByKey(v.keys[1]);
+      badge = '<span class="verdict-badge" style="background:var(--warn-bg);color:var(--warn-ink)">Mixed picture, two cohorts between 25% and 40%</span>';
+      title = "Scenario " + s1.id + " and Scenario " + s2.id + ": " + s1.name + " and " + s2.name;
+      lead = "Run both plays as controlled experiments, treated vs untreated zones, and scale whichever separates churn first. Spend stays capped until proof.";
+      body = detailBlockHTML(s1) + '<div style="height:16px"></div><h4 style="margin:0 0 6px;font-size:11.5px;color:var(--gray)">Second cohort in band</h4>' + detailBlockHTML(s2);
+    } else if (v.state === "leading") {
+      var s = scenarioByKey(v.keys[0]);
+      badge = '<span class="verdict-badge" style="background:var(--warn-bg);color:var(--warn-ink)">Leading candidate, one cohort between 25% and 40%</span>';
+      title = "Scenario " + s.id + ": " + s.name;
+      lead = "Only one cohort has crossed 25%. That is not a stated trigger in the playbook on its own, so treat this as a candidate to test as a controlled experiment before committing full-scale budget, the same discipline the mixed-picture case uses.";
+      body = detailBlockHTML(s);
+    } else if (v.state === "null") {
+      var s6 = scenarioByKey(null);
+      badge = '<span class="verdict-badge" style="background:var(--null-bg);color:var(--null-ink)">No dominant driver, diffuse losses</span>';
+      title = "Scenario 6: " + s6.name;
+      lead = s6.signal;
+      body = detailBlockHTML(s6);
+    }
+
+    card.innerHTML = '<p class="panel-title">Verdict</p>' + badge +
+      '<h3 class="verdict-scenario serif">' + title + '</h3>' +
+      '<p class="verdict-signal">' + lead + '</p>' + body;
+  }
+
+  function top1(v) {
+    var key = v.keys[0];
+    return Math.round(state[key]);
+  }
+
+  function highlightScenarios(v) {
+    var firingKeys = (v.keys || []).slice();
+    var firingIds = firingKeys.map(function (k) { var s = scenarioByKey(k); return s ? s.id : (k === undefined ? 6 : null); });
+    if (v.state === "null") firingIds = [6];
+
+    document.querySelectorAll("details.scn").forEach(function (d) {
+      var id = parseInt(d.getAttribute("data-id"), 10);
+      var isCurrent = firingIds.indexOf(id) !== -1;
+      d.classList.toggle("is-current", isCurrent);
+      var pill = d.querySelector(".current-pill");
+      if (isCurrent && !pill) {
+        var span = document.createElement("span");
+        span.className = "current-pill";
+        span.textContent = "Currently indicated";
+        d.querySelector("summary").appendChild(span);
+      } else if (!isCurrent && pill) {
+        pill.remove();
+      }
+    });
+
+    document.querySelectorAll("#quickref-table tbody tr").forEach(function (tr) {
+      var id = parseInt(tr.getAttribute("data-id"), 10);
+      tr.classList.toggle("is-current", firingIds.indexOf(id) !== -1);
+    });
+  }
+
+  function recompute() {
+    updateGauge();
+    updateAbsFigures();
+    var v = computeVerdict();
+    renderVerdict(v);
+    highlightScenarios(v);
+    persist();
+  }
+
+  // ---------- static content ----------
+  function buildQuickref() {
+    var rows = "";
+    SCENARIOS.forEach(function (s) {
+      rows += '<tr data-id="' + s.id + '"><td>' + s.id + '</td><td>' + shortSignal(s) + '</td><td>' + shortPlay(s) + '</td><td>' + s.kill + '</td></tr>';
+    });
+    els["quickref-table"].querySelector("tbody").innerHTML = rows;
+  }
+  function shortSignal(s) { return s.signal.length > 110 ? s.signal.slice(0, 108) + "\u2026" : s.signal; }
+  function shortPlay(s) { return s.play.length > 100 ? s.play.slice(0, 98) + "\u2026" : s.play; }
+
+  function buildAccordion() {
+    var html = "";
+    SCENARIOS.forEach(function (s) {
+      html += '' +
+        '<details class="scn" data-id="' + s.id + '">' +
+          '<summary><span><span class="n">Scenario ' + s.id + '</span>' + s.name + '</span></summary>' +
+          '<div class="scn-body">' + detailBlockHTML(s) + '</div>' +
+        '</details>';
+    });
+    els["accordion"].innerHTML = html;
+  }
+
+  function buildKnownStrip() {
+    var html = "";
+    KNOWN_STATS.forEach(function (k) {
+      html += '<div class="stat-card"><div class="num serif">' + k.num + '</div><div class="label">' + k.label + '</div><div class="src">' + k.src + '</div></div>';
+    });
+    els["known-strip"].innerHTML = html;
+  }
+
+  function buildTimeline() {
+    var html = "";
+    TIMELINE.forEach(function (t) {
+      html += '<div class="tl-step"><div class="tl-q">' + t.q + '</div><h4>' + t.title + '</h4><p>' + t.body + '</p></div>';
+    });
+    els["timeline"].innerHTML = html;
+  }
+
+  // ---------- controls ----------
+  document.getElementById("btn-reset").addEventListener("click", function () {
+    COHORT_META.forEach(function (c) {
+      state[c.key] = 0;
+      document.getElementById("rg-" + c.key).value = 0;
+      document.getElementById("in-" + c.key).value = 0;
+    });
+    els["total-loss"].value = "";
+    recompute();
+  });
+
+  document.getElementById("btn-theme").addEventListener("click", function () {
+    var root = document.documentElement;
+    var cur = root.getAttribute("data-theme");
+    if (cur === "dark") root.setAttribute("data-theme", "light");
+    else if (cur === "light") root.removeAttribute("data-theme");
+    else root.setAttribute("data-theme", "dark");
+  });
+
+  els["total-loss"].addEventListener("input", function () { updateAbsFigures(); persist(); });
+
+  // ---------- init ----------
+  buildInputs();
+  buildGaugeSkeleton();
+  buildQuickref();
+  buildAccordion();
+  buildKnownStrip();
+  buildTimeline();
+  loadSaved();
+  COHORT_META.forEach(function (c) {
+    document.getElementById("rg-" + c.key).value = state[c.key];
+    document.getElementById("in-" + c.key).value = state[c.key];
+  });
+  recompute();
+})();
+</script>
+</body>
+</html>
