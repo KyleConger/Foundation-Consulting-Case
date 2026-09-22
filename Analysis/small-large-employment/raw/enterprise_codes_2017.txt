@@ -1,0 +1,50 @@
+2017 to present Statistics of U.S. Businesses comma-delimited files
+
+ANNUAL - U.S., State, and MSA:						
+Size Code    Enterprise Employment Size					 
+  01            Total
+  02  		< 5 							               
+  03  		5-9 							   		
+  04  		10-19  							   				
+  05  		< 20 							   		
+  06    	20-99 							   		
+  07 		100-499 						   		
+  08     	< 500 							   			
+  09     	500 +  							   		
+
+
+ANNUAL - U.S. & states, detailed enterprise employment size classes:
+Size Code    Enterprise Employment Size
+  01            Total
+  02  		< 5 
+  03  		5-9 
+  04  		10-14  
+  05  		15-19 
+  06    	< 20
+  07            20-24 
+  08 		25-29 
+  09     	30-34 
+  10     	35-39  
+  11     	40-49 
+  12     	50-74 
+  13     	75-99 
+  14     	100-149 
+  15     	150-199 
+  16     	200-299 
+  17     	300-399 
+  18     	400-499 
+  19     	< 500
+  20            500-749 
+  21     	750-999 
+  22     	1,000-1,499 
+  23     	1,500-1,999 
+  24     	2,000-2,499 
+  25     	2,500-4,999 
+  26     	5,000 + 
+  
+   * 0-4 employment size was renamed <5
+
+
+
+
+ 

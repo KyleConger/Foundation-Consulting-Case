@@ -1,0 +1,56 @@
+Field_Name|Label|Field_Type|Field_Length|Number_of_Decimals
+GEO_ID|Geographic identifier code|CHARACTER|30|0
+GEO_LABEL|Geographic Area Name|CHARACTER|255|0
+GEO_ID_F|Geo Footnote|CHARACTER|4|0
+GEOTYPE|Type of geography flag|CHARACTER|2|0
+ST|FIPS state code|CHARACTER|2|0
+NAICS2022|2022 NAICS code|CHARACTER|8|0
+NAICS2022_LABEL|Meaning of 2022 NAICS code|CHARACTER|255|0
+NAICS2022_F|2022 NAICS Footnote|CHARACTER|4|0
+SEX|Sex code|CHARACTER|3|0
+SEX_LABEL|Meaning of SEX|CHARACTER|255|0
+ETH_GROUP|Ethnicity code|CHARACTER|3|0
+ETH_GROUP_LABEL|Meaning of ETH_GROUP|CHARACTER|255|0
+RACE_GROUP|Race code|CHARACTER|2|0
+RACE_GROUP_LABEL|Meaning of RACE_GROUP|CHARACTER|255|0
+VET_GROUP|Veteran code|CHARACTER|3|0
+VET_GROUP_LABEL|Meaning of VET_GROUP|CHARACTER|255|0
+EMPSZFI|Employment size of firms code|CHARACTER|3|0
+EMPSZFI_LABEL|Meaning of EMPSZFI|CHARACTER|255|0
+QDESC|Question description code|CHARACTER|6|0
+QDESC_LABEL|Meaning of Question description code|CHARACTER|255|0
+BUSCHAR|Business characteristic code|CHARACTER|10|0
+BUSCHAR_LABEL|Meaning of Business characteristic code|CHARACTER|255|0
+YEAR|Year|CHARACTER|4|0
+FIRMPDEMP|Number of employer firms|NUMBER|10|0
+FIRMPDEMP_F|Flag for Number of employer firms|CHARACTER|1|0
+FIRMPDEMP_PCT|Percent of employer firms (%)|NUMBER|10|1
+FIRMPDEMP_PCT_F|Flag for Percent of employer firms (%)|CHARACTER|1|0
+RCPPDEMP|Sales, value of shipments, or revenue of employer firms ($1,000)|NUMBER|11|0
+RCPPDEMP_F|Flag for Sales, value of shipments, or revenue of employer firms ($1,000)|CHARACTER|1|0
+RCPPDEMP_PCT|Percent of sales, value of shipments, or revenue of employer firms (%)|NUMBER|10|1
+RCPPDEMP_PCT_F|Flag for Percent of sales, value of shipments, or revenue of employer firms (%)|CHARACTER|1|0
+EMP|Number of employees|NUMBER|10|0
+EMP_F|Flag for Number of employees|CHARACTER|1|0
+EMP_PCT|Percent of employees (%)|NUMBER|10|1
+EMP_PCT_F|Flag for Percent of employees (%)|CHARACTER|1|0
+PAYANN|Annual payroll ($1,000)|NUMBER|11|0
+PAYANN_F|Flag for Annual payroll ($1,000)|CHARACTER|1|0
+PAYANN_PCT|Percent of annual payroll (%)|NUMBER|10|1
+PAYANN_PCT_F|Flag for Percent of annual payroll (%)|CHARACTER|1|0
+FIRMPDEMP_S|Relative standard error of employer firms (%)|NUMBER|10|1
+FIRMPDEMP_S_F|Flag for Relative standard error of employer firms (%)|CHARACTER|1|0
+FIRMPDEMP_PCT_S|Standard error of percent of employer firms (%)|NUMBER|10|1
+FIRMPDEMP_PCT_S_F|Flag for Standard error of percent of employer firms (%)|CHARACTER|1|0
+RCPPDEMP_S|Relative standard error of sales, value of shipments, or revenue of employer firms (%)|NUMBER|10|1
+RCPPDEMP_S_F|Flag for Relative standard error of sales, value of shipments, or revenue of employer firms (%)|CHARACTER|1|0
+RCPPDEMP_PCT_S|Standard error of percent of sales, value of shipments, or revenue of employer firms (%)|NUMBER|10|1
+RCPPDEMP_PCT_S_F|Flag for Standard error of percent of sales, value of shipments, or revenue of employer firms (%)|CHARACTER|1|0
+EMP_S|Relative standard error of number of employees (%)|NUMBER|10|1
+EMP_S_F|Flag for Relative standard error of number of employees (%)|CHARACTER|1|0
+EMP_PCT_S|Standard error of percent of employees (%)|NUMBER|10|1
+EMP_PCT_S_F|Flag for Standard error of percent of employees (%)|CHARACTER|1|0
+PAYANN_S|Relative standard error of annual payroll (%)|NUMBER|10|1
+PAYANN_S_F|Flag for Relative standard error of annual payroll (%)|CHARACTER|1|0
+PAYANN_PCT_S|Standard error of percent of annual payroll (%)|NUMBER|10|1
+PAYANN_PCT_S_F|Flag for Standard error of percent of annual payroll (%)|CHARACTER|1|0

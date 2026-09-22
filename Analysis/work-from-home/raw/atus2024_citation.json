@@ -1,0 +1,10 @@
+{
+  "agency": "U.S. Bureau of Labor Statistics",
+  "program": "American Time Use Survey (ATUS)",
+  "tables": ["Table 6", "Table 7"],
+  "year": 2024,
+  "url_used": "https://www.bls.gov/news.release/archives/atus_06262025.htm",
+  "url_pdf": "https://www.bls.gov/news.release/archives/atus_06262025.pdf",
+  "measure": "Employed persons who worked at home on an average day as percent of employed persons who worked on an average day; any time at home; persons 15+",
+  "note": "Cell values transcribed from the HTML news release into build_wfh_rates.py and recomputed (home/worked) to match published one-decimal percents within 0.15 pp. BLS blocked automated PDF download from this environment."
+}

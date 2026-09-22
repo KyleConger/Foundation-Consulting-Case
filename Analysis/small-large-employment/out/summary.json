@@ -1,0 +1,867 @@
+{
+  "year": 2022,
+  "vintage_note": "US, state, and MSA/\u00b5SA enterprise-size employment all from SUSB 2022 (same vintage; MSA revised 2025-07-22). No year mixing.",
+  "definition": "SUSB employment is mid-March payroll employment at employer establishments, classified by enterprise (firm) employment size; excludes nonemployers, most government, and most of agriculture.",
+  "primary_cutoff": "SBA <500 employees (enterprise)",
+  "agency": "U.S. Census Bureau",
+  "program": "Statistics of U.S. Businesses (SUSB)",
+  "source_page": "https://www.census.gov/data/datasets/2022/econ/susb/2022-susb.html",
+  "state_table_url": "https://www2.census.gov/programs-surveys/susb/tables/2022/us_state_naics_detailedsizes_2022.txt",
+  "msa_table_url": "https://www2.census.gov/programs-surveys/susb/datasets/2022/msa_3digitnaics_2022.txt",
+  "enterprise_codes_url": "https://www2.census.gov/programs-surveys/susb/technical-documentation/enterprise_codes_2017.txt",
+  "state_release_note": "reference year 2022; datasets page April 2025; file last-modified 2025-04-10",
+  "msa_release_note": "reference year 2022; MSA dataset originally released 2025-05-29, revised 2025-07-22 (extraneous estimates removed; remaining estimates unchanged)",
+  "measure": "mid-March payroll employment at employer establishments, classified by enterprise (firm) employment size; primary split firms <500 vs 500+ employees (SBA cutoff)",
+  "citation_us_state": "U.S. Census Bureau, Statistics of U.S. Businesses (SUSB), 2022 Annual Datasets by Establishment Industry \u2014 us_state_naics_detailedsizes_2022.txt (all-industry NAICS=--, enterprise employment size); reference year 2022; datasets page April 2025; file last-modified 2025-04-10; measures mid-March payroll employment at employer establishments, classified by enterprise (firm) employment size; primary split firms <500 vs 500+ employees (SBA cutoff). File: https://www2.census.gov/programs-surveys/susb/tables/2022/us_state_naics_detailedsizes_2022.txt Landing page: https://www.census.gov/data/datasets/2022/econ/susb/2022-susb.html",
+  "citation_msa": "U.S. Census Bureau, Statistics of U.S. Businesses (SUSB), 2022 Annual Datasets by Establishment Industry \u2014 msa_3digitnaics_2022.txt (all-industry NAICS=--, enterprise employment size); reference year 2022; MSA dataset originally released 2025-05-29, revised 2025-07-22 (extraneous estimates removed; remaining estimates unchanged); measures mid-March payroll employment at employer establishments, classified by enterprise (firm) employment size; primary split firms <500 vs 500+ employees (SBA cutoff). File: https://www2.census.gov/programs-surveys/susb/datasets/2022/msa_3digitnaics_2022.txt Landing page: https://www.census.gov/data/datasets/2022/econ/susb/2022-susb.html",
+  "origin": "RETRIEVED",
+  "us": {
+    "employment_total": 135748407,
+    "employment_lt500": 62250556,
+    "employment_ge500": 73497851,
+    "share_lt500_pct_full": 45.85730129415073,
+    "share_ge500_pct_full": 54.14269870584927,
+    "share_lt500_pct_1dp": 45.9,
+    "share_ge500_pct_1dp": 54.1,
+    "share_lt100_pct_1dp": 32.4,
+    "citation": "U.S. Census Bureau, Statistics of U.S. Businesses (SUSB), 2022 Annual Datasets by Establishment Industry \u2014 us_state_naics_detailedsizes_2022.txt (all-industry NAICS=--, enterprise employment size); reference year 2022; datasets page April 2025; file last-modified 2025-04-10; measures mid-March payroll employment at employer establishments, classified by enterprise (firm) employment size; primary split firms <500 vs 500+ employees (SBA cutoff). File: https://www2.census.gov/programs-surveys/susb/tables/2022/us_state_naics_detailedsizes_2022.txt Landing page: https://www.census.gov/data/datasets/2022/econ/susb/2022-susb.html",
+    "size_class_employment": {
+      "lt5": 6295615,
+      "5_9": 6810300,
+      "10_19": 8844269,
+      "20_99": 21976701,
+      "100_499": 18323671,
+      "ge500": 73497851
+    },
+    "size_class_share_pct_1dp": {
+      "lt5": 4.6,
+      "5_9": 5.0,
+      "10_19": 6.5,
+      "20_99": 16.2,
+      "100_499": 13.5,
+      "ge500": 54.1
+    },
+    "binary_vs_total_diff": 0,
+    "size_class_vs_total_diff": 0
+  },
+  "states": {
+    "n": 51,
+    "citation": "U.S. Census Bureau, Statistics of U.S. Businesses (SUSB), 2022 Annual Datasets by Establishment Industry \u2014 us_state_naics_detailedsizes_2022.txt (all-industry NAICS=--, enterprise employment size); reference year 2022; datasets page April 2025; file last-modified 2025-04-10; measures mid-March payroll employment at employer establishments, classified by enterprise (firm) employment size; primary split firms <500 vs 500+ employees (SBA cutoff). File: https://www2.census.gov/programs-surveys/susb/tables/2022/us_state_naics_detailedsizes_2022.txt Landing page: https://www.census.gov/data/datasets/2022/econ/susb/2022-susb.html",
+    "highest_lt500": {
+      "name": "Montana",
+      "geo_id": "30",
+      "share_lt500_pct_1dp": 66.3,
+      "share_lt500_pct_full": 66.32896349947727,
+      "employment_total": 398871,
+      "employment_lt500": 264567,
+      "citation": "U.S. Census Bureau, Statistics of U.S. Businesses (SUSB), 2022 Annual Datasets by Establishment Industry \u2014 us_state_naics_detailedsizes_2022.txt (all-industry NAICS=--, enterprise employment size); reference year 2022; datasets page April 2025; file last-modified 2025-04-10; measures mid-March payroll employment at employer establishments, classified by enterprise (firm) employment size; primary split firms <500 vs 500+ employees (SBA cutoff). File: https://www2.census.gov/programs-surveys/susb/tables/2022/us_state_naics_detailedsizes_2022.txt Landing page: https://www.census.gov/data/datasets/2022/econ/susb/2022-susb.html"
+    },
+    "lowest_lt500": {
+      "name": "Florida",
+      "geo_id": "12",
+      "share_lt500_pct_1dp": 39.6,
+      "share_lt500_pct_full": 39.60045351130097,
+      "employment_total": 9628867,
+      "employment_lt500": 3813075,
+      "citation": "U.S. Census Bureau, Statistics of U.S. Businesses (SUSB), 2022 Annual Datasets by Establishment Industry \u2014 us_state_naics_detailedsizes_2022.txt (all-industry NAICS=--, enterprise employment size); reference year 2022; datasets page April 2025; file last-modified 2025-04-10; measures mid-March payroll employment at employer establishments, classified by enterprise (firm) employment size; primary split firms <500 vs 500+ employees (SBA cutoff). File: https://www2.census.gov/programs-surveys/susb/tables/2022/us_state_naics_detailedsizes_2022.txt Landing page: https://www.census.gov/data/datasets/2022/econ/susb/2022-susb.html"
+    },
+    "range_pp_1dp": 26.7,
+    "all_sorted_by_lt500_desc": [
+      {
+        "geo_id": "30",
+        "geo_name": "Montana",
+        "share_lt500_pct_1dp": 66.3,
+        "share_lt500_pct_full": 66.32896349947727,
+        "share_ge500_pct_1dp": 33.7,
+        "share_lt100_pct_1dp": 50.9,
+        "employment_total": 398871,
+        "employment_lt500": 264567,
+        "employment_ge500": 134304
+      },
+      {
+        "geo_id": "56",
+        "geo_name": "Wyoming",
+        "share_lt500_pct_1dp": 65.2,
+        "share_lt500_pct_full": 65.20209206630004,
+        "share_ge500_pct_1dp": 34.8,
+        "share_lt100_pct_1dp": 51.8,
+        "employment_total": 208024,
+        "employment_lt500": 135636,
+        "employment_ge500": 72388
+      },
+      {
+        "geo_id": "50",
+        "geo_name": "Vermont",
+        "share_lt500_pct_1dp": 62.1,
+        "share_lt500_pct_full": 62.07347792086328,
+        "share_ge500_pct_1dp": 37.9,
+        "share_lt100_pct_1dp": 44.6,
+        "employment_total": 254471,
+        "employment_lt500": 157959,
+        "employment_ge500": 96512
+      },
+      {
+        "geo_id": "46",
+        "geo_name": "South Dakota",
+        "share_lt500_pct_1dp": 58.0,
+        "share_lt500_pct_full": 57.96374607810883,
+        "share_ge500_pct_1dp": 42.0,
+        "share_lt100_pct_1dp": 41.1,
+        "employment_total": 373863,
+        "employment_lt500": 216705,
+        "employment_ge500": 157158
+      },
+      {
+        "geo_id": "38",
+        "geo_name": "North Dakota",
+        "share_lt500_pct_1dp": 57.6,
+        "share_lt500_pct_full": 57.60621595174459,
+        "share_ge500_pct_1dp": 42.4,
+        "share_lt100_pct_1dp": 40.0,
+        "employment_total": 342345,
+        "employment_lt500": 197212,
+        "employment_ge500": 145133
+      },
+      {
+        "geo_id": "16",
+        "geo_name": "Idaho",
+        "share_lt500_pct_1dp": 56.0,
+        "share_lt500_pct_full": 55.98668192213043,
+        "share_ge500_pct_1dp": 44.0,
+        "share_lt100_pct_1dp": 42.3,
+        "employment_total": 689589,
+        "employment_lt500": 386078,
+        "employment_ge500": 303511
+      },
+      {
+        "geo_id": "23",
+        "geo_name": "Maine",
+        "share_lt500_pct_1dp": 54.5,
+        "share_lt500_pct_full": 54.49075402653282,
+        "share_ge500_pct_1dp": 45.5,
+        "share_lt100_pct_1dp": 40.2,
+        "employment_total": 533151,
+        "employment_lt500": 290518,
+        "employment_ge500": 242633
+      },
+      {
+        "geo_id": "02",
+        "geo_name": "Alaska",
+        "share_lt500_pct_1dp": 54.2,
+        "share_lt500_pct_full": 54.195959015311,
+        "share_ge500_pct_1dp": 45.8,
+        "share_lt100_pct_1dp": 41.7,
+        "employment_total": 257462,
+        "employment_lt500": 139534,
+        "employment_ge500": 117928
+      },
+      {
+        "geo_id": "22",
+        "geo_name": "Louisiana",
+        "share_lt500_pct_1dp": 54.1,
+        "share_lt500_pct_full": 54.10045765421195,
+        "share_ge500_pct_1dp": 45.9,
+        "share_lt100_pct_1dp": 37.6,
+        "employment_total": 1644036,
+        "employment_lt500": 889431,
+        "employment_ge500": 754605
+      },
+      {
+        "geo_id": "41",
+        "geo_name": "Oregon",
+        "share_lt500_pct_1dp": 53.4,
+        "share_lt500_pct_full": 53.367218500533355,
+        "share_ge500_pct_1dp": 46.6,
+        "share_lt100_pct_1dp": 39.5,
+        "employment_total": 1666806,
+        "employment_lt500": 889528,
+        "employment_ge500": 777278
+      },
+      {
+        "geo_id": "35",
+        "geo_name": "New Mexico",
+        "share_lt500_pct_1dp": 53.3,
+        "share_lt500_pct_full": 53.30877866059163,
+        "share_ge500_pct_1dp": 46.7,
+        "share_lt100_pct_1dp": 38.0,
+        "employment_total": 639118,
+        "employment_lt500": 340706,
+        "employment_ge500": 298412
+      },
+      {
+        "geo_id": "44",
+        "geo_name": "Rhode Island",
+        "share_lt500_pct_1dp": 51.1,
+        "share_lt500_pct_full": 51.13195040783926,
+        "share_ge500_pct_1dp": 48.9,
+        "share_lt100_pct_1dp": 37.3,
+        "employment_total": 439021,
+        "employment_lt500": 224480,
+        "employment_ge500": 214541
+      },
+      {
+        "geo_id": "40",
+        "geo_name": "Oklahoma",
+        "share_lt500_pct_1dp": 50.8,
+        "share_lt500_pct_full": 50.83942960211957,
+        "share_ge500_pct_1dp": 49.2,
+        "share_lt100_pct_1dp": 36.4,
+        "employment_total": 1390468,
+        "employment_lt500": 706906,
+        "employment_ge500": 683562
+      },
+      {
+        "geo_id": "10",
+        "geo_name": "Delaware",
+        "share_lt500_pct_1dp": 50.6,
+        "share_lt500_pct_full": 50.562687513404335,
+        "share_ge500_pct_1dp": 49.4,
+        "share_lt100_pct_1dp": 36.5,
+        "employment_total": 424303,
+        "employment_lt500": 214539,
+        "employment_ge500": 209764
+      },
+      {
+        "geo_id": "33",
+        "geo_name": "New Hampshire",
+        "share_lt500_pct_1dp": 50.3,
+        "share_lt500_pct_full": 50.2918330627112,
+        "share_ge500_pct_1dp": 49.7,
+        "share_lt100_pct_1dp": 37.0,
+        "employment_total": 615249,
+        "employment_lt500": 309420,
+        "employment_ge500": 305829
+      },
+      {
+        "geo_id": "15",
+        "geo_name": "Hawaii",
+        "share_lt500_pct_1dp": 49.6,
+        "share_lt500_pct_full": 49.578430792881214,
+        "share_ge500_pct_1dp": 50.4,
+        "share_lt100_pct_1dp": 34.3,
+        "employment_total": 507390,
+        "employment_lt500": 251556,
+        "employment_ge500": 255834
+      },
+      {
+        "geo_id": "11",
+        "geo_name": "District of Columbia",
+        "share_lt500_pct_1dp": 49.1,
+        "share_lt500_pct_full": 49.14734856026775,
+        "share_ge500_pct_1dp": 50.9,
+        "share_lt100_pct_1dp": 29.4,
+        "employment_total": 527355,
+        "employment_lt500": 259181,
+        "employment_ge500": 268174
+      },
+      {
+        "geo_id": "20",
+        "geo_name": "Kansas",
+        "share_lt500_pct_1dp": 48.9,
+        "share_lt500_pct_full": 48.899636966713246,
+        "share_ge500_pct_1dp": 51.1,
+        "share_lt100_pct_1dp": 33.1,
+        "employment_total": 1225232,
+        "employment_lt500": 599134,
+        "employment_ge500": 626098
+      },
+      {
+        "geo_id": "34",
+        "geo_name": "New Jersey",
+        "share_lt500_pct_1dp": 48.8,
+        "share_lt500_pct_full": 48.79796586099281,
+        "share_ge500_pct_1dp": 51.2,
+        "share_lt100_pct_1dp": 34.8,
+        "employment_total": 3813702,
+        "employment_lt500": 1861009,
+        "employment_ge500": 1952693
+      },
+      {
+        "geo_id": "53",
+        "geo_name": "Washington",
+        "share_lt500_pct_1dp": 48.7,
+        "share_lt500_pct_full": 48.74016083796101,
+        "share_ge500_pct_1dp": 51.3,
+        "share_lt100_pct_1dp": 35.7,
+        "employment_total": 2978277,
+        "employment_lt500": 1451617,
+        "employment_ge500": 1526660
+      },
+      {
+        "geo_id": "08",
+        "geo_name": "Colorado",
+        "share_lt500_pct_1dp": 48.6,
+        "share_lt500_pct_full": 48.632191894554076,
+        "share_ge500_pct_1dp": 51.4,
+        "share_lt100_pct_1dp": 35.8,
+        "employment_total": 2481196,
+        "employment_lt500": 1206660,
+        "employment_ge500": 1274536
+      },
+      {
+        "geo_id": "09",
+        "geo_name": "Connecticut",
+        "share_lt500_pct_1dp": 48.1,
+        "share_lt500_pct_full": 48.12943364659686,
+        "share_ge500_pct_1dp": 51.9,
+        "share_lt100_pct_1dp": 33.4,
+        "employment_total": 1508634,
+        "employment_lt500": 726097,
+        "employment_ge500": 782537
+      },
+      {
+        "geo_id": "55",
+        "geo_name": "Wisconsin",
+        "share_lt500_pct_1dp": 48.0,
+        "share_lt500_pct_full": 47.9895996735765,
+        "share_ge500_pct_1dp": 52.0,
+        "share_lt100_pct_1dp": 32.9,
+        "employment_total": 2600303,
+        "employment_lt500": 1247875,
+        "employment_ge500": 1352428
+      },
+      {
+        "geo_id": "24",
+        "geo_name": "Maryland",
+        "share_lt500_pct_1dp": 47.9,
+        "share_lt500_pct_full": 47.898646460641714,
+        "share_ge500_pct_1dp": 52.1,
+        "share_lt100_pct_1dp": 33.2,
+        "employment_total": 2436501,
+        "employment_lt500": 1167051,
+        "employment_ge500": 1269450
+      },
+      {
+        "geo_id": "26",
+        "geo_name": "Michigan",
+        "share_lt500_pct_1dp": 47.7,
+        "share_lt500_pct_full": 47.70773653516713,
+        "share_ge500_pct_1dp": 52.3,
+        "share_lt100_pct_1dp": 33.4,
+        "employment_total": 3939076,
+        "employment_lt500": 1879244,
+        "employment_ge500": 2059832
+      },
+      {
+        "geo_id": "31",
+        "geo_name": "Nebraska",
+        "share_lt500_pct_1dp": 47.5,
+        "share_lt500_pct_full": 47.498005730015166,
+        "share_ge500_pct_1dp": 52.5,
+        "share_lt100_pct_1dp": 34.0,
+        "employment_total": 890050,
+        "employment_lt500": 422756,
+        "employment_ge500": 467294
+      },
+      {
+        "geo_id": "54",
+        "geo_name": "West Virginia",
+        "share_lt500_pct_1dp": 47.4,
+        "share_lt500_pct_full": 47.41834854237439,
+        "share_ge500_pct_1dp": 52.6,
+        "share_lt100_pct_1dp": 33.8,
+        "employment_total": 540468,
+        "employment_lt500": 256281,
+        "employment_ge500": 284187
+      },
+      {
+        "geo_id": "06",
+        "geo_name": "California",
+        "share_lt500_pct_1dp": 47.4,
+        "share_lt500_pct_full": 47.376993146395684,
+        "share_ge500_pct_1dp": 52.6,
+        "share_lt100_pct_1dp": 33.8,
+        "employment_total": 16032440,
+        "employment_lt500": 7595688,
+        "employment_ge500": 8436752
+      },
+      {
+        "geo_id": "28",
+        "geo_name": "Mississippi",
+        "share_lt500_pct_1dp": 47.0,
+        "share_lt500_pct_full": 47.0169810921256,
+        "share_ge500_pct_1dp": 53.0,
+        "share_lt100_pct_1dp": 34.0,
+        "employment_total": 944580,
+        "employment_lt500": 444113,
+        "employment_ge500": 500467
+      },
+      {
+        "geo_id": "36",
+        "geo_name": "New York",
+        "share_lt500_pct_1dp": 46.6,
+        "share_lt500_pct_full": 46.648795887340306,
+        "share_ge500_pct_1dp": 53.4,
+        "share_lt100_pct_1dp": 32.5,
+        "employment_total": 8429776,
+        "employment_lt500": 3932389,
+        "employment_ge500": 4497387
+      },
+      {
+        "geo_id": "05",
+        "geo_name": "Arkansas",
+        "share_lt500_pct_1dp": 46.1,
+        "share_lt500_pct_full": 46.05066461961133,
+        "share_ge500_pct_1dp": 53.9,
+        "share_lt100_pct_1dp": 33.2,
+        "employment_total": 1089044,
+        "employment_lt500": 501512,
+        "employment_ge500": 587532
+      },
+      {
+        "geo_id": "19",
+        "geo_name": "Iowa",
+        "share_lt500_pct_1dp": 46.0,
+        "share_lt500_pct_full": 45.98986221587118,
+        "share_ge500_pct_1dp": 54.0,
+        "share_lt100_pct_1dp": 31.2,
+        "employment_total": 1386299,
+        "employment_lt500": 637557,
+        "employment_ge500": 748742
+      },
+      {
+        "geo_id": "01",
+        "geo_name": "Alabama",
+        "share_lt500_pct_1dp": 46.0,
+        "share_lt500_pct_full": 45.950934291598436,
+        "share_ge500_pct_1dp": 54.0,
+        "share_lt100_pct_1dp": 32.2,
+        "employment_total": 1777657,
+        "employment_lt500": 816850,
+        "employment_ge500": 960807
+      },
+      {
+        "geo_id": "51",
+        "geo_name": "Virginia",
+        "share_lt500_pct_1dp": 45.9,
+        "share_lt500_pct_full": 45.86232273024324,
+        "share_ge500_pct_1dp": 54.1,
+        "share_lt100_pct_1dp": 32.3,
+        "employment_total": 3494956,
+        "employment_lt500": 1602868,
+        "employment_ge500": 1892088
+      },
+      {
+        "geo_id": "27",
+        "geo_name": "Minnesota",
+        "share_lt500_pct_1dp": 45.8,
+        "share_lt500_pct_full": 45.84929233872591,
+        "share_ge500_pct_1dp": 54.2,
+        "share_lt100_pct_1dp": 31.4,
+        "employment_total": 2732522,
+        "employment_lt500": 1252842,
+        "employment_ge500": 1479680
+      },
+      {
+        "geo_id": "49",
+        "geo_name": "Utah",
+        "share_lt500_pct_1dp": 45.4,
+        "share_lt500_pct_full": 45.350345679661416,
+        "share_ge500_pct_1dp": 54.6,
+        "share_lt100_pct_1dp": 32.2,
+        "employment_total": 1521640,
+        "employment_lt500": 690069,
+        "employment_ge500": 831571
+      },
+      {
+        "geo_id": "42",
+        "geo_name": "Pennsylvania",
+        "share_lt500_pct_1dp": 45.2,
+        "share_lt500_pct_full": 45.23801082575477,
+        "share_ge500_pct_1dp": 54.8,
+        "share_lt100_pct_1dp": 31.4,
+        "employment_total": 5584830,
+        "employment_lt500": 2526466,
+        "employment_ge500": 3058364
+      },
+      {
+        "geo_id": "32",
+        "geo_name": "Nevada",
+        "share_lt500_pct_1dp": 45.0,
+        "share_lt500_pct_full": 44.98499119369366,
+        "share_ge500_pct_1dp": 55.0,
+        "share_lt100_pct_1dp": 31.5,
+        "employment_total": 1286578,
+        "employment_lt500": 578767,
+        "employment_ge500": 707811
+      },
+      {
+        "geo_id": "25",
+        "geo_name": "Massachusetts",
+        "share_lt500_pct_1dp": 44.7,
+        "share_lt500_pct_full": 44.653316726127414,
+        "share_ge500_pct_1dp": 55.3,
+        "share_lt100_pct_1dp": 30.6,
+        "employment_total": 3396919,
+        "employment_lt500": 1516837,
+        "employment_ge500": 1880082
+      },
+      {
+        "geo_id": "29",
+        "geo_name": "Missouri",
+        "share_lt500_pct_1dp": 44.4,
+        "share_lt500_pct_full": 44.417351074313004,
+        "share_ge500_pct_1dp": 55.6,
+        "share_lt100_pct_1dp": 31.8,
+        "employment_total": 2564383,
+        "employment_lt500": 1139031,
+        "employment_ge500": 1425352
+      },
+      {
+        "geo_id": "48",
+        "geo_name": "Texas",
+        "share_lt500_pct_1dp": 44.4,
+        "share_lt500_pct_full": 44.38796410246339,
+        "share_ge500_pct_1dp": 55.6,
+        "share_lt100_pct_1dp": 30.7,
+        "employment_total": 11507642,
+        "employment_lt500": 5108008,
+        "employment_ge500": 6399634
+      },
+      {
+        "geo_id": "37",
+        "geo_name": "North Carolina",
+        "share_lt500_pct_1dp": 44.2,
+        "share_lt500_pct_full": 44.20926856956127,
+        "share_ge500_pct_1dp": 55.8,
+        "share_lt100_pct_1dp": 32.4,
+        "employment_total": 4106761,
+        "employment_lt500": 1815569,
+        "employment_ge500": 2291192
+      },
+      {
+        "geo_id": "39",
+        "geo_name": "Ohio",
+        "share_lt500_pct_1dp": 43.8,
+        "share_lt500_pct_full": 43.817750404528134,
+        "share_ge500_pct_1dp": 56.2,
+        "share_lt100_pct_1dp": 30.0,
+        "employment_total": 4963808,
+        "employment_lt500": 2175029,
+        "employment_ge500": 2788779
+      },
+      {
+        "geo_id": "17",
+        "geo_name": "Illinois",
+        "share_lt500_pct_1dp": 43.7,
+        "share_lt500_pct_full": 43.748142127327235,
+        "share_ge500_pct_1dp": 56.3,
+        "share_lt100_pct_1dp": 30.2,
+        "employment_total": 5533883,
+        "employment_lt500": 2420971,
+        "employment_ge500": 3112912
+      },
+      {
+        "geo_id": "18",
+        "geo_name": "Indiana",
+        "share_lt500_pct_1dp": 43.2,
+        "share_lt500_pct_full": 43.180727617156045,
+        "share_ge500_pct_1dp": 56.8,
+        "share_lt100_pct_1dp": 29.7,
+        "employment_total": 2875908,
+        "employment_lt500": 1241838,
+        "employment_ge500": 1634070
+      },
+      {
+        "geo_id": "45",
+        "geo_name": "South Carolina",
+        "share_lt500_pct_1dp": 42.9,
+        "share_lt500_pct_full": 42.880820934627714,
+        "share_ge500_pct_1dp": 57.1,
+        "share_lt100_pct_1dp": 31.1,
+        "employment_total": 2013315,
+        "employment_lt500": 863326,
+        "employment_ge500": 1149989
+      },
+      {
+        "geo_id": "21",
+        "geo_name": "Kentucky",
+        "share_lt500_pct_1dp": 42.6,
+        "share_lt500_pct_full": 42.61051487862881,
+        "share_ge500_pct_1dp": 57.4,
+        "share_lt100_pct_1dp": 29.6,
+        "employment_total": 1667694,
+        "employment_lt500": 710613,
+        "employment_ge500": 957081
+      },
+      {
+        "geo_id": "04",
+        "geo_name": "Arizona",
+        "share_lt500_pct_1dp": 42.6,
+        "share_lt500_pct_full": 42.55797160455874,
+        "share_ge500_pct_1dp": 57.4,
+        "share_lt100_pct_1dp": 29.1,
+        "employment_total": 2787701,
+        "employment_lt500": 1186389,
+        "employment_ge500": 1601312
+      },
+      {
+        "geo_id": "13",
+        "geo_name": "Georgia",
+        "share_lt500_pct_1dp": 42.5,
+        "share_lt500_pct_full": 42.51537054268382,
+        "share_ge500_pct_1dp": 57.5,
+        "share_lt100_pct_1dp": 30.0,
+        "employment_total": 4249362,
+        "employment_lt500": 1806632,
+        "employment_ge500": 2442730
+      },
+      {
+        "geo_id": "47",
+        "geo_name": "Tennessee",
+        "share_lt500_pct_1dp": 41.5,
+        "share_lt500_pct_full": 41.534472287391004,
+        "share_ge500_pct_1dp": 58.5,
+        "share_lt100_pct_1dp": 28.8,
+        "employment_total": 2846881,
+        "employment_lt500": 1182437,
+        "employment_ge500": 1664444
+      },
+      {
+        "geo_id": "12",
+        "geo_name": "Florida",
+        "share_lt500_pct_1dp": 39.6,
+        "share_lt500_pct_full": 39.60045351130097,
+        "share_ge500_pct_1dp": 60.4,
+        "share_lt100_pct_1dp": 29.2,
+        "employment_total": 9628867,
+        "employment_lt500": 3813075,
+        "employment_ge500": 5815792
+      }
+    ],
+    "top5": [
+      {
+        "geo_name": "Montana",
+        "share_lt500_pct_1dp": 66.3,
+        "employment_total": 398871
+      },
+      {
+        "geo_name": "Wyoming",
+        "share_lt500_pct_1dp": 65.2,
+        "employment_total": 208024
+      },
+      {
+        "geo_name": "Vermont",
+        "share_lt500_pct_1dp": 62.1,
+        "employment_total": 254471
+      },
+      {
+        "geo_name": "South Dakota",
+        "share_lt500_pct_1dp": 58.0,
+        "employment_total": 373863
+      },
+      {
+        "geo_name": "North Dakota",
+        "share_lt500_pct_1dp": 57.6,
+        "employment_total": 342345
+      }
+    ],
+    "bottom5": [
+      {
+        "geo_name": "Kentucky",
+        "share_lt500_pct_1dp": 42.6,
+        "employment_total": 1667694
+      },
+      {
+        "geo_name": "Arizona",
+        "share_lt500_pct_1dp": 42.6,
+        "employment_total": 2787701
+      },
+      {
+        "geo_name": "Georgia",
+        "share_lt500_pct_1dp": 42.5,
+        "employment_total": 4249362
+      },
+      {
+        "geo_name": "Tennessee",
+        "share_lt500_pct_1dp": 41.5,
+        "employment_total": 2846881
+      },
+      {
+        "geo_name": "Florida",
+        "share_lt500_pct_1dp": 39.6,
+        "employment_total": 9628867
+      }
+    ]
+  },
+  "metros": {
+    "n_metro": 387,
+    "n_metro_with_lt500_share": 387,
+    "n_micro_in_file": 538,
+    "us_share_lt500_pct_1dp": 45.9,
+    "metro_median_lt500_pct_1dp": 49.8,
+    "citation": "U.S. Census Bureau, Statistics of U.S. Businesses (SUSB), 2022 Annual Datasets by Establishment Industry \u2014 msa_3digitnaics_2022.txt (all-industry NAICS=--, enterprise employment size); reference year 2022; MSA dataset originally released 2025-05-29, revised 2025-07-22 (extraneous estimates removed; remaining estimates unchanged); measures mid-March payroll employment at employer establishments, classified by enterprise (firm) employment size; primary split firms <500 vs 500+ employees (SBA cutoff). File: https://www2.census.gov/programs-surveys/susb/datasets/2022/msa_3digitnaics_2022.txt Landing page: https://www.census.gov/data/datasets/2022/econ/susb/2022-susb.html",
+    "highest_10": [
+      {
+        "geo_id": "14580",
+        "geo_name": "Bozeman, MT Metro Area",
+        "share_lt500_pct_1dp": 74.6,
+        "share_lt500_pct_full": 74.58572367369412,
+        "employment_total": 56303,
+        "employment_lt500": 41994
+      },
+      {
+        "geo_id": "42100",
+        "geo_name": "Santa Cruz-Watsonville, CA Metro Area",
+        "share_lt500_pct_1dp": 70.1,
+        "share_lt500_pct_full": 70.07606594077541,
+        "employment_total": 78616,
+        "employment_lt500": 55091
+      },
+      {
+        "geo_id": "28740",
+        "geo_name": "Kingston, NY Metro Area",
+        "share_lt500_pct_1dp": 69.4,
+        "share_lt500_pct_full": 69.36069203204528,
+        "employment_total": 43813,
+        "employment_lt500": 30389
+      },
+      {
+        "geo_id": "41100",
+        "geo_name": "St. George, UT Metro Area",
+        "share_lt500_pct_1dp": 69.2,
+        "share_lt500_pct_full": 69.23340892814514,
+        "employment_total": 67024,
+        "employment_lt500": 46403
+      },
+      {
+        "geo_id": "33540",
+        "geo_name": "Missoula, MT Metro Area",
+        "share_lt500_pct_1dp": 68.1,
+        "share_lt500_pct_full": 68.14495644156773,
+        "employment_total": 53147,
+        "employment_lt500": 36217
+      },
+      {
+        "geo_id": "13380",
+        "geo_name": "Bellingham, WA Metro Area",
+        "share_lt500_pct_1dp": 68.0,
+        "share_lt500_pct_full": 67.95774199707249,
+        "employment_total": 78565,
+        "employment_lt500": 53391
+      },
+      {
+        "geo_id": "21820",
+        "geo_name": "Fairbanks-College, AK Metro Area",
+        "share_lt500_pct_1dp": 67.9,
+        "share_lt500_pct_full": 67.85012142939748,
+        "employment_total": 25941,
+        "employment_lt500": 17601
+      },
+      {
+        "geo_id": "12700",
+        "geo_name": "Barnstable Town, MA Metro Area",
+        "share_lt500_pct_1dp": 67.8,
+        "share_lt500_pct_full": 67.7990380319079,
+        "employment_total": 76094,
+        "employment_lt500": 51591
+      },
+      {
+        "geo_id": "25940",
+        "geo_name": "Hilton Head Island-Bluffton-Port Royal, SC Metro Area",
+        "share_lt500_pct_1dp": 66.7,
+        "share_lt500_pct_full": 66.72026202173589,
+        "employment_total": 67170,
+        "employment_lt500": 44816
+      },
+      {
+        "geo_id": "13460",
+        "geo_name": "Bend, OR Metro Area",
+        "share_lt500_pct_1dp": 66.5,
+        "share_lt500_pct_full": 66.46883933676386,
+        "employment_total": 87450,
+        "employment_lt500": 58127
+      }
+    ],
+    "lowest_10": [
+      {
+        "geo_id": "40340",
+        "geo_name": "Rochester, MN Metro Area",
+        "share_lt500_pct_1dp": 35.7,
+        "share_lt500_pct_full": 35.67827333277127,
+        "employment_total": 118610,
+        "employment_lt500": 42318
+      },
+      {
+        "geo_id": "20500",
+        "geo_name": "Durham-Chapel Hill, NC Metro Area",
+        "share_lt500_pct_1dp": 35.9,
+        "share_lt500_pct_full": 35.891445003594534,
+        "employment_total": 294892,
+        "employment_lt500": 105841
+      },
+      {
+        "geo_id": "14010",
+        "geo_name": "Bloomington, IL Metro Area",
+        "share_lt500_pct_1dp": 37.0,
+        "share_lt500_pct_full": 36.98342127112516,
+        "employment_total": 74674,
+        "employment_lt500": 27617
+      },
+      {
+        "geo_id": "41940",
+        "geo_name": "San Jose-Sunnyvale-Santa Clara, CA Metro Area",
+        "share_lt500_pct_1dp": 37.0,
+        "share_lt500_pct_full": 36.99317506409547,
+        "employment_total": 1147117,
+        "employment_lt500": 424355
+      },
+      {
+        "geo_id": "18020",
+        "geo_name": "Columbus, IN Metro Area",
+        "share_lt500_pct_1dp": 37.5,
+        "share_lt500_pct_full": 37.49230904456359,
+        "employment_total": 45508,
+        "employment_lt500": 17062
+      },
+      {
+        "geo_id": "27060",
+        "geo_name": "Ithaca, NY Metro Area",
+        "share_lt500_pct_1dp": 37.6,
+        "share_lt500_pct_full": 37.56497151648717,
+        "employment_total": 48098,
+        "employment_lt500": 18068
+      },
+      {
+        "geo_id": "43900",
+        "geo_name": "Spartanburg, SC Metro Area",
+        "share_lt500_pct_1dp": 37.6,
+        "share_lt500_pct_full": 37.58816207993362,
+        "employment_total": 151851,
+        "employment_lt500": 57078
+      },
+      {
+        "geo_id": "25980",
+        "geo_name": "Hinesville, GA Metro Area",
+        "share_lt500_pct_1dp": 37.6,
+        "share_lt500_pct_full": 37.623695725345,
+        "employment_total": 14855,
+        "employment_lt500": 5589
+      },
+      {
+        "geo_id": "34060",
+        "geo_name": "Morgantown, WV Metro Area",
+        "share_lt500_pct_1dp": 38.1,
+        "share_lt500_pct_full": 38.06903991370011,
+        "employment_total": 55620,
+        "employment_lt500": 21174
+      },
+      {
+        "geo_id": "21140",
+        "geo_name": "Elkhart-Goshen, IN Metro Area",
+        "share_lt500_pct_1dp": 38.4,
+        "share_lt500_pct_full": 38.39481812540527,
+        "employment_total": 143423,
+        "employment_lt500": 55067
+      }
+    ]
+  },
+  "charter_footprint": {
+    "applied": false,
+    "reason": "Repo sources state Charter serves 41 states but do not list the 41 states or Spectrum service metros. Footprint filter not applied; need an official state/metro list to subset."
+  },
+  "suppression": {
+    "states_with_any_size_class_issue": 0,
+    "metros_missing_lt500_share": 0
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "us_acs_usually_wfh_pct": 13.3,
+  "us_acs_workers_16_plus": 165360450,
+  "us_acs_worked_from_home": 22026372,
+  "state_high": {
+    "name": "District of Columbia",
+    "pct": 22.9,
+    "workers": 388136,
+    "wfh": 88726
+  },
+  "state_low": {
+    "name": "Mississippi",
+    "pct": 6.2,
+    "workers": 1302251,
+    "wfh": 81270
+  },
+  "state_spread_pp": 16.6,
+  "atus_overall_pct": 32.5,
+  "atus_mgmt_pct": 48.1,
+  "atus_service_pct": 10.5,
+  "atus_top_earn_pct": 51.0,
+  "atus_bot_earn_pct": 13.3,
+  "atus_bach_pct": 50.0,
+  "atus_hs_pct": 17.8,
+  "abs_small_lt500_firm_wfh_pct": 35.8,
+  "abs_large_500plus_firm_wfh_pct": 77.5,
+  "citations": {
+    "acs": {
+      "agency": "U.S. Census Bureau",
+      "program": "American Community Survey (ACS) 1-Year Estimates Detailed Tables",
+      "table": "B08301 Means of Transportation to Work",
+      "year": "2024",
+      "variable_or_question": "B08301_021E Worked from home / B08301_001E Total; universe = Workers 16 years and over; usually worked from home as means of transportation to work (journey-to-work)",
+      "url": "https://api.censusreporter.org/1.0/data/show/latest?table_ids=B08301&geo_ids=040%7C01000US,01000US",
+      "url_secondary": "https://data.census.gov/table/ACSDT1Y2024.B08301",
+      "funded_by": "U.S. Census Bureau (federal statistical agency)",
+      "origin": "RETRIEVED",
+      "confidence": "high",
+      "notes": "Pulled via Census Reporter API wrapping ACS 2024 1-year release (release id acs2024_1yr). Direct api.census.gov calls required a key; counts match ACS table B08301."
+    },
+    "atus": {
+      "agency": "U.S. Bureau of Labor Statistics",
+      "program": "American Time Use Survey (ATUS)",
+      "table": "Tables 6 and 7, 2024 annual averages (news release)",
+      "year": "2024",
+      "variable_or_question": "Employed persons who worked at home on an average day as percent of employed persons who worked on an average day; 'Working at home' includes any time persons did work at home and is not restricted to persons whose usual workplace is their home. Persons 15+. Table 6: education / full- vs part-time. Table 7: occupation / usual weekly earnings quartiles (full-time wage and salary, single jobholders).",
+      "url": "https://www.bls.gov/news.release/archives/atus_06262025.htm",
+      "url_secondary": "https://www.bls.gov/news.release/archives/atus_06262025.pdf",
+      "funded_by": "U.S. Bureau of Labor Statistics (federal statistical agency)",
+      "origin": "RETRIEVED",
+      "confidence": "high",
+      "notes": "Different metric than ACS usually-WFH. Do not mix with ACS state rates in one comparison. Job level (VP vs IC) is not published; occupation and earnings quartiles are seniority proxies only."
+    },
+    "abs": {
+      "agency": "U.S. Census Bureau",
+      "program": "Annual Business Survey (ABS) Characteristics of Businesses",
+      "table": "ABSCB2023.AB2300CSCB04 (Sex/Ethnicity/Race/Veteran \u00d7 Employment Size of Firm)",
+      "year": "2023",
+      "variable_or_question": "QDESC=B28 WORKHOME; BUSCHAR=EWA 'Business had employees who worked from home' as percent of BUSCHAR=EWTR 'Total reporting' (FIRMPDEMP_PCT). EMPSZFI 655 = firms with less than 500 employees; 657 = firms with 500 employees or more. Firm-level (had any WFH employees), not worker WFH rate.",
+      "url": "https://www2.census.gov/programs-surveys/abs/data/2023/AB2300CSCB04.zip",
+      "url_secondary": "https://data.census.gov/table/ABSCB2023.AB2300CSCB04",
+      "funded_by": "U.S. Census Bureau (federal statistical agency)",
+      "origin": "RETRIEVED",
+      "confidence": "high",
+      "notes": "FTP YEAR field = 2023. Table notes on data.census.gov. This is not a worker telework rate and is not interchangeable with ACS/ATUS. SBA-style <500 vs 500+ bins are published as EMPSZFI 655 and 657."
+    }
+  }
+}

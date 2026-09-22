@@ -1,0 +1,78 @@
+---
+description: Last-mile / client-ready exhibits. Apply before any chart, slide, or visualization meant to change a decision. A chart is an argument, not a picture of data.
+alwaysApply: true
+---
+
+# Last mile — client-ready exhibits
+
+**Triggers.** Client-ready · last mile · exhibit · takeaway title · chart makeover ·
+headline the chart · mix shift · put this in front of a client · slide · deck viz ·
+so what.
+
+Berinato (2019), “Data science and the art of persuasion.” Numbers still come from
+`.cursor/rules/solving.mdc`. How those numbers are drawn is
+`.cursor/rules/storytelling-with-data.mdc`. This rule is whether the exhibit
+**persuades**. Analysis that a decision-maker does not understand, or does not find
+persuasive, produces no decision — analytically it may as well not exist.
+
+**One-line thesis.** A chart in consulting is not a picture of data. It is an argument.
+
+## Non-negotiables
+
+- **The message picks the chart, not the data.** Write the one sentence you are
+  proving, then pick the comparison the reader needs in order to believe it. Do not
+  ask what chart can show all the columns.
+- **One message per exhibit.** If it needs a paragraph, it is two charts or none.
+- **Takeaway title, not a topic title.** Formula: finding + direction + magnitude, in
+  one sentence a CEO could repeat. Weak: “Mobile lines, 2024–2026.” Strong: “Mobile
+  has added 1.8M lines in a year, but at a fraction of broadband’s margin.” A deck of
+  titles, read in sequence, should be the storyline.
+- **Visual impression matches the true magnitude.** Every design choice is a claim.
+  Consultants make those claims deliberately; amateurs make them by accident.
+- **One accent color, everything else gray.** Color spent everywhere is color spent
+  nowhere. Highest-leverage makeover move.
+- **Declutter means delete**, not prettify. Borders, gridlines, redundant legends,
+  markers on every point, unused decimals, 3D — gone. Label the series on the chart.
+- **Client exhibit persuades; appendix proves.** Both exist. They are different
+  artifacts. Push detail back.
+- **You own the exhibit** even if AI or Excel drew it. Machine defaults are clutter
+  with a legend, mislabeled axes, and sometimes the wrong series. Same verification
+  as Week 4; same ownership.
+
+## Mix shift is a first-class message
+
+Charter’s shape in this course: **total roughly flat, one line eroding, another
+growing underneath.** Charting the flat total is having no story. The story is inside
+the mix. Use indexed lines or a slopegraph. Dual axes let the designer manufacture
+any story — do not.
+
+## Axis rule (defensible, not mechanical)
+
+| Chart | Baseline | Test |
+|---|---|---|
+| Bars | Zero. Length encodes value. | Truncating is lying. |
+| Lines | May zoom if the story is movement in a tight band | Impression must match magnitude; caption says so. |
+
+A truncated line axis is not automatically dishonest. A truncated bar axis is.
+
+## Failure modes
+
+- Redesigning before choosing the message (the makeover has no target).
+- Keeping everything and just prettifying.
+- Neutral titles “so we don’t look biased” — if you cannot state the takeaway, the
+  chart is not ready. The title is the point; the chart is the evidence.
+- “The data speaks for itself.” Unframed data transfers the interpretation to the
+  client, who will skip it or do it differently than you intend.
+
+## Pre-delivery gate — do not ship an exhibit until all are true
+
+1. One sentence exists, and it is the title (finding + direction + magnitude).
+2. That sentence is the only claim the visual has to prove.
+3. Chart type matches the sentence (trend → line; rank → sorted bars; mix shift →
+   indexed lines / slopegraph; one number → no chart).
+4. One accent; the rest is gray.
+5. Clutter is deleted, not restyled.
+6. Source, units, and time range are on the exhibit; every number survives “where
+   did that come from?”
+7. A reader who sees only the title still gets the point.
+8. Backup that proves the arithmetic lives in the appendix, not on this slide.
