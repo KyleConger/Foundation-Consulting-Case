@@ -148,3 +148,4 @@ If a slide needs a different figure, it is a new analysis — do not “round to
 - That 94.6% jobs-in-42-states is serviceable-home share.
 - A Charter footprint filter on SUSB metros (official 41-state list not in repo; M5 uses 42 BDC-present jurisdictions — do not silently equate them).
 )
+| `EH&B Executive Summary.pdf` / `EH&B Executive Summary.xlsx` | Four-slide talk track (mix, printed Q1 rate-vs-volume, plant, play fit) plus the do-not-claim list. | CEO recommendation a CEO can refuse. | Ex99.1 Q1/Q2 2026, 10-Q Q1 bridge, 10-K FY2025, Q1 trending rural. Live: `chtr-ehb-executive-summary`. |

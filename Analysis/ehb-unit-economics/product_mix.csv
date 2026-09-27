@@ -1,0 +1,20 @@
+line_id,period,product,revenue_usd_millions,share_of_company_revenue,share_of_company_revenue_1dp,share_of_residential_revenue,share_of_residential_revenue_1dp,customers_or_lines_thousands,count_type,share_of_residential_relationships,share_of_residential_relationships_1dp,tag,source_file,note
+M1,Q2 2026,Internet,5776,0.4270294248,42.7%,0.5580137185,55.8%,27358,residential customers,0.9344855855,93.4%,RETRIEVED,CHTR-Q2-2026-Earnings-Release-Ex99.1.md,Revenue is the residential Internet line. Count is residential Internet customers at 30 Jun 2026. Not total Internet.
+M2,Q2 2026,Mobile service,1095,0.0809551974,8.1%,0.1057868805,10.6%,12099,residential mobile lines,,,RETRIEVED,CHTR-Q2-2026-Earnings-Release-Ex99.1.md,"Service revenue only (devices sit in Other). Count is lines, not customers, so relationship share is blank."
+M3,Q2 2026,Video,3149,0.2328108827,23.3%,0.3042218143,30.4%,12010,residential customers,0.4102336385,41.0%,RETRIEVED,CHTR-Q2-2026-Earnings-Release-Ex99.1.md,Residential product line inside residential revenue.
+M4,Q2 2026,Voice,331,0.0244713884,2.4%,0.0319775867,3.2%,4494,residential customers,0.1535045771,15.4%,RETRIEVED,CHTR-Q2-2026-Earnings-Release-Ex99.1.md,Residential product line inside residential revenue.
+M5,Q2 2026,Commercial,1865,0.1378825965,13.8%,,,,,,,RETRIEVED,CHTR-Q2-2026-Earnings-Release-Ex99.1.md,Not a residential product line. Kept so Internet's share is of company revenue.
+M6,Q2 2026,Advertising sales,416,0.0307555818,3.1%,,,,,,,RETRIEVED,CHTR-Q2-2026-Earnings-Release-Ex99.1.md,Not a residential product line. Kept so Internet's share is of company revenue.
+M7,Q2 2026,Other,894,0.0660949283,6.6%,,,,,,,RETRIEVED,CHTR-Q2-2026-Earnings-Release-Ex99.1.md,Not a residential product line. Kept so Internet's share is of company revenue.
+M8,Q2 2026,Residential revenue (subtotal),10351,0.7652668934,76.5%,,,29276,residential relationships,,,RETRIEVED,CHTR-Q2-2026-Earnings-Release-Ex99.1.md,"Internet + mobile service + video + voice. Relationship count is the denominator for product attachment, not a fifth product."
+M9,Q2 2026,Total revenue,13526,1.0000000000,100.0%,,,,,,,RETRIEVED,CHTR-Q2-2026-Earnings-Release-Ex99.1.md,Denominator for company-revenue shares.
+M10,Q1 2026,Internet,5852,0.4303890564,43.0%,0.5576519916,55.8%,,,,,RETRIEVED,CHTR-Q1-2026-Earnings-Release-Ex99.1.md,Revenue only. Q1 Internet share of company revenue is the 43.0% anchor.
+M11,Q1 2026,Mobile service,1052,0.0773700081,7.7%,0.1002477606,10.0%,,,,,RETRIEVED,CHTR-Q1-2026-Earnings-Release-Ex99.1.md,Revenue only. Q1 Internet share of company revenue is the 43.0% anchor.
+M12,Q1 2026,Video,3252,0.2391704052,23.9%,0.3098913665,31.0%,,,,,RETRIEVED,CHTR-Q1-2026-Earnings-Release-Ex99.1.md,Revenue only. Q1 Internet share of company revenue is the 43.0% anchor.
+M13,Q1 2026,Voice,338,0.0248584247,2.5%,0.0322088813,3.2%,,,,,RETRIEVED,CHTR-Q1-2026-Earnings-Release-Ex99.1.md,Revenue only. Q1 Internet share of company revenue is the 43.0% anchor.
+M14,Q1 2026,Total revenue,13597,1.0000000000,100.0%,,,,,,,RETRIEVED,CHTR-Q1-2026-Earnings-Release-Ex99.1.md,Denominator.
+M15,FY2025,Internet,23765,0.4338737357,43.4%,0.5581258807,55.8%,,,,,RETRIEVED,CHTR-FY2025-Earnings-Release-Ex99.1.md,Full-year residential product revenue.
+M16,FY2025,Mobile service,3762,0.0686822215,6.9%,0.0883513387,8.8%,,,,,RETRIEVED,CHTR-FY2025-Earnings-Release-Ex99.1.md,Full-year residential product revenue.
+M17,FY2025,Video,13703,0.2501734400,25.0%,0.3218177548,32.2%,,,,,RETRIEVED,CHTR-FY2025-Earnings-Release-Ex99.1.md,Full-year residential product revenue.
+M18,FY2025,Voice,1350,0.0246467302,2.5%,0.0317050258,3.2%,,,,,RETRIEVED,CHTR-FY2025-Earnings-Release-Ex99.1.md,Full-year residential product revenue.
+M19,FY2025,Total revenue,54774,1.0000000000,100.0%,,,,,,,RETRIEVED,CHTR-FY2025-Earnings-Release-Ex99.1.md,Denominator.

@@ -1,0 +1,119 @@
+{
+  "headline_split": "RETRIEVED",
+  "printed_bridge": {
+    "label": "RETRIEVED",
+    "volume_m": -87,
+    "rate_mix_m": 9,
+    "net_m": -78,
+    "source": "PrimarySources/readable/CHTR-10-Q-Q1-2026.md",
+    "note": "Printed residential Internet bridge. Use this, not the derived split."
+  },
+  "derived_bridge": {
+    "label": "DERIVED",
+    "volume_m": -89.77630192990912,
+    "rate_mix_m": 11.776301929909572,
+    "net_m": -77.99999999999955,
+    "volume_m_rounded": -90,
+    "rate_mix_m_rounded": 12,
+    "arpu_26": 70.72,
+    "arpu_25": 70.58,
+    "arpu_hold_flat": 71.66,
+    "arpu_gap_per_month": 0.94,
+    "avg_customers_26_k": 27582.5,
+    "avg_customers_25_k": 28006.5,
+    "begin_26_k": 27641,
+    "begin_25_k": 28034,
+    "formula_arpu": "quarterly Internet $ millions \u00d7 1,000 / 3 / average customers (thousands)",
+    "formula_average": "average = (ending \u2212 quarterly net adds + ending) / 2",
+    "formula_volume": "(avg_26 \u2212 avg_25) \u00d7 ARPU_25 \u00d7 3 / 1,000",
+    "formula_rate": "(ARPU_26 \u2212 ARPU_25) \u00d7 avg_26 \u00d7 3 / 1,000",
+    "formula_hold_flat": "ARPU to hold dollars flat = Q1 2025 Internet $ \u00d7 1,000 / 3 / avg_26; gap = that ARPU \u2212 ARPU_26",
+    "note": "Cross-check only. Rounds to \u2212$90 million volume and +$12 million rate. Does not override the printed \u2212$87 / +$9."
+  },
+  "mix": [
+    {
+      "line": "Internet",
+      "revenue_m": 5852,
+      "share": 0.4303890564095021,
+      "share_pct_1dp": 43.0,
+      "accent": true
+    },
+    {
+      "line": "Video",
+      "revenue_m": 3252,
+      "share": 0.23917040523644922,
+      "share_pct_1dp": 23.9,
+      "accent": false
+    },
+    {
+      "line": "Small business",
+      "revenue_m": 1090,
+      "share": 0.08016474222254909,
+      "share_pct_1dp": 8.0,
+      "accent": false
+    },
+    {
+      "line": "Mobile service",
+      "revenue_m": 1052,
+      "share": 0.07737000809001986,
+      "share_pct_1dp": 7.7,
+      "accent": false
+    },
+    {
+      "line": "Other",
+      "revenue_m": 906,
+      "share": 0.06663234537030227,
+      "share_pct_1dp": 6.7,
+      "accent": false
+    },
+    {
+      "line": "Mid-market and large business",
+      "revenue_m": 749,
+      "share": 0.05508568066485254,
+      "share_pct_1dp": 5.5,
+      "accent": false
+    },
+    {
+      "line": "Advertising sales",
+      "revenue_m": 358,
+      "share": 0.02632933735382805,
+      "share_pct_1dp": 2.6,
+      "accent": false
+    },
+    {
+      "line": "Voice",
+      "revenue_m": 338,
+      "share": 0.024858424652496873,
+      "share_pct_1dp": 2.5,
+      "accent": false
+    }
+  ],
+  "revenue_total_m": 13597,
+  "internet_yoy_pct": -0.01315345699831366,
+  "res_inet_net_adds_k": -117,
+  "fy25": {
+    "rate_mix_m": 785,
+    "volume_m": -380,
+    "net_m": 405,
+    "residential_internet_customers": -393000,
+    "label": "RETRIEVED"
+  },
+  "plant": {
+    "q1_passings_k": 58661,
+    "q1_penetration_pct": 54.0,
+    "q1_customer_relationships_k": 31683,
+    "rural_passings_k": 1385,
+    "rural_cr_k": 527,
+    "rural_penetration_pct": 38.1,
+    "rural_spend_b": 7.7,
+    "q2_passings_k": 58981,
+    "q2_penetration_pct": 53.4,
+    "debt_principal_b": 93.8,
+    "leverage_x": 4.18
+  },
+  "mobile": {
+    "lines_net_adds_k": 368,
+    "service_revenue_delta_m": 138,
+    "label": "RETRIEVED"
+  }
+}

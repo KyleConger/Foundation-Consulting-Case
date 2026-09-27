@@ -1,0 +1,22 @@
+line_id,item,value,unit,period,tag,source_file,note
+U1,Monthly residential revenue per residential customer,117.52,dollars per month,Q2 2026,RETRIEVED,CHTR-Q2-2026-Earnings-Release-Ex99.1.md,Total residential quarterly revenue / 3 / average residential customer relationships. Blended across products. Not Internet ARPU.
+U2,Monthly residential revenue per residential customer,118.44,dollars per month,Q1 2026,RETRIEVED,CHTR-Q2-2026-Earnings-Release-Ex99.1.md,Same definition. Restated in the Q2 operating statistics.
+U3,Monthly residential revenue per residential customer,119.70,dollars per month,Q2 2025,RETRIEVED,CHTR-Q2-2026-Earnings-Release-Ex99.1.md,Year-ago blended figure. The release states a 1.8% decline vs Q2 2026.
+U4,Internet ARPU,,dollars per month,,NOT IN FILING,,Not published. Do not use the blended residential figure as Internet ARPU.
+U5,Video programming costs,8822,USD millions,FY2025,RETRIEVED,CHTR-10-K-FY2025.md,"Note 15. FY Ex99.1 prints the same $8,822 million. 10-K prose says approximately $8.8 billion."
+U6,Video programming costs,9653,USD millions,FY2024,RETRIEVED,CHTR-10-K-FY2025.md,Note 15. 10-K prose says approximately $9.7 billion.
+U7,Total operating costs and expenses,32739,USD millions,FY2025,RETRIEVED,CHTR-10-K-FY2025.md,"Note 15 total, including stock compensation. Components sum to this figure."
+U8,Total operating costs and expenses,33167,USD millions,FY2024,RETRIEVED,CHTR-10-K-FY2025.md,Note 15 total.
+U9,Programming share of operating costs,0.2694645530,share of opex,FY2025,DERIVED,CHTR-10-K-FY2025.md,8822/32739 displays as 26.9%. 10-K prose rounds to 27%.
+U10,Programming share of operating costs,0.2910423011,share of opex,FY2024,DERIVED,CHTR-10-K-FY2025.md,9653/33167 displays as 29.1%. 10-K prose rounds to 29%.
+U11,"Interest expense, net",5042,USD millions,FY2025,RETRIEVED,CHTR-10-K-FY2025.md,Income statement. Equals $5.042 billion. Not an Internet cost allocation.
+U12,Principal amount of debt,93.8,USD billions,30 Jun 2026,RETRIEVED,CHTR-Q2-2026-Earnings-Release-Ex99.1.md,Also stated in CHTR-10-Q-Q2-2026.md. Constraint on spending density as a consumer price war.
+U13,Net debt / LTM Adjusted EBITDA,4.18,times,30 Jun 2026,RETRIEVED,CHTR-10-Q-Q2-2026.md,"Charter's leverage ratio, as stated. Not recomputed here."
+U14,Cash and cash equivalents,509,USD millions,30 Jun 2026,RETRIEVED,CHTR-Q2-2026-Earnings-Release-Ex99.1.md,Balance sheet and the liquidity sentence.
+U15,Estimated passings,58981,thousands,30 Jun 2026,RETRIEVED,CHTR-Q2-2026-Earnings-Release-Ex99.1.md,Homes and business sites. Not a residential-only homes count.
+U16,Customer-relationship penetration of passings,0.534,share,30 Jun 2026,RETRIEVED,CHTR-Q2-2026-Earnings-Release-Ex99.1.md,"Printed 53.4%. 31,499/58,981 displays as 53.4%. Includes SMB customers. Not an employee-home take rate."
+U17,Contribution per incremental residential Internet PSU,,USD,,NOT IN FILING,,No dollar contribution per incremental PSU is in the filings. Left blank. Not estimated.
+U18,CAC for a residential Internet PSU,,USD,,NOT IN FILING,,Left blank. Not estimated.
+U19,Employer or broker take-up of Internet-as-benefit,,share,,NOT IN FILING,,Left blank. Not estimated. Channel M13 stays blank.
+U20,Broker commission,,USD,,NOT IN FILING,,Left blank. Not estimated.
+U21,Subsidy tied to this channel,,USD,,NOT IN FILING,,Left blank. Rural construction subsidies are a different channel and are not used here.
