@@ -33,6 +33,7 @@ Verified 2026-09-22. No critic files here. `State Region Density Maps.xlsx` is *
 | `Brokerage Metrics Breakdown.pdf` | Print of pressure-tests on M1, M2, M5, M9, M13. | One metric per slide. Copy the matching canvas H2. | `Analysis/ehb-broker-metrics/m1`–`m13`. Canvases `chtr-ehb-m1-*` … `chtr-ehb-m13-*`. |
 | `Brokerage Metrics Breakdown.xlsx` | Same: Notes, Scorecard, M1, M2, M5, M9, M13, Analogues. | Recalc / appendix. | Same Analysis folders. |
 | `Comcast vs Charter.pdf` | Print: state location leads (availability). | “Charter leads 19 states, Comcast 27, neither 5 — locations, not subscribers.” | FCC BDC D25, 31 Dec 2025, rev. 15 Sep 2026. Build: `Analysis/cable-share-small-firm/`. Live: `chtr-vs-cmcsa-state-lead`. |
+| `Comcast HOA and Government.pdf` | Print: posted Xfinity Communities contracts and separate public-partnership motions. | Two national designs; named places are examples, not a winning map. | `Decisions/Comcast-HOA-and-local-government.md`, retrieved 28 Sep 2026. Live: `comcast-hoa-and-government`. |
 | `Comcast vs Charter.xlsx` | Same: Notes, State leads, Charter lead states, Comcast lead states, Neither. | Recalc / 51-row table. | `Analysis/cable-share-small-firm/out/chtr_vs_cmcsa_state_leads.csv`. |
 | `State Region Density Maps.xlsx` | **In progress — file not in this folder.** | Do not build a density-map slide until the file exists. | — |
 
