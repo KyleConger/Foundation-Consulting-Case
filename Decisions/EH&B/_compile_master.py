@@ -87,6 +87,14 @@ SOURCES = [
             "C Large-firm 500+": "Dens-C-Large",
         },
     },
+    {
+        "file": "Top Broker by State.xlsx",
+        "prefix": "TopBr",
+        "rename": {
+            "Notes": "TopBr-Notes",
+            "State leader": "Top broker by state",
+        },
+    },
 ]
 
 
